@@ -1,0 +1,1596 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Web Dev Life</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2016-07-22T03:30:02.000Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Xin</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CSS规则中浏览器前缀的处理</title>
+    <link href="http://yoursite.com/2014/11/24/css-e8-a7-84-e5-88-99-e4-b8-ad-e6-b5-8f-e8-a7-88-e5-99-a8-e5-89-8d-e7-bc-80-e7-9a-84-e5-a4-84-e7-90-86/"/>
+    <id>http://yoursite.com/2014/11/24/css-e8-a7-84-e5-88-99-e4-b8-ad-e6-b5-8f-e8-a7-88-e5-99-a8-e5-89-8d-e7-bc-80-e7-9a-84-e5-a4-84-e7-90-86/</id>
+    <published>2014-11-24T09:19:51.000Z</published>
+    <updated>2016-07-22T03:30:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>一、预处理：</p>
+<p>使用CSS预处理语言（如sass），通过定义函数的方式来添加各浏览器前缀：</p>
+<p>sass写法</p>
+<pre>= vendor-prefix($name, $argument)
+  -webkit-#{$name}: #{$argument}
+  -ms-#{$name}: #{$argument}
+  -moz-#{$name}: #{$argument}
+  -o-#{$name}: #{$argument}
+  #{$name}: #{$argument}
+
+//使用
+p
+  +vendor-prefix(hyphens, auto)</pre>
+scss写法
+<pre>@mixin vendor-prefix($name, $argument) {
+  -webkit-#{$name}: #{$argument};
+  -ms-#{$name}: #{$argument};
+  -moz-#{$name}: #{$argument};
+  -o-#{$name}: #{$argument};
+  #{$name}: #{$argument};
+}
+//使用
+p {
+  @include vendor-prefix(hyphens, auto)
+}</pre>
+处理后的CSS
+<pre>p {
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -o-hyphens: auto;
+  hyphens: auto;
+}</pre>
+二、后处理：
+
+个人而言，我不是很习惯sass的书写方式，不习惯在css（sass）中定义函数，不习惯编译sass文件。
+我希望可以按着习惯（原生）的方式书写css，然后通过简单的处理做到对各浏览器的兼容（这里仅只添加各浏览器前缀，不包含浏览器hack行为）。
+下面介绍的autoprefixer插件很好的解决了我上面的需求。
+autoprefixer通过解析CSS文件中相关属性，添加浏览器前缀到相应规则中。autoprefixer中包含一份[Can I Use ](http://caniuse.com/)数据，通过它来决定需要添加哪些前缀。
+
+对应上面的例子，我们在style.css中定义规则
+<pre>p {
+  hyphens: auto;
+}</pre>
+使用grunt + grunt-autoprefixer处理style.css，Gruntfile.js编写如下：
+<pre>module.exports = function (grunt) {
+    grunt.loadNpmTasks('grunt-autoprefixer' );
+    grunt.initConfig({
+            autoprefixer: {
+                options: {
+                    browsers: ['last 2 versions']
+                },
+                single_file: {
+                    src: 'style.css',
+                    dest: 'style.output.css'
+                }
+            }
+    });
+    grunt.registerTask('autoprefix', ['autoprefixer']);
+}</pre>
+处理后的style.output.css
+<pre>p {
+  -webkit-hyphens: auto;
+     -moz-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+}</pre>
+题外：
+
+用grunt注册任务的名称不能同initConfig同名，否则会报错 maximum call stack size exceeded
+<pre>grunt.registerTask('autoprefixer', ['autoprefixer']); //报错</pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一、预处理：&lt;/p&gt;
+&lt;p&gt;使用CSS预处理语言（如sass），通过定义函数的方式来添加各浏览器前缀：&lt;/p&gt;
+&lt;p&gt;sass写法&lt;/p&gt;
+&lt;pre&gt;= vendor-prefix($name, $argument)
+  -webkit-#{$name}: #{$argum
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="css" scheme="http://yoursite.com/tags/css/"/>
+    
+      <category term="autoprefixer" scheme="http://yoursite.com/tags/autoprefixer/"/>
+    
+      <category term="sass" scheme="http://yoursite.com/tags/sass/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AngularJS中$parse,$interpolate,$compile</title>
+    <link href="http://yoursite.com/2014/11/18/angularjs-e4-b8-adparseinterpolatecompile/"/>
+    <id>http://yoursite.com/2014/11/18/angularjs-e4-b8-adparseinterpolatecompile/</id>
+    <published>2014-11-18T03:54:33.000Z</published>
+    <updated>2016-07-22T03:30:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>三者都可用来进行视图渲染，但在不同的层面提供服务：</p>
+<pre>
+//示例代码
+var imgHtml = '![](/path/.)';
+$scope.name = 'image';
+$scope.extension = 'jpg';
+</pre>
+
+<p>$parse 主要处理单个变量表达式，并能更改变量值（读写服务）。</p>
+<pre>
+$parse('name')($scope); //-> 'image'
+$parse('name').assign($scope, 'image2'); // $scope.name -> 'image2' 
+</pre>
+
+<p>$interpolate 在$parse基础上进行包装，能处理多个变量表达式，但不能更改变量值（只读服务）。</p>
+<pre>
+$interpolate("/path/.")($scope) // -> 'path/image.jpg'
+</pre>
+
+<p>$compile 将字符串转为DOM节点。</p>
+<pre>
+$compile(imgHtml)($scope) // -> img节点
+</pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;三者都可用来进行视图渲染，但在不同的层面提供服务：&lt;/p&gt;
+&lt;pre&gt;
+//示例代码
+var imgHtml = &#39;![](/path/.)&#39;;
+$scope.name = &#39;image&#39;;
+$scope.extension = &#39;jpg&#39;;
+&lt;/pre&gt;
+
+&lt;p&gt;$par
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="Angularjs" scheme="http://yoursite.com/tags/Angularjs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AngularJS中Provider,Factory,Service</title>
+    <link href="http://yoursite.com/2014/11/17/angularjs-e4-b8-adproviderfactoryservice/"/>
+    <id>http://yoursite.com/2014/11/17/angularjs-e4-b8-adproviderfactoryservice/</id>
+    <published>2014-11-17T08:14:35.000Z</published>
+    <updated>2016-07-22T03:30:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>简单来讲，可以使用这三种方法创建服务。其中provider允许在使用前通过config对服务进行配置，而factory和service在angularjs内部都是通过provider实现的。</p>
+<pre>function factory(name, factoryFn) {
+  return provider(name, { $get: factoryFn });
+}
+
+function service(name, constructor) {
+  return factory(name, ['$injector', function($injector) {
+    return $injector.instantiate(constructor);
+  }]);
+}</pre>
+下面是一个具体的使用示例：
+<pre>var myApp = angular.module('myApp', []);
+
+//service style, probably the simplest one
+myApp.service('helloWorldFromService', function() {
+  this.sayHello = function() {
+    return "Hello, World!"
+  };
+});
+
+//factory style, more involved but more sophisticated
+myApp.factory('helloWorldFromFactory', function() {
+  return {
+    sayHello: function() {
+      return "Hello, World!"
+    }
+  };
+});
+
+//provider style, full blown, configurable version
+myApp.provider('helloWorld', function() {
+  // In the provider function, you cannot inject any
+  // service or factory. This can only be done at the
+  // "$get" method.
+
+  this.name = 'Default';
+
+  this.$get = function() {
+    var name = this.name;
+    return {
+      sayHello: function() {
+        return "Hello, " + name + "!"
+      }
+    }
+  };
+
+  this.setName = function(name) {
+    this.name = name;
+  };
+});
+
+//we can configure a provider
+myApp.config(function(helloWorldProvider){
+  helloWorldProvider.setName('World');
+});
+
+function MyCtrl($scope, helloWorld, helloWorldFromFactory, helloWorldFromService) {
+
+  $scope.hellos = [
+    helloWorld.sayHello(),
+    helloWorldFromFactory.sayHello(),
+    helloWorldFromService.sayHello()
+  ];
+}
+
+​</pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;简单来讲，可以使用这三种方法创建服务。其中provider允许在使用前通过config对服务进行配置，而factory和service在angularjs内部都是通过provider实现的。&lt;/p&gt;
+&lt;pre&gt;function factory(name, factoryFn
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="Angularjs" scheme="http://yoursite.com/tags/Angularjs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AngularJS中$watch和$watchCollection</title>
+    <link href="http://yoursite.com/2014/09/28/angularjs-e4-b8-adwatch-e5-92-8cwatchcollection-e7-9a-84-e4-bd-bf-e7-94-a8/"/>
+    <id>http://yoursite.com/2014/09/28/angularjs-e4-b8-adwatch-e5-92-8cwatchcollection-e7-9a-84-e4-bd-bf-e7-94-a8/</id>
+    <published>2014-09-28T02:03:48.000Z</published>
+    <updated>2016-07-22T03:30:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>AngularJS中，我们使用$watch方法来监视scope中某个变量的变化。下面是一个简单的例子：</p>
+<p><pre class="“javascript“"><br>function($scope){<br>    $scope.number = 0;<br>    $scope.$watch(‘number’,function(newVal,oldVal){<br>        //当number发生变化的时候执行<br>    })<br>}</pre></p>
+<p><br>对于监视的变量是原始类型（如：数字、字符串），上面的代码可以很好的执行；而如果监视的变量是引用类型（如：对象、数组），上面的代码可能会出现问题。例如：</p>
+<p><pre class="“javascript“"><br>function($scope){<br>    $scope.user = {<br>        name: ‘tom’,<br>        age: 11<br>    };<br>    $scope.$watch(‘user’,function(){<br>        //当给user添加一个属性job时，没有执行<br>    })；<br>    //再看一个例子<br>    $scope.items = [1,2,3];<br>    $scope.$watch(‘items’,function(){<br>        //当给items增加一项时，没有执行<br>    })；</pre></p>
+<p>}</p>
+<p><br>对上面的问题我们要对代码稍作修改：</p>
+<p><pre class="“javascript“"><br>function($scope){<br>    $scope.user = {<br>        name: ‘tom’,<br>        age: 11<br>    };<br>    $scope.$watch(‘user’,function(){<br>        //当给user添加一个属性job时执行<br>    },true)；<br>    //再看一个例子<br>    $scope.items = [1,2,3];<br>    $scope.$watch(‘items’,function(){<br>        //当给items增加一项时执行<br>    },true)；</pre></p>
+<p>}</p>
+<p><br>我们将$watch函数第三个参数设置为true。$watch这第三个参数在默认情况下是false。在默认情况下，我们进行的监视叫做引用监视（reference watch）。它的意思是只要监视的对象引用没有发生变化，就不算它发生了变化。如果我们将$watch的第三个变量设置为true，这时进行的监视叫做全等监视(equality watch)。它在运行时需要先遍历整个监视对象，在每次$digest之前使用angular.copy()将整个对象深拷贝一遍然后用angular.equal()将前后的对象进行对比。</p>
+<p>可以看到全等监视资源开销要大于引用监视，实际场景中要酌情使用。对于数组的监视，angular 1.1.4版本之后添加了一个$watchCollection方法来对监视数组。它的性能介于全等监视和引用监视二者之间，它并不会对数组中每一项的属性进行监视，但是可以对数组的项目的增减做出反应。</p>
+<p><pre class="“javascript“"><br>function($scope){</pre></p>
+<pre><code>$scope.items = [1,2,3];
+$scope.$watch(&apos;items&apos;,function(){
+    //当给items增加一项时执行
+},true)；
+
+//使用watchCollection
+
+$scope.$watchCollection(&apos;items&apos;,function(){
+    //当给items增加一项时执行
+})；
+</code></pre><p>}</p>
+<p><br>总结，一图胜千言，下面这张图很好的概括了本文介绍的内容。希望本文对使用AngularJS的朋友有所帮助。</p>
+<p><a href="http://phped-wordpress.stor.sinaapp.com/uploads/2014/09/angular_watch_depths1.png" target="_blank" rel="external"><img src="http://phped-wordpress.stor.sinaapp.com/uploads/2014/09/angular_watch_depths1.png" alt="" title="angular_watch_depths"></a></p>
+<div></div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;AngularJS中，我们使用$watch方法来监视scope中某个变量的变化。下面是一个简单的例子：&lt;/p&gt;
+&lt;p&gt;&lt;pre class=&quot;“javascript“&quot;&gt;&lt;br&gt;function($scope){&lt;br&gt;    $scope.number = 0;&lt;br&gt; 
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="Angularjs" scheme="http://yoursite.com/tags/Angularjs/"/>
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL Root 密码忘记</title>
+    <link href="http://yoursite.com/2013/05/15/mysql-root-e5-af-86-e7-a0-81-e5-bf-98-e8-ae-b0/"/>
+    <id>http://yoursite.com/2013/05/15/mysql-root-e5-af-86-e7-a0-81-e5-bf-98-e8-ae-b0/</id>
+    <published>2013-05-15T02:11:43.000Z</published>
+    <updated>2016-07-22T03:30:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>依照下面步骤，重新设定root密码：</p>
+<p>环境：Ubuntu</p>
+<ol>
+<li>sudo su -</li>
+<li>/etc/init.d/mysql stop</li>
+<li><strong>/usr/sbin/mysqld –skip-grant-tables –user=root &amp;</strong></li>
+<li>mysql -u root</li>
+<li>mysql&gt; <strong>UPDATE mysql.user SET Password=PASSWORD(‘’) WHERE User=’root’;</strong> # 將 root 密码清掉，也可以重新设置</li>
+<li>mysql&gt; quit</li>
+<li>/etc/init.d/mysql restart # 完成.<br>&nbsp;</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;依照下面步骤，重新设定root密码：&lt;/p&gt;
+&lt;p&gt;环境：Ubuntu&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;sudo su -&lt;/li&gt;
+&lt;li&gt;/etc/init.d/mysql stop&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;/usr/sbin/mysqld –skip-grant-
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="mysql" scheme="http://yoursite.com/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>转：我眼中的技术高手（有删节）</title>
+    <link href="http://yoursite.com/2013/03/20/e8-bd-ac-ef-bc-9a-e6-88-91-e7-9c-bc-e4-b8-ad-e7-9a-84-e6-8a-80-e6-9c-af-e9-ab-98-e6-89-8b-ef-bc-88-e6-9c-89-e5-88-a0-e8-8a-82-ef-bc-89/"/>
+    <id>http://yoursite.com/2013/03/20/e8-bd-ac-ef-bc-9a-e6-88-91-e7-9c-bc-e4-b8-ad-e7-9a-84-e6-8a-80-e6-9c-af-e9-ab-98-e6-89-8b-ef-bc-88-e6-9c-89-e5-88-a0-e8-8a-82-ef-bc-89/</id>
+    <published>2013-03-20T06:45:07.000Z</published>
+    <updated>2016-07-22T03:30:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近一段时间陆续看了几个框架的源码，没有运用到实际项目中，确实体会不出其中的精髓。看了玉伯的一篇文章，一些看法自己比较认同，之后需要稍稍调整一下方向。</p>
+<p>原文地址：<a href="https://github.com/lifesinger/lifesinger.github.com/issues/126" target="_blank" rel="external">https://github.com/lifesinger/lifesinger.github.com/issues/126</a><br><a id="more"></a><br><strong>奇怪的现象</strong><br>平时工作，时不时能听到一些困惑、感慨：</p>
+<blockquote>
+<p>jQuery 虽好，但只会 jQuery，不会原生 JS 是不被大公司认可的。</p>
+<p>最近半年对原生 JS 有些生疏，得补一补。</p>
+<p>得好好看看 ECMAScript 规范，把 JS 语言学透彻。<br>和原生情结对应的，是国内程序员特别喜欢研读源码，比如：</p>
+</blockquote>
+<ul>
+<li>jQuery 源码分析系列</li>
+<li>YUI 源码分析</li>
+<li><p>Backbone 及 Underscore 源码解析<br>简言之，国内与国外相比，有比较明显的两个特点：</p>
+</li>
+<li><p>对原生 JS 的学习心更强。</p>
+</li>
+<li>对类库、框架的源码更感兴趣。<br><strong>语言高手们</strong><br>真正的语言高手不多，我不是，正在看这篇文章的你，很可能也不是，而且这一辈子可能都和我一样成为不了语言高手。<br>工作中，我们需要语言高手吗？肯定的说，需要！可是，我们需要大量语言高手吗？除了特殊岗位，我相信很多公司都不需要！<br><strong>我们的价值在哪</strong><br>除了重新投胎，我们大部分人这辈子都不大可能有兴趣、有能力、有机缘去成为 BE 大神了。这是个残酷的现实，之所以残酷，只因视野太狭窄。<br>Douglas Crockford 的 JS 能力很可能不及 winter，但 Douglas 规范并布道了 JSON 格式，天下留名，惠泽全球。<br>Jeremy Ashkenas 的 JS 能力可能还不如老赵，但 Jeremy 用很裸的代码写就了 Backbone，至少影响了一万人，给各个公司创造的价值总额很可能过千万美刀。<br>更不用说 Isaac Z. Schlueter，这小伙的 JS 功力很可能还不如我，但 Isaac 打造了 npm 生态圈，而我至今只有精力玩玩 Ant 和 Grunt。<br>有幸还看过 Google Docs 的前端源码，那代码和 Java 一样中规中矩。但在 RTE 领域，Google Docs 是王者，里面的专利都一堆一堆的……<br>特别想提及的还有开发 Evernote Clearly 的前端工程师，这小伙子的代码，我眼睁睁看着其从很生涩的 JS 代码，逐步演化成上万行牛逼代码还保持了相当好的可维护性。这份代码就像 Clearly 产品一样奕奕生光。<br>以及把 jQuery 用得出神入化的 Amazon！前不久那个秒杀国内互联网公司的悬浮菜单，可不是研究原生 JS 能想出来的。<br>还有 Facebook 的工程师们，Twitter 的工程师们…… 这些故事大家并不陌生。<br><strong>不是总结的总结</strong><br>不贬低语言高手们，也不反对去研究编译原理、ECMAScript 规范等。作为技术人员，我们需要这种精神。但是，这仅仅是很小很小很小很小很小的一个领域。并且在这个领域里，永远有比你更聪明的人。<br>具体对 JavaScript 语言来说，会用就好。搞清楚数据类型、作用域、闭包、原型链等基本概念，足矣。再深入进去，对绝大部分人来说，除了能满足下心理上的优越感，对实际工作不会有任何实质性帮助。<br>语言的本质和互联网一样，只是工具，是剪刀、石头、布。让张小泉去研究怎么做剪刀就好，我们用好剪头，去剪出各种窗花，更有意思。还有一个有趣的事实是，张小泉会造剪头，但剪不好窗花。<br>跳出很小很小很小很小很小的语言领域之外，天大地大。永远不要妄自菲薄，每个人身上都背负着独特的使命。去努力寻找自己的，不要老盯着别人的，否则就会成为观众。</li>
+</ul>
+<p>好像跑题了。前面那个奇怪的现象，还有很多想吐槽的点。比如<br>1.源码只是很小很小的一部分。直接读源码往往无法领会类库框架的精髓。不读源码，用心去用，用时间去体味，偶尔针对性看看源码，往往更能掌握一个类库框架的真谛。<br>2.对社区的贡献可以有很多很多。你的使用经验、用心的 bug 提交、入乡随俗的 pull request、一个认真的评论等等，这些都比去研究什么狗屁源码更有价值。<br>3.一个 Java 高手如果说他会原生 Java，那一定会遭来很多人的围观。我还会谭浩强教我的 C 呢，那几个 if else 还有结构体、指针等谁不会。语言之外的领域知识，才真正造就了高手。对于前端来说，会原生 JS 只能打 20 分，另外 40 分需要你深入使用 CSS、DOM、HTML5 等领域知识，还有 20 分需要你对业务需求、架构设计等有真正的运用，这已经 80 分了，不要太贪心。剩下 20 分，只有两个字：勤奋。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近一段时间陆续看了几个框架的源码，没有运用到实际项目中，确实体会不出其中的精髓。看了玉伯的一篇文章，一些看法自己比较认同，之后需要稍稍调整一下方向。&lt;/p&gt;
+&lt;p&gt;原文地址：&lt;a href=&quot;https://github.com/lifesinger/lifesinger.github.com/issues/126&quot;&gt;https://github.com/lifesinger/lifesinger.github.com/issues/126&lt;/a&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ECMA-262-3详解之闭包</title>
+    <link href="http://yoursite.com/2012/10/20/ecma-262-3-e8-af-a6-e8-a7-a3-e4-b9-8b-e9-97-ad-e5-8c-85/"/>
+    <id>http://yoursite.com/2012/10/20/ecma-262-3-e8-af-a6-e8-a7-a3-e4-b9-8b-e9-97-ad-e5-8c-85/</id>
+    <published>2012-10-20T03:07:39.000Z</published>
+    <updated>2016-07-22T03:30:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>ECMA-262-3详解(<a href="http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contexts/" target="_blank" rel="external">ECMA-262-3 in detail</a>)系列是学习ECMAScript不可多得的好文章。本文根据其相关章节整理得出。</p>
+<p>在ECMAScript中，函数不仅可以作为参数，还可以作为返回值。这种特性在传统的面向堆栈的编程结构模型中，会受到很大限制。在面向堆栈的编程语言中，函数的本地变量都是保存在堆栈上的，每当函数激活的时候，这些变量和函数参数都会压栈到该堆栈上。当函数返回的时候，这些参数又会从堆栈中移除。</p>
+<pre class="javascript">
+    function testFn() {
+        var localVar = 10;
+        function innerFn(innerParam) {
+            alert(innerParam + localVar);
+        }
+        return innerFn;
+    }
+    var someFn = testFn();
+    someFn(20); // 30
+</pre>
+上面的例子中，对于innerFn函数来说， localVar属于自由变量(既不是函数参数也不是函数的局部变量的变量)。
+在采用面向堆栈模型来存储局部变量的系统里，当testFn函数调用结束后，其局部变量会从堆栈中移除。
+这样当从外部对innerFn进行函数调用时，会发生错误(因为localVar变量已经不存在了)。
+为了解决上述问题，引入了闭包的概念。
+<a id="more"></a>
+
+### 闭包
+**闭包**是代码块和创建该代码块时上下文中数据的结合。
+
+_代码块一般指函数，这样闭包可理解为封闭了外部函数作用域中变量的内部函数。
+如果外部函数不返回这个内部函数，闭包的特性无法显现；如果外部函数返回这个内部函数，那么返回的内部函数就成了名副其实的闭包。此时，闭包封闭的外部变量就是自由变量，而由于该自由变量存在，外部函数即便返回，其占用的内存也得不到释放。(编注，引自["理解JavaScript 闭包"](http://www.cn-cuckoo.com/2007/08/01/understand-javascript-closures-72.html#clFrmC))_
+<pre class="javascript">
+    var x = 20;
+    function foo() { alert(x); // 自由变量"x" == 20 }
+    // foo的闭包
+    fooClosure = {
+        call: foo // 对函数的引用
+        lexicalEnvironment: {x: 20} // 查询自由变量的上下文
+    };
+</pre>
+从技术角度来说，创建该函数的上层上下文的数据是保存在函数的内部属性[[Scope]]中的。
+<pre class="javascript">
+    var x = 20;
+    function foo() { alert(x); }
+    // foo is a closure
+    foo: FunctionObject = {
+        [[Call]]: code block of foo,
+        [[Scope]]: [ global: { x: 20 } ],
+        ... // other properties
+    };
+</pre>
+出于优化的目的，当函数不使用自由变量的时候，实现层可能就不会保存上层作用域链。ECMAScript标准中并未对此作任何说明。
+
+这里还要注意的是：在ECMAScript中，同一个上下文中创建的闭包是共用一个[[Scope]]属性的。
+也就是说，某个闭包对其中的变量做修改会影响到其他闭包对其变量的读取：
+<pre class="javascript">
+    var firstClosure;
+    var secondClosure;
+    function foo() {
+        var x = 1;
+        firstClosure = function () { return ++x; };
+        secondClosure = function () { return --x; };
+        x = 2; // 对AO["x"]产生了影响, 其值在两个闭包的[[Scope]]中
+        alert(firstClosure()); // 3, 通过firstClosure.[[Scope]]
+    }
+    foo();
+    alert(firstClosure()); // 4
+    alert(secondClosure()); // 3
+</pre>
+
+<p>对于闭包的分析就到这里。我们再次从理论和实践角度分别归纳一下ECMAScrip的闭包：<br>从理论角度，所有的函数都是闭包。 因为它们都在创建的时候就将上层上下文的数据保存起来了。哪怕是简单的全局变量也是如此，因为函数中访问全局变量就相当于是在访问自由变量（保存在最外层的作用域中）。<br>从实践角度，当函数满足一定的条件才算是闭包：即便创建它的上下文已经销毁，但它仍然存在（比如，内部函数从父函数中返回）；在代码中引用了自由变量。</p>
+<p></p><h3>结论<p></p>
+<p>闭包是ECMAScript最强大的特性之一，希望本文能够帮助您理解相关知识。<br>对于分析闭包工作机制中涉及到的执行环境上下文、作用域链等概念，可以参考本站的<a href="http://phped.sinaapp.com/?p=170" target="_blank" rel="external">“ECMA-262-3详解之执行上下文和作用域链”</a>。</p>
+</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;ECMA-262-3详解(&lt;a href=&quot;http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contexts/&quot;&gt;ECMA-262-3 in detail&lt;/a&gt;)系列是学习ECMAScript不可多得的好文章。本文根据其相关章节整理得出。&lt;/p&gt;
+&lt;p&gt;在ECMAScript中，函数不仅可以作为参数，还可以作为返回值。这种特性在传统的面向堆栈的编程结构模型中，会受到很大限制。在面向堆栈的编程语言中，函数的本地变量都是保存在堆栈上的，每当函数激活的时候，这些变量和函数参数都会压栈到该堆栈上。当函数返回的时候，这些参数又会从堆栈中移除。&lt;/p&gt;
+&lt;pre class=&quot;javascript&quot;&gt;
+    function testFn() {
+        var localVar = 10;
+        function innerFn(innerParam) {
+            alert(innerParam + localVar);
+        }
+        return innerFn;
+    }
+    var someFn = testFn();
+    someFn(20); // 30
+&lt;/pre&gt;
+上面的例子中，对于innerFn函数来说， localVar属于自由变量(既不是函数参数也不是函数的局部变量的变量)。
+在采用面向堆栈模型来存储局部变量的系统里，当testFn函数调用结束后，其局部变量会从堆栈中移除。
+这样当从外部对innerFn进行函数调用时，会发生错误(因为localVar变量已经不存在了)。
+为了解决上述问题，引入了闭包的概念。
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="ECMAScript" scheme="http://yoursite.com/tags/ECMAScript/"/>
+    
+      <category term="closure" scheme="http://yoursite.com/tags/closure/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ECMA-262-3详解之执行上下文和作用域链</title>
+    <link href="http://yoursite.com/2012/10/19/ecma-262-3-e8-af-a6-e8-a7-a3-e4-b9-8b-e6-89-a7-e8-a1-8c-e4-b8-8a-e4-b8-8b-e6-96-87-e5-92-8c-e4-bd-9c-e7-94-a8-e5-9f-9f-e9-93-be/"/>
+    <id>http://yoursite.com/2012/10/19/ecma-262-3-e8-af-a6-e8-a7-a3-e4-b9-8b-e6-89-a7-e8-a1-8c-e4-b8-8a-e4-b8-8b-e6-96-87-e5-92-8c-e4-bd-9c-e7-94-a8-e5-9f-9f-e9-93-be/</id>
+    <published>2012-10-19T08:05:22.000Z</published>
+    <updated>2016-07-22T03:30:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>ECMA-262-3详解(<a href="http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contexts/" target="_blank" rel="external">ECMA-262-3 in detail</a>)系列是学习ECMAScript不可多得的好文章。本文根据其相关章节整理得出。</p>
+<h3 id="执行上下文-Execution-Context"><a href="#执行上下文-Execution-Context" class="headerlink" title="执行上下文(Execution Context)"></a>执行上下文(Execution Context)</h3><p>执行上下文可以理解为代码块的执行环境，代码在执行的过程中需要的变量都在这个执行环境中读取。<br>一系列活动的执行上下文从逻辑上形成一个栈ECStack。 栈底总是全局上下文，栈顶是当前（活动的）执行上下文。<br>函数代码开始执行，当前执行上下文会被压入ECStack；函数返回，退出当前活动的执行上下文时，ECStack就令相应的执行上下文出栈。<br><a id="more"></a></p>
+<h3 id="变量对象-Variable-Object"><a href="#变量对象-Variable-Object" class="headerlink" title="变量对象(Variable Object)"></a>变量对象(Variable Object)</h3><p>我们定义“变量对象”这个概念，它同执行上下文息息相关，用来保存代码中的变量声明（var）, 函数声明（FD), 函数形参（function arguments）。</p>
+<pre class="javascript">
+    var a = 10;
+    function test(x) {
+      var b = 20;
+    };
+    test(30);
+    // 全局上下文中的变量对象
+    VO(globalContext) = {
+      a: 10,
+      test:
+    };
+    // “test”函数上下文中的变量对象
+    VO(test functionContext) = {
+      x: 30,
+      b: 20
+    };
+</pre>
+注意：变量对象只是一个抽象的概念，在实际执行上下文中，VO可能完全不叫VO，并且初始的结构也可能完全不同。
+
+#### 全局上下文中的变量对象
+
+全局对象是一个在进入任何执行上下文前就创建出来的对象。
+该对象以单例形式存在，它的属性在程序任何地方都可以直接访问，其生命周期随着程序的结束而终止。
+全局上下文的变量对象就是全局对象本身：
+<pre class="javascript">
+    VO(globalContext) === global;
+</pre>
+
+<h4 id="函数上下文中的变量对象"><a href="#函数上下文中的变量对象" class="headerlink" title="函数上下文中的变量对象"></a>函数上下文中的变量对象</h4><p>在函数的执行上下文中，VO是不能直接访问的，它的作用由活跃对象（activation object，简称：AO）担当。</p>
+<pre class="javascript">
+    VO(functionContext) === AO;
+</pre>
+活跃对象会在进入函数上下文的时候创建出来，初始化的时候会创建一个arguments属性，其值就是Arguments对象：
+<pre class="javascript">
+    AO = {
+        arguments:{}
+    };
+</pre>
+
+<h4 id="处理上下文代码的两个阶段"><a href="#处理上下文代码的两个阶段" class="headerlink" title="处理上下文代码的两个阶段"></a>处理上下文代码的两个阶段</h4><p>处理执行上下文代码分为两个阶段：</p>
+<ol>
+<li>进入执行上下文</li>
+<li>执行代码<br>对变量对象的修改和这两个阶段密切相关。<br>要注意的是，这两个处理阶段是通用的行为，与上下文类型无关（不管是全局上下文还是函数上下文都是一致的）。</li>
+</ol>
+<p><strong>进入执行上下文</strong><br>一旦进入执行上下文（在执行代码之前），VO就会被一些属性填充（在此前已经描述过了）：<br>•函数的形参<br>——变量对象的一个属性，其属性名就是形参的名字，其值就是实参的值；对于没有传递的参数，其值为undefined<br>•函数声明<br>——变量对象的一个属性，其属性名和值都是函数对象创建出来的；如果变量对象已经包含了相同名字的属性，则替换它的值<br>•变量声明<br>——变量对象的一个属性，其属性名即为变量名，其值为undefined ;如果变量名和已经声明的函数名或者函数的参数名相同，则不会影响已经存在的属性。</p>
+<p>看下面这个例子：</p>
+<pre class="javascript">
+    function test(a, b) {
+      var c = 10;
+      function d() {}
+      var e = function _e() {};
+      (function x() {});
+    }
+
+    test(10); // call
+    //进入执行上下文
+    AO(test) = {
+      a: 10,
+      b: undefined,
+      c: undefined,
+      d: reference to FunctionDeclaration "d"
+      e: undefined
+    };
+
+</pre>
+**代码执行**
+到了执行代码阶段，AO/VO就会修改成为如下形式：
+<pre class="javascript">
+    AO['c'] = 10;
+    AO['e'] = reference to FunctionExpression "_e"
+</pre>
+
+<p>针对进入执行上下文VO属性填充的特殊情况的示例：</p>
+<pre class="javascript">
+    alert(x); // function
+    var x = 10;
+    alert(x); // 10
+    x = 20;
+    function x() {};
+    alert(x); // 20
+
+    //进入执行上下文
+    VO = {};
+    // 发现var x = 10;
+    // 如果函数“x”还未定义
+    // 则 "x" 为undefined, 但是，在我们的例子中
+    // 变量声明并不会影响同名的函数值
+    VO['x'] = 引用了函数声明“x”
+    //执行代码，VO相继被修改
+    VO['x'] = 10;
+    VO['x'] = 20;
+</pre>
+
+<h3 id="作用域链-Scope-Chain"><a href="#作用域链-Scope-Chain" class="headerlink" title="作用域链(Scope Chain)"></a>作用域链(Scope Chain)</h3><p>作用域链是一条变量对象的链，它和执行上下文有关，用于在标识符解析时候进行变量查询。<br>函数上下文的作用域链在函数调用的时候创建出来，它包含了活跃对象和该函数的内部[[Scope]]属性。</p>
+<pre>
+    activeExecutionContext = {
+        VO: {...}, // or AO
+        this: thisValue,
+        Scope: [ // list of all variable objects ]
+    };
+
+    Scope = AO + [[Scope]]
+</pre>
+函数的内部属性[[Scope]]提供了访问更高层上下文变量对象的机制。
+它是函数的属性，在函数创建时保存在函数中，包含了所有上层变量对象。
+<pre class="javascript">
+    /*示例代码*/
+    var x = 10;
+    function foo() {
+      var y = 20;
+      function bar() {
+        var z = 30;
+        alert(x +  y + z);
+      }
+      bar();
+    }
+    foo();
+    /*标识符解析说明*/
+    //Variable object of the global context
+    globalContext.VO === Global = {
+      x: 10
+      foo: reference to function
+    };
+    //At “foo” creation, the [[Scope]] property of “foo”
+    foo.[[Scope]] = [
+      globalContext.VO
+    ];
+    //At “foo” activation
+    fooContext.AO = {
+      y: 20,
+      bar: reference to function
+    };
+    //And the scope chain of “foo” context is:
+    fooContext.Scope = fooContext.AO + foo.[[Scope]] // i.e.:
+    fooContext.Scope = [
+      fooContext.AO,
+      globalContext.VO
+    ];
+    //At creation of inner “bar” function its [[Scope]] is:
+    bar.[[Scope]] = [
+      fooContext.AO,
+      globalContext.VO
+    ];
+    //At “bar” activation, the activation object of “bar” context is:
+    barContext.AO = {
+      z: 30
+    };
+    //And the scope chain of “bar” context is:
+    barContext.Scope = barContext.AO + bar.[[Scope]] // i.e.:
+    barContext.Scope = [
+      barContext.AO,
+      fooContext.AO,
+      globalContext.VO
+    ];
+    //Identifier resolution for “x”, “y” and “z” names:
+    "x"
+    barContext.AO // not found
+    fooContext.AO // not found
+    globalContext.VO // found - 10
+    "y"
+    barContext.AO // not found
+    fooContext.AO // found - 20
+    "z"
+    barContext.AO // found - 30
+</pre>
+注意：[[Scope]]是在函数创建的时候保存起来的——静态的（不变的），只有一次并且一直都存在——直到函数销毁。
+<pre class="javascript">
+    var x = 10;
+    function foo() {
+      alert(x);
+    }
+    (function () {
+      var x = 20;
+      foo(); // 10, but not 20
+    })();
+</pre>
+
+<p>ECMAScript中，在运行时，执行代码阶段有两种语句可以修改作用域链—— with语句和catch从句。<br>在标识符查询阶段，这两者都会被添加到作用域链的最前面。<br>比如，当有with或者catch的时候，作用域链就会被修改如下形式：</p>
+<pre class="javascript">
+    Scope = withObject|catchObject + AO|VO + [[Scope]]
+</pre>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本文介绍了几乎所有与执行上下文相关的概念以及相应的细节，建议可以对照ECMAScript规范进行更深入的学习。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;ECMA-262-3详解(&lt;a href=&quot;http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contexts/&quot;&gt;ECMA-262-3 in detail&lt;/a&gt;)系列是学习ECMAScript不可多得的好文章。本文根据其相关章节整理得出。&lt;/p&gt;
+&lt;h3 id=&quot;执行上下文-Execution-Context&quot;&gt;&lt;a href=&quot;#执行上下文-Execution-Context&quot; class=&quot;headerlink&quot; title=&quot;执行上下文(Execution Context)&quot;&gt;&lt;/a&gt;执行上下文(Execution Context)&lt;/h3&gt;&lt;p&gt;执行上下文可以理解为代码块的执行环境，代码在执行的过程中需要的变量都在这个执行环境中读取。&lt;br&gt;一系列活动的执行上下文从逻辑上形成一个栈ECStack。 栈底总是全局上下文，栈顶是当前（活动的）执行上下文。&lt;br&gt;函数代码开始执行，当前执行上下文会被压入ECStack；函数返回，退出当前活动的执行上下文时，ECStack就令相应的执行上下文出栈。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="ECMAScript" scheme="http://yoursite.com/tags/ECMAScript/"/>
+    
+      <category term="Execution Context" scheme="http://yoursite.com/tags/Execution-Context/"/>
+    
+      <category term="Scope Chain" scheme="http://yoursite.com/tags/Scope-Chain/"/>
+    
+      <category term="Variable Object" scheme="http://yoursite.com/tags/Variable-Object/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ECMA-262-3详解之this关键字</title>
+    <link href="http://yoursite.com/2012/10/18/ecma-262-3-e8-af-a6-e8-a7-a3-e4-b9-8bthis-e5-85-b3-e9-94-ae-e5-ad-97/"/>
+    <id>http://yoursite.com/2012/10/18/ecma-262-3-e8-af-a6-e8-a7-a3-e4-b9-8bthis-e5-85-b3-e9-94-ae-e5-ad-97/</id>
+    <published>2012-10-18T08:00:22.000Z</published>
+    <updated>2016-07-22T03:30:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>ECMA-262-3详解(<a href="http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contexts/" target="_blank" rel="external">ECMA-262-3 in detail</a>)系列是学习ECMAScript不可多得的好文章。本文根据其相关章节整理得出。</p>
+<p>很多程序员一看到this关键字，就会把它和面向对象的编程方式联系在一起，即this指向利用构造器新创建出来的对象。<br>在ECMAScript中，this不仅仅只用来表示创建出来的对象。<br>事实上， this这块的内容非常的复杂，它在不同执行上下文的情况下其值都会不同。<br><a id="more"></a><br>下面就来详细对其进行介绍:</p>
+<h3 id="全局代码中this的值"><a href="#全局代码中this的值" class="headerlink" title="全局代码中this的值"></a>全局代码中this的值</h3><p>这种情况下，this的值总是全局对象本身;因此，可以间接地获取引用：</p>
+<pre class="javascript">
+    // 显式定义全局对象的属性
+    this.a = 10; // global.a = 10
+    alert(a); // 10
+
+    // 通过赋值给不受限的标识符来进行隐式定义
+    b = 20;
+    alert(this.b); // 20
+
+    // 通过变量声明来进行隐式定义
+    // 因为全局上下文中的变量对象就是全局对象本身
+    var c = 30;
+    alert(this.c); // 30
+</pre>
+
+<h3 id="函数代码中this的值"><a href="#函数代码中this的值" class="headerlink" title="函数代码中this的值"></a>函数代码中this的值</h3><pre class="javascript">
+    var foo = {x: 10};    
+    var bar = {
+      x: 20,
+      test: function () {    
+        alert(this === bar); // true
+        alert(this.x); // 20      
+        this = foo; // error, 不能更改this的值       
+        alert(this.x); // 如果没有错误，则其值为10而不是20      
+      }      
+    };      
+    // 在进入上下文的时候，this的值就确定了是“bar”对象
+    // 至于为什么，会在后面作详细介绍     
+    bar.test(); // true, 20     
+    foo.test = bar.test;      
+    // 但是，这个时候，this的值又会变成“foo”
+    // 纵然我们调用的是同一个函数      
+    foo.test(); // false, 10
+</pre>
+    一些关于JavaScript的文章和书籍中指出的“ this的值取决于函数的定义方式，如果是全局函数，则this的值就会设置为全局对象，如果是某个对象的方法，则this的值就会设置为该对象”。**这种说法并不正确。**
+    调用一个对象的某个方法的时候，this的值也有可能不是该对象的：
+<pre class="javascript">
+    var foo = {
+        bar: function () {
+            alert(this);
+            alert(this === foo);
+        }
+    };
+    foo.bar(); // foo, true
+    var exampleFunc = foo.bar;
+    alert(exampleFunc === foo.bar); // true
+    // 同样地，相同的函数以不同的调用方式，this的值也就不同了
+    exampleFunc(); // global, false
+</pre>
+
+<p>那么，究竟调用表达式的方式是如何影响this的值的呢？这里有必要先介绍一种内部类型——引用类型。</p>
+<h4 id="引用类型-The-Reference-Type"><a href="#引用类型-The-Reference-Type" class="headerlink" title="引用类型(The Reference Type)"></a>引用类型(<a href="http://bclary.com/2004/11/07/#a-8.7" target="_blank" rel="external">The Reference Type</a>)</h4><p>引用类型可以用伪代码表示</p>
+<pre class="javascript">
+  Reference = {
+      base: <base object="">,
+      propertyName: <property name="">
+  };
+</property></pre>
+    注意引用类型(Reference)不是语言层面的数据类型数据，它纯粹是为了更好的对规范进行解释说明。**当处理一个标识符或者进行属性访问的时候**，会使用到引用类型求值。
+<pre class="javascript">
+  //引用类型求值伪代码
+  function GetValue(value) { 
+      if (Type(value) != Reference) {
+          return value;
+      } 
+      var base = GetBase(value); 
+      if (base === null) {
+          throw new ReferenceError;
+      } 
+      return base.[[Get]](GetPropertyName(value)); //返回对象属性实际值
+  }
+</pre>
+
+<pre><code>函数上下文中this的值是函数调用者提供并且由当前调用表达式的形式而定的。
+如果在调用括号()的左边，是引用类型形式，那么this的值就会设置为该引用类型的base对象([GetBase](http://bclary.com/2004/11/07/#a-11.2.3))。
+所有其他情况下（非引用类型），this的值总是null 。由于null对于this来说没有任何意义，因此会隐式转换为全局对象。
+</code></pre><pre class="javascript">
+
+    //foo作为标识符
+    function foo() {
+      return this;
+    }
+
+    foo(); // global
+    var fooReference = {
+      base: global,
+      propertyName: 'foo'
+    };
+
+    //foo.bar属性访问
+    var foo = {
+      bar: function () {
+        return this;
+      }
+    };
+
+    foo.bar(); // foo
+
+    var fooBarReference = {
+      base: foo,
+      propertyName: 'bar'
+    };
+
+    //非引用类型
+    (function () {
+      alert(this); // null => global
+    })();
+</pre>
+
+<h4 id="子函数在父函数中被调用"><a href="#子函数在父函数中被调用" class="headerlink" title="子函数在父函数中被调用"></a>子函数在父函数中被调用</h4><pre><code>这时引用类型的base对象恰好为**活跃对象(Activation Object)**，this的值是null，最终变为全局对象。
+</code></pre><pre class="javascript">
+    function foo() {
+      function bar() {
+        alert(this); // global
+      }
+      bar(); // 和AO.bar()是一样的
+    }
+
+</pre>
+
+<h4 id="函数作为构造器被调用"><a href="#函数作为构造器被调用" class="headerlink" title="函数作为构造器被调用"></a>函数作为构造器被调用</h4><pre class="javascript">
+    function A() {
+      alert(this); // newly created object, below - "a" object
+      this.x = 10;
+    }
+
+    var a = new A();
+    alert(a.x); // 10
+</pre>
+    所有“A”函数中this的值会设置为新创建的对象(可以参考[javascript中new操作符](http://phped.sinaapp.com/?p=11))。
+
+#### apply和call
+
+    Function.prototype上定义了两个方法（因此，它们对所有函数而言都是可访问的），允许手动指定函数调用时this的值。
+    这两个方法是： apply和call ；它们都接受第一个参数作为调用上下文中this的值。
+    对于apply来说，第二个参数接受数组类型（或者是类数组的对象，比如arguments ）,而call方法接受任意多的参数。
+    这两个方法只有第一个参数是必要的——this的值。
+
+<pre class="javascript">
+    var b = 10;
+    function a(c) {
+      alert(this.b);
+      alert(c);
+    }
+    a(20); // this === global, this.b == 10, c == 20
+    a.call({b: 20}, 30); // this === {b: 20}, this.b == 20, c == 30
+    a.apply({b: 30}, [40]) // this === {b: 30}, this.b == 30, c == 40
+</pre>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本文我们讨论了ECMAScript中this关键字的特性。<br>希望此文对大家理解this关键字在ECMAScript中的工作原理有所帮助。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;ECMA-262-3详解(&lt;a href=&quot;http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contexts/&quot;&gt;ECMA-262-3 in detail&lt;/a&gt;)系列是学习ECMAScript不可多得的好文章。本文根据其相关章节整理得出。&lt;/p&gt;
+&lt;p&gt;很多程序员一看到this关键字，就会把它和面向对象的编程方式联系在一起，即this指向利用构造器新创建出来的对象。&lt;br&gt;在ECMAScript中，this不仅仅只用来表示创建出来的对象。&lt;br&gt;事实上， this这块的内容非常的复杂，它在不同执行上下文的情况下其值都会不同。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="ECMAScript" scheme="http://yoursite.com/tags/ECMAScript/"/>
+    
+      <category term="this" scheme="http://yoursite.com/tags/this/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jQuery 源码初探</title>
+    <link href="http://yoursite.com/2012/09/10/jquery-e6-ba-90-e7-a0-81-e5-88-9d-e6-8e-a2/"/>
+    <id>http://yoursite.com/2012/09/10/jquery-e6-ba-90-e7-a0-81-e5-88-9d-e6-8e-a2/</id>
+    <published>2012-09-10T10:02:59.000Z</published>
+    <updated>2016-07-22T03:30:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="http://book.douban.com/subject/5063431/" target="_blank" rel="external">《犀利开发—jQuery内核详解与实践》</a>是一本jQuery源码分析的书籍，作者的文风以及对知识阐述的准确性一直备受质疑（如果你记得那本<a href="http://book.douban.com/subject/4007372/" target="_blank" rel="external">《JavaScript征途》</a>在51js论坛上引发的激烈讨论，没错，两本书作者是同一个人）。<br>这本书中”jQuery原型技术分解”部分却是我看过的jQuery源码分析文章中比较好的，作者的分析角度和分析过程是很值得学习的。摘录部分内容（对作者观点不同之处有删改）：<br><a id="more"></a><br>定义一个最初的jQuery类（函数）：</p>
+<p><pre lang="javascript"><br>var jQuery = function() {    </pre></p>
+<p>};<br><br>我们可以扩展jQuery的原型：</p>
+<p><pre lang="javascript"><br>var jQuery = function() {};<br>jQuery.prototype = {</pre></p>
+<p>};<br><br>jQuery的出发点是Write less, do more，对于比较长的名称可以使用短名来代替。</p>
+<p><pre lang="javascript"><br>jQuery.fn = jQuery.prototype= { </pre></p>
+<p>}<br>var $ = jQuery = function() {};<br><br>现在给jQuery的原型对象添加一个方法size和一个属性jquery：</p>
+<p><pre lang="javascript"><br>var $ = jQuery = function() {};<br>jQuery.fn = jQuery.prototype = {<br>    jquery: ‘1.3.2’,<br>    size: function() {<br>        return this.length;<br>    }<br>};<br></pre><br>如何调用刚才添加的方法和属性呢？回想一下jquery的调用方式：</p>
+<p><pre lang="javascript"><br>$(‘xxx’).jquery<br>$(‘xxx’).size();<br></pre><br>显然现在的代码并不支持这样的调用方式，我们必须先实例化jQuery类。</p>
+<p><pre lang="javascript"><br>var $ = jQuery = function() {<br>    return new jQuery();<br>};<br></pre><br>$()与new jQuery()调用的是同一个函数，如果按以上方式实现实例化，一旦调用$()就陷入了死循环。</p>
+<p>使用一个工厂方法来创建一个实例，把这个方法放在jQuery.prototype原型对象中, 然后在jQuery()函数中返回这个原型方法的调用，可以达到实例化的目的：</p>
+<p><pre lang="javascript"><br>var $ = jQuery = function() {<br>    return jQuery.fn.init();<br>};<br>jQuery.fn = jQuery.prototype = {<br>    init: function() {<br>        return this;<br>    },<br>    jquery: ‘1.3.2’,<br>    size: function() {<br>        return this.length;<br>    }<br>};<br></pre><br>现在貌似已经有点jquery雏形了。</p>
+<p>调用jQuery()结果是什么？<br>jQuery.fn.init()返回值this是jQuery.fn的一个引用，而直接对prototype操作是非常危险的。<br>为了隔离jQuery.prototype，考虑把jQuery.fn.init当作一个构造器来调用。这样jQuery.fn.init中的this关键字则不再指向jQuery.prototype，而是一个jQuery.prototype.init实例：</p>
+<p><pre lang="javascript"><br>var $ = jQuery = function() {<br>    return new jQuery.fn.init();<br>};<br></pre><br>此时jQuery.fn.init()返回的是一个”空”对象，是访问不到jQuery.prototype成员的，我们还要做下面的处理：</p>
+<p><pre lang="javascript"><br>jQuery.fn.init.prototype = jQuery.fn;<br></pre><br>这样new jQuery.fn.init()创建出来的对象拥有init构造器prototype的方法，其指向又是jQuery的prototype，因此创建的对象就拥有了jQuery原型中定义的方法了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;http://book.douban.com/subject/5063431/&quot;&gt;《犀利开发—jQuery内核详解与实践》&lt;/a&gt;是一本jQuery源码分析的书籍，作者的文风以及对知识阐述的准确性一直备受质疑（如果你记得那本&lt;a href=&quot;http://book.douban.com/subject/4007372/&quot;&gt;《JavaScript征途》&lt;/a&gt;在51js论坛上引发的激烈讨论，没错，两本书作者是同一个人）。&lt;br&gt;这本书中”jQuery原型技术分解”部分却是我看过的jQuery源码分析文章中比较好的，作者的分析角度和分析过程是很值得学习的。摘录部分内容（对作者观点不同之处有删改）：&lt;br&gt;
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="framework" scheme="http://yoursite.com/tags/framework/"/>
+    
+      <category term="jQuery" scheme="http://yoursite.com/tags/jQuery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Duff&#39;s Device in JavaScript</title>
+    <link href="http://yoursite.com/2012/09/07/duffs-device-in-javascript/"/>
+    <id>http://yoursite.com/2012/09/07/duffs-device-in-javascript/</id>
+    <published>2012-09-07T09:26:10.000Z</published>
+    <updated>2016-07-22T03:30:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="http://book.douban.com/subject/5362856/" target="_blank" rel="external">高性能JavaScript</a>一书中提到了对循环进行优化，策略之一就是减少循环迭代次数。<br>“达夫设备”（Duff’s Device）通过增加每次循环中的处理工作，可以达到减少循环次数的目的。<br><a id="more"></a><br>下面的示例列举了三种方法，分别是普通循环，Duff’s Device和Fast Duff’s Device(进一步展开余数项):</p>
+<pre lang="javascript">
+//Regular Loop
+function loop(iterations){
+    var index = 0;
+    var n = iterations.length;
+    while (n--) {
+        process(iterations[index++]);
+    }
+}
+//Duff's Device
+function duff(){
+    var index = 0;
+    var n = iterations.length / 8;
+    var startAt = iterations.length % 8;
+
+    do {
+        switch (startAt) {
+            case 0:
+                process(iterations[index++]);
+            case 7:
+                process(iterations[index++]);
+            case 6:
+                process(iterations[index++]);
+            case 5:
+                process(iterations[index++]);
+            case 4:
+                process(iterations[index++]);
+            case 3:
+                process(iterations[index++]);
+            case 2:
+                process(iterations[index++]);
+            case 1:
+                process(iterations[index++]);
+        }
+        startAt = 0;
+    }while (--n > 0);
+}
+//Fast Duff's Device
+function duff2(iterations){
+    var index = 0;
+    var n = iterations.length % 8;
+    while (n--) {
+        process(iterations[index++]);
+    }
+
+    n = Math.floor(iterations.length / 8);
+    while (n--) {
+        process(iterations[index++]);
+        process(iterations[index++]);
+        process(iterations[index++]);
+        process(iterations[index++]);
+        process(iterations[index++]);
+        process(iterations[index++]);
+        process(iterations[index++]);
+        process(iterations[index++]);
+    }
+}
+</pre>
+
+<p>对于性能提升的测试可以参看<a href="http://jsperf.com/duffs-device" target="_blank" rel="external">这里</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;http://book.douban.com/subject/5362856/&quot;&gt;高性能JavaScript&lt;/a&gt;一书中提到了对循环进行优化，策略之一就是减少循环迭代次数。&lt;br&gt;“达夫设备”（Duff’s Device）通过增加每次循环中的处理工作，可以达到减少循环次数的目的。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="algorithm" scheme="http://yoursite.com/tags/algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Canvas width和height</title>
+    <link href="http://yoursite.com/2012/09/07/canvas-width-e5-92-8cheight/"/>
+    <id>http://yoursite.com/2012/09/07/canvas-width-e5-92-8cheight/</id>
+    <published>2012-09-07T07:00:02.000Z</published>
+    <updated>2016-07-22T03:30:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="http://book.douban.com/subject/7069390/" target="_blank" rel="external">Core HTML5 Canvas</a>一书中建议读者使用canvas时要留意宽高的设定：</p>
+<blockquote>
+<p>It’s a good idea to use the canvas element’s width and height attributes to size the element, instead of using CSS. If you use CSS to size the element without also specifying the width and height attributes of the canvas element, the element size will not match the canvas’s drawing surface size, and the browser will scale the latter to fit the former, most likely resulting in surprising and unwanted effects.<br>作者提出在属性中设置canvas宽高同在css样式中设置宽高是有区别的，并相应定义了两个概念（element size和drawing surface size）。<br><a id="more"></a><br>对于canvas的宽度高度<a href="http://www.w3.org/TR/html5/the-canvas-element.html#attr-canvas-width" target="_blank" rel="external">w3网站</a>上是这样解释的：<br>The canvas element has two attributes to control the size of the coordinate space: width and height. These attributes, when specified, must have values that are valid non-negative integers. The rules for parsing non-negative integers must be used to obtain their numeric values. If an attribute is missing, or if parsing its value returns an error, then the default value must be used instead. The width attribute defaults to 300, and the height attribute defaults to 150.</p>
+<p>The intrinsic dimensions of the canvas element equal the size of the coordinate space, with the numbers interpreted in CSS pixels. However, the element can be sized arbitrarily by a style sheet. During rendering, the image is scaled to fit this layout size.<br>总结一下上面两段话：<strong>在canvas中定义width、height跟在style中定义width和height是不同的</strong>。在属性中设置width和height会同时设置画布(drawing surface)和元素(元素)的尺寸；而style的width和height只设置了元素尺寸，画布尺寸(默认值为width:300px，height:150px)会在元素渲染完成之后做相应的拉伸，以填满整个元素尺寸。</p>
+</blockquote>
+<p>简单的示例代码：</p>
+<pre lang="html">
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>canvas size</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            #container{
+                width:600px;
+                height:300px;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="container"></canvas>
+        <canvas id="container2" width="600px" height="300px"></canvas>
+    </body>
+    <script>
+        function drawLine(canvasId){
+            var canvas = document.getElementById(canvasId),
+            context = canvas.getContext("2d");
+            context.beginPath();
+            context.moveTo(0,0);
+            context.lineTo(100,100);
+            context.stroke();
+        }
+        drawLine("container");    //意外的效果
+        drawLine("container2");  //期望的效果
+    </script>
+</html>
+</pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;http://book.douban.com/subject/7069390/&quot;&gt;Core HTML5 Canvas&lt;/a&gt;一书中建议读者使用canvas时要留意宽高的设定：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;It’s a good idea to use the canvas element’s width and height attributes to size the element, instead of using CSS. If you use CSS to size the element without also specifying the width and height attributes of the canvas element, the element size will not match the canvas’s drawing surface size, and the browser will scale the latter to fit the former, most likely resulting in surprising and unwanted effects.&lt;br&gt;作者提出在属性中设置canvas宽高同在css样式中设置宽高是有区别的，并相应定义了两个概念（element size和drawing surface size）。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="css" scheme="http://yoursite.com/tags/css/"/>
+    
+      <category term="canvas" scheme="http://yoursite.com/tags/canvas/"/>
+    
+      <category term="html5" scheme="http://yoursite.com/tags/html5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript柯里化(Curry)</title>
+    <link href="http://yoursite.com/2012/08/24/javascript-e6-9f-af-e9-87-8c-e5-8c-96curry/"/>
+    <id>http://yoursite.com/2012/08/24/javascript-e6-9f-af-e9-87-8c-e5-8c-96curry/</id>
+    <published>2012-08-24T07:36:26.000Z</published>
+    <updated>2016-07-22T03:30:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>函数应用</strong><br>在一些纯粹的函数式编程语言中，对函数的描述不是被调用（called或者invoked），而是被应用（applied）。在JavaScript中也有同样的东西——我们可以使用Function.prototype.apply()来应用一个函数，因为在JavaScript中，函数实际上是对象，并且他们拥有方法。<br><a id="more"></a><br>下面是一个函数应用的例子：</p>
+<pre lang="javascript">// define a function
+var sayHi = function (who) {
+    return "Hello" + (who ? ", " + who : "") + "!";
+};
+// invoke a function
+sayHi('world'); // "Hello, world!"
+// apply a function
+sayHi.apply(null, ["world "]); // "Hello, world!"</pre>
+从上面的例子中可以看出来，调用一个函数和应用一个函数有相同的结果。apply()接受两个参数：第一个是在函数内部绑定到this上的对象，第二个是一个参数数组，参数数组会在函数内部变成一个类似数组的arguments对象。
+
+**部分应用**
+调用一个函数实际上就是给它应用一堆参数，那是否能够只传一部分参数而不传全部呢？
+假设已经有了一个add()函数，它的工作是把x和y两个数加到一起。下面的代码片段展示了当x为5、y为4时的计算步骤：
+<pre lang="javascript">// for illustration purposes
+// not valid JavaScript
+
+// we have this function
+function add(x, y) {
+    return x + y;
+}
+
+// and we know the arguments
+add(5, 4);
+
+// step 1 -- substitute one argument
+function add(5, y) {
+    return 5 + y;
+}
+
+// step 2 -- substitute the other argument
+function add(5, 4) {
+    return 5 + 4;
+}</pre>
+在这个代码片段中，step 1和step 2并不是有效的JavaScript代码，但是它展示了我们手工计算的过程。首先获得第一个参数的值，然后将未知的x和已知的值5替换到函数中。然后重复这个过程，直到替换掉所有的参数。
+step 1是一个所谓的部分应用的例子：我们只应用了第一个参数。当你执行一个部分应用的时候并不能获得结果（或者是解决方案），取而代之的是另一个函数。
+
+下面的代码片段展示了一个虚拟的partialApply()方法的用法：
+<pre lang="javascript">var add = function (x, y) {
+    return x + y;
+};
+
+// full application
+add.apply(null, [5, 4]); // 9
+
+// partial application
+var newadd = add.partialApply(null, [5]);
+// applying an argument to the new function
+newadd.apply(null, [4]); // 9</pre>
+正如你所看到的一样，部分应用给了我们另一个函数，这个函数可以在稍后调用的时候接受其它的参数。这实际上跟add(5)(4)是等价的，因为add(5)返回了一个函数，这个函数可以使用(4)来调用。
+让函数理解并且处理部分应用的过程，叫柯里化（Currying）。
+
+**柯里化（Currying）**
+柯里化（Currying），又称部分求值（Partial Evaluation），是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。
+看一个例子：
+<pre lang="javascript">// a curried add
+// accepts partial list of arguments
+function add(x, y) {
+    if (typeof y === "undefined") { // partial
+        return function (y) {
+            return x + y;
+        };
+    }
+    // full application
+    return x + y;
+}</pre>
+再看一个通用的柯里化函数：
+<pre lang="javascript">function schonfinkelize(fn) {
+    var slice = Array.prototype.slice,
+    stored_args = slice.call(arguments, 1);
+    return function () {
+        var new_args = slice.call(arguments),
+        args = stored_args.concat(new_args);
+        return fn.apply(null, args);
+    };
+}</pre>
+现在有了通用的柯里化函数，就可以做一些测试了：
+<pre lang="javascript">// a normal function
+function add(x, y) {
+    return x + y;
+}
+
+// curry a function to get a new function
+var newadd = schonfinkelize(add, 5);
+newadd(4); // 9
+
+// another option -- call the new function directly
+schonfinkelize(add, 6)(7); // 13</pre>
+
+<p><strong>什么时候使用柯里化</strong><br>当你发现自己在调用同样的函数并且传入的参数大部分都相同的时候，就是考虑柯里化的理想场景了。你可以通过传入一部分的参数动态地创建一个新的函数。这个新函数会存储那些重复的参数（所以你不需要再每次都传入），然后再在调用原始函数的时候将整个参数列表补全，正如原始函数期待的那样。</p>
+<p>（本文内容参考<a href="http://phped.sinaapp.com/?p=26" target="_blank" rel="external">《JavaScript Patterns》</a>相关章节）</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;函数应用&lt;/strong&gt;&lt;br&gt;在一些纯粹的函数式编程语言中，对函数的描述不是被调用（called或者invoked），而是被应用（applied）。在JavaScript中也有同样的东西——我们可以使用Function.prototype.apply()来应用一个函数，因为在JavaScript中，函数实际上是对象，并且他们拥有方法。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="curry" scheme="http://yoursite.com/tags/curry/"/>
+    
+      <category term="partial application" scheme="http://yoursite.com/tags/partial-application/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GeoJSON介绍</title>
+    <link href="http://yoursite.com/2012/08/15/geojson-e4-bb-8b-e7-bb-8d/"/>
+    <id>http://yoursite.com/2012/08/15/geojson-e4-bb-8b-e7-bb-8d/</id>
+    <published>2012-08-15T02:53:37.000Z</published>
+    <updated>2016-07-22T03:30:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>GeoJSON是一种地理数据的描述格式。GeoJSON可以描述的对象包括：几何体，要素和要素集。<br>这里几何体(Geometry)的类型有我们熟悉的点(Point),线(LineString),面(Polygon), 多点(MultiPoint),多线(MultiLineString),多面( MultiPolygon)和几何体集合(GeometryCollection)。<br>要素(Feature)包含了几何体信息以及附加的一些属性信息。<br>要素集(a collection of features)即为要素的集合。</p>
+<p>GeoJSON的结构同JSON并增加了一些约束条件：<br>GeoJSON对象<strong>必须</strong>包含一个type属性，type的值为其描述的对象(如前所述为下列选项之一：”Point”, “MultiPoint”, “LineString”, “MultiLineString”, “Polygon”, “MultiPolygon”, “GeometryCollection”, “Feature”, “FeatureCollection”)；<br>几何体(Geometry)必须包含坐标信息，要素(Feature)<strong>必须</strong>包含一个几何体信息，同时<strong>至少</strong>有一项属性信息。<br><a id="more"></a><br>GeoJSON格式示例：<br>点</p>
+<pre lang="javascript">
+{ "type": "Point", "coordinates": [100.0, 0.0] }
+</pre>
+线
+<pre lang="javascript">
+{ "type": "LineString",
+  "coordinates": [ [100.0, 0.0], [101.0, 1.0] ]
+  }
+</pre>
+面
+没有洞的面：
+<pre lang="javascript">
+{ "type": "Polygon",
+  "coordinates": [
+    [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ]
+    ]
+ }
+</pre>
+有洞的面，数组第一项是外环，其他是内环:
+<pre lang="javascript">
+{ "type": "Polygon",
+  "coordinates": [
+    [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ],
+    [ [100.2, 0.2], [100.8, 0.2], [100.8, 0.8], [100.2, 0.8], [100.2, 0.2] ]
+    ]
+ }
+</pre>
+
+<p>更多介绍和示例可参考<a href="http://www.geojson.org/geojson-spec.html#appendix-a-geometry-examples" target="_blank" rel="external">这里</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;GeoJSON是一种地理数据的描述格式。GeoJSON可以描述的对象包括：几何体，要素和要素集。&lt;br&gt;这里几何体(Geometry)的类型有我们熟悉的点(Point),线(LineString),面(Polygon), 多点(MultiPoint),多线(MultiLineString),多面( MultiPolygon)和几何体集合(GeometryCollection)。&lt;br&gt;要素(Feature)包含了几何体信息以及附加的一些属性信息。&lt;br&gt;要素集(a collection of features)即为要素的集合。&lt;/p&gt;
+&lt;p&gt;GeoJSON的结构同JSON并增加了一些约束条件：&lt;br&gt;GeoJSON对象&lt;strong&gt;必须&lt;/strong&gt;包含一个type属性，type的值为其描述的对象(如前所述为下列选项之一：”Point”, “MultiPoint”, “LineString”, “MultiLineString”, “Polygon”, “MultiPolygon”, “GeometryCollection”, “Feature”, “FeatureCollection”)；&lt;br&gt;几何体(Geometry)必须包含坐标信息，要素(Feature)&lt;strong&gt;必须&lt;/strong&gt;包含一个几何体信息，同时&lt;strong&gt;至少&lt;/strong&gt;有一项属性信息。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="GIS" scheme="http://yoursite.com/tags/GIS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>多边形的中心</title>
+    <link href="http://yoursite.com/2012/08/14/e5-a4-9a-e8-be-b9-e5-bd-a2-e7-9a-84-e4-b8-ad-e5-bf-83/"/>
+    <id>http://yoursite.com/2012/08/14/e5-a4-9a-e8-be-b9-e5-bd-a2-e7-9a-84-e4-b8-ad-e5-bf-83/</id>
+    <published>2012-08-14T09:51:48.000Z</published>
+    <updated>2016-07-22T03:30:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>一个由 N 个顶点<em>( x<sub>i</sub> , y<sub>i</sub> )</em> 确定的不自交闭多边形的中心能如下计算:</p>
+<p>记号 <em>( x<sub>N</sub> , y<sub>N</sub> )</em>与顶点 <em>( x<sub>0</sub> , y<sub>0</sub> )</em>相同。多边形的面积为：</p>
+<p><dl> <dd><img src="http://upload.wikimedia.org/wikipedia/zh/math/6/7/0/6707070e31defe1f3e5e4a7a6b044c88.png" alt="A = \frac{1}{2}\sum_{i=0}^{N-1} (x_i\ y_{i+1} - x_{i+1}\ y_i)"></dd> </dl>多边形的中心由下式给出：</p>
+<p><dl> <dd><img src="http://upload.wikimedia.org/wikipedia/zh/math/0/2/c/02c362b6868aa409ba4c006cf4677a3a.png" alt="C_x = \frac{1}{6A}\sum_{i=0}^{N-1}(x_i+x_{i+1})(x_i\ y_{i+1} - x_{i+1}\ y_i)"></dd> </dl> <dl> <dd><img src="http://upload.wikimedia.org/wikipedia/zh/math/8/5/b/85b6bac3e9d11333a9375eec98eece01.png" alt="C_y = \frac{1}{6A}\sum_{i=0}^{N-1}(y_i+y_{i+1})(x_i\ y_{i+1} - x_{i+1}\ y_i)"></dd> </dl><br><a id="more"></a><br>给出javascript实现代码</p>
+<pre lang="javascript">
+// Point object
+function Point(x,y) {
+   this.x=x;
+   this.y=y;
+}
+
+// Contour object
+function Contour(points) {
+   // an array of Point objects defining the contour
+   this.pts = points; 
+}
+// ...add points to the contour...
+
+Contour.prototype.area = function() {
+   var area=0;
+   var pts = this.pts;
+   var nPts = pts.length;
+   var j=nPts-1;
+   var p1; var p2;
+
+   for (var i=0;i<npts;j=i++) {="" p1="pts[i];" p2="pts[j];" area+="p1.x*p2.y;" area-="p1.y*p2.x;" }="" area="" =2;="" return="" area;="" };="" contour.prototype.centroid="function()" var="" pts="this." pts;="" npts="pts.length;" x="0;" y="0;" f;="" j="nPts-1;" p1;="" p2;="" for="" (var="" i="0;i<nPts;j=i++)" f="p1.x*p2.y-p2.x*p1.y;" x+="(p1.x+p2.x)*f;" y+="(p1.y+p2.y)*f;" new="" point({x:="" f,y:y="" f});="" <="" pre="">
+
+<p>其他语言实现方式可以看<a href="http://paulbourke.net/geometry/polyarea/" target="_blank" rel="external">这里</a></p>
+</npts;j=i++)></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一个由 N 个顶点&lt;em&gt;( x&lt;sub&gt;i&lt;/sub&gt; , y&lt;sub&gt;i&lt;/sub&gt; )&lt;/em&gt; 确定的不自交闭多边形的中心能如下计算:&lt;/p&gt;
+&lt;p&gt;记号 &lt;em&gt;( x&lt;sub&gt;N&lt;/sub&gt; , y&lt;sub&gt;N&lt;/sub&gt; )&lt;/em&gt;与顶点 &lt;em&gt;( x&lt;sub&gt;0&lt;/sub&gt; , y&lt;sub&gt;0&lt;/sub&gt; )&lt;/em&gt;相同。多边形的面积为：&lt;/p&gt;
+&lt;p&gt;&lt;dl&gt; &lt;dd&gt;&lt;img src=&quot;http://upload.wikimedia.org/wikipedia/zh/math/6/7/0/6707070e31defe1f3e5e4a7a6b044c88.png&quot; alt=&quot;A = \frac{1}{2}\sum_{i=0}^{N-1} (x_i\ y_{i+1} - x_{i+1}\ y_i)&quot;&gt;&lt;/dd&gt; &lt;/dl&gt;多边形的中心由下式给出：&lt;/p&gt;
+&lt;p&gt;&lt;dl&gt; &lt;dd&gt;&lt;img src=&quot;http://upload.wikimedia.org/wikipedia/zh/math/0/2/c/02c362b6868aa409ba4c006cf4677a3a.png&quot; alt=&quot;C_x = \frac{1}{6A}\sum_{i=0}^{N-1}(x_i+x_{i+1})(x_i\ y_{i+1} - x_{i+1}\ y_i)&quot;&gt;&lt;/dd&gt; &lt;/dl&gt; &lt;dl&gt; &lt;dd&gt;&lt;img src=&quot;http://upload.wikimedia.org/wikipedia/zh/math/8/5/b/85b6bac3e9d11333a9375eec98eece01.png&quot; alt=&quot;C_y = \frac{1}{6A}\sum_{i=0}^{N-1}(y_i+y_{i+1})(x_i\ y_{i+1} - x_{i+1}\ y_i)&quot;&gt;&lt;/dd&gt; &lt;/dl&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="algorithm" scheme="http://yoursite.com/tags/algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Chrome hack两则</title>
+    <link href="http://yoursite.com/2012/08/02/chrome-hack-e4-b8-a4-e5-88-99/"/>
+    <id>http://yoursite.com/2012/08/02/chrome-hack-e4-b8-a4-e5-88-99/</id>
+    <published>2012-08-02T09:48:55.000Z</published>
+    <updated>2016-07-22T03:30:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Chrome在javascript执行速度，系统资源占用方面有良好的表现。但有时候其默认的设置也会对页面的呈现造成影响。<br>下面描述一下我遇到的问题和解决办法：<br>1.默认输入框高亮<br>Chrome为input输入框添加了土黄色高亮样式，修改方法为添加样式</p>
+<pre lang="html">
+input:focus {  
+    outline: 0;  
+}
+</pre>
+2.默认最小字体
+Chrome为保证阅读体验，限定了最小字体(12px)，修改方法为添加样式
+<pre lang="html">
+body{
+    -webkit-text-size-adjust:none
+}
+</pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Chrome在javascript执行速度，系统资源占用方面有良好的表现。但有时候其默认的设置也会对页面的呈现造成影响。&lt;br&gt;下面描述一下我遇到的问题和解决办法：&lt;br&gt;1.默认输入框高亮&lt;br&gt;Chrome为input输入框添加了土黄色高亮样式，修改方法为添加样式&lt;/p
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="chrome" scheme="http://yoursite.com/tags/chrome/"/>
+    
+      <category term="css" scheme="http://yoursite.com/tags/css/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>try...catch in Javascript</title>
+    <link href="http://yoursite.com/2012/07/24/try-catch-in-javascript/"/>
+    <id>http://yoursite.com/2012/07/24/try-catch-in-javascript/</id>
+    <published>2012-07-24T05:24:09.000Z</published>
+    <updated>2016-07-22T03:30:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在javascript中可以使用try/catch/finally进行异常处理。<br>try语句中包含可能出现异常的代码块，catch和finally语句可选，但至少要有一项同try语句搭配。即使用try/catch的三种方式为：<br>1.try…catch<br>2.try…finally<br>3.try…catch…finally</p>
+<p>注意：try/catch/finally中的括号是不能省略的。<br><a id="more"></a><br>对于异常标示符(the exception identifier，例如catch(e)中的e)，他的作用域仅限于catch语句块内(引自MDN)</p>
+<blockquote>
+<p>This identifier is local to the catch clause. That is, it is created when the catch clause is entered, and after the catch clause finishes executing, the identifier is no longer available.<br>MSDN中没有详细说明e，只给出了catch语句执行和不执行的情况。<br>If an error occurs in the tryStatements, program control is passed to catchStatements for processing. The initial value of exception is the value of the error that occurred in tryStatements. If no error occurs, catchStatements are never executed.<br>补充Ecma中对异常标示符的描述<br>When a catch clause catches an exception, its Identifier is bound to that exception.<br>注意下面的代码，IE你又调皮了…</p>
+<p><pre lang="javascript"><br>var e = 1;<br>function test() {<br>    try {</pre></p>
+</blockquote>
+<pre><code>}catch(e){
+
+}
+alert(e);    
+</code></pre><p>}<br>test();//IE6-8输出undefined;Firefox输出1<br><br>我们在做代码混淆的时候，通常会将较长的变量名替换为较短的变量名。这时要留意异常标示符是否会对catch块外部同名变量造成影响。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在javascript中可以使用try/catch/finally进行异常处理。&lt;br&gt;try语句中包含可能出现异常的代码块，catch和finally语句可选，但至少要有一项同try语句搭配。即使用try/catch的三种方式为：&lt;br&gt;1.try…catch&lt;br&gt;2.try…finally&lt;br&gt;3.try…catch…finally&lt;/p&gt;
+&lt;p&gt;注意：try/catch/finally中的括号是不能省略的。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WordPress文章摘要的显示方法</title>
+    <link href="http://yoursite.com/2012/07/20/wordpress-e6-96-87-e7-ab-a0-e6-91-98-e8-a6-81-e7-9a-84-e6-98-be-e7-a4-ba-e6-96-b9-e6-b3-95/"/>
+    <id>http://yoursite.com/2012/07/20/wordpress-e6-96-87-e7-ab-a0-e6-91-98-e8-a6-81-e7-9a-84-e6-98-be-e7-a4-ba-e6-96-b9-e6-b3-95/</id>
+    <published>2012-07-20T08:17:25.000Z</published>
+    <updated>2016-07-22T03:30:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>很多WordPress模板在显示首页文章的时候，总是会把文章的全部内容都显示出来，而不是我们想要的那种文章摘要，这不仅不利于阅读，而且会把页面撑的太长，用户翻看起来比较麻烦。</p>
+<p>本博客使用WordPress自带的more标签。编辑文章的时候，在HTML状态下是直接显示“more”，在你想要截断的地方插入一个“more”标签，或者直接在HTML编辑状态下输入： &lt;!–more–&gt; 即可。这意味着将文章开始到你插入点的那一部分作为该文章的摘要部分。</p>
+<p>对于文章摘要更详细的设置说明，可以参考<a href="http://www.52maomao.info/wordpress-more.html" target="_blank" rel="external">这篇文章</a>。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;很多WordPress模板在显示首页文章的时候，总是会把文章的全部内容都显示出来，而不是我们想要的那种文章摘要，这不仅不利于阅读，而且会把页面撑的太长，用户翻看起来比较麻烦。&lt;/p&gt;
+&lt;p&gt;本博客使用WordPress自带的more标签。编辑文章的时候，在HTML状态下是直
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="wordpress" scheme="http://yoursite.com/tags/wordpress/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Promise:一种Javascript异步编程方式</title>
+    <link href="http://yoursite.com/2012/07/18/javascript-e5-bc-82-e6-ad-a5-e7-bc-96-e7-a8-8b-e7-9a-84promise-e6-a8-a1-e5-bc-8f/"/>
+    <id>http://yoursite.com/2012/07/18/javascript-e5-bc-82-e6-ad-a5-e7-bc-96-e7-a8-8b-e7-9a-84promise-e6-a8-a1-e5-bc-8f/</id>
+    <published>2012-07-18T01:24:13.000Z</published>
+    <updated>2016-07-22T03:30:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>原文链接：<a href="http://blogs.msdn.com/b/ie/archive/2011/09/11/asynchronous-programming-in-javascript-with-promises.aspx" target="_blank" rel="external">http://blogs.msdn.com/b/ie/archive/2011/09/11/asynchronous-programming-in-javascript-with-promises.aspx</a></p>
+<p>异步模式在web编程中变得越来越重要，对于web主流语言Javscript来说，这种模式实现起来不是很方便，为此，许多Javascript库（比如 jQuery和Dojo）添加了一种称为promise的抽象（有时也称之为deferred）。通过这些库，开发人员能够在实际编程中使用 promise模式。IE官方博客最近发表了一篇文章，详细讲述了如何使用XMLHttpRequest2来实践promise模式。我们来了解一下相关的概念和应用。<br><a id="more"></a><br>在处理异步请求的过程中，我们免不了会引入“回调嵌套”：</p>
+<pre lang="javascript">
+function searchTwitter(term, onload, onerror) {
+
+     var xhr, results, url;
+     url = 'http://search.twitter.com/search.json?rpp=100&q=' + term;
+     xhr = new XMLHttpRequest();
+     xhr.open('GET', url, true);
+
+     xhr.onload = function (e) {
+         if (this.status === 200) {
+             results = JSON.parse(this.responseText);
+             onload(results);
+         }
+     };
+
+     xhr.onerror = function (e) {
+         onerror(e);
+     };
+
+     xhr.send();
+ }
+
+ function handleError(error) {
+     /* handle the error */
+ }
+
+ function concatResults() {
+     /* order tweets by date */
+ }
+
+ function loadTweets() {
+     var container = document.getElementById('container');
+
+     searchTwitter('#IE10', function (data1) {
+         searchTwitter('#IE9', function (data2) {
+             /* Reshuffle due to date */
+             var totalResults = concatResults(data1.results, data2.results);
+             totalResults.forEach(function (tweet) {
+                 var el = document.createElement('li');
+                 el.innerText = tweet.text;
+                 container.appendChild(el);
+             });
+         }, handleError);
+     }, handleError);
+ }
+
+</pre>
+上面的代码其功能是获取Twitter中hashtag为IE10和IE9的内容并在页面中显示出来。这种嵌套的回调函数难以理解，开发人员需要仔细分析哪些代码用于应用的业务逻辑，而哪些代码处理异步函数调用的，代码结构支离破碎。
+
+为了降低异步编程的复杂性，开发人员一直寻找简便的方法来处理异步操作。其中一种处理模式称为promise，它适用于可能会长时间运行却不一定返回完整执行结果的情况。这种模式返回一个表示承诺（promised）结果的对象，而不会阻塞并长时间等待操作完成。
+
+考虑这样一个例子，页面代码需要访问第三方的API，网络延迟可能会造成响应时间较长。在这种情况下，采用异步编程不会影响整个页面与用户的交互。promise模式通常会实现一种称为then的方法，用来注册状态变化时对应的回调函数。比如下面的代码示例：
+searchTwitter(term).then(filterResults).then(displayResults);
+
+promise模式包含以下三种状态：未完成（unfulfilled）、已完成（resolved）和拒绝（rejected）。
+参照CommonJS Promise/A标准，promise对象提供一个then方法来添加已完成和拒绝状态下的处理函数。
+then方法会返回另一个promise对象，这种返回promise对象的方式能够支持开发人员把异步操作串联起来。
+then(resolvedHandler, rejectedHandler); 。
+resolvedHandler 回调函数在promise对象进入完成状态时会触发，并传递结果；rejectedHandler函数会在拒绝状态下调用。
+
+有了promise模式，我们可以重新实现上面的Twitter示例。
+
+首先定义promise对象。
+<pre lang="javascript">
+var Promise = function () {
+        /* initialize promise */
+};
+</pre>
+接下来，定义then方法，接受两个参数用于处理完成和拒绝状态。
+<pre>
+Promise.prototype.then = function (onResolved, onRejected) {
+     /* invoke handlers based upon state transition */
+};
+</pre>
+同时还需要两个方法来执行理从未完成到已完成和从未完成到拒绝的状态转变。
+<pre lang="javascript">
+Promise.prototype.resolve = function (value) {
+     /* move from unfulfilled to resolved */
+};
+
+Promise.prototype.reject = function (error) {
+    /* move from unfulfilled to rejected */
+};
+</pre>
+
+<p>现在搭建了一个promise的架子，我们可以继续上面的示例，假设只获取IE10的内容。创建一个方法来发送Ajax请求并将其封装在promise中。这个promise对象分别在xhr.onload和xhr.onerror中指定了完成和拒绝状态的转变过程，请注意searchTwitter函数返回的是promise对象。然后，在loadTweets中，使用then方法设置完成和拒绝状态对应的回调函数。</p>
+<pre lang="javascript">
+function searchTwitter(term) {
+
+    var url, xhr, results, promise;
+    url = 'http://search.twitter.com/search.json?rpp=100&q=' + term;
+    promise = new Promise();
+    xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+
+    xhr.onload = function (e) {
+        if (this.status === 200) {
+            results = JSON.parse(this.responseText);
+            promise.resolve(results);
+        }
+    };
+
+    xhr.onerror = function (e) {
+        promise.reject(e);
+    };
+
+    xhr.send();
+    return promise;
+}
+
+function loadTweets() {
+    var container = document.getElementById('container');
+    searchTwitter('#IE10').then(function (data) {
+        data.results.forEach(function (tweet) {
+            var el = document.createElement('li');
+            el.innerText = tweet.text;
+            container.appendChild(el);
+        });
+    }, handleError);
+}
+</pre>
+上面我们讨论了promise模式应用于单个Ajax请求的情况，接下来我们应用promise模式处理多个Ajax请求结果。首先在promise对象中增加一个when方法，该方法用来处理promise队列的并行操作，当所有promise状态由未完成转为完成后，调用then方法中注册的处理函数。
+<pre lang="javascript">
+var container, promise1, promise2;
+container = document.getElementById('container');
+promise1 = searchTwitter('#IE10');
+promise2 = searchTwitter('#IE9'); 
+
+Promise.when(promise1, promise2).then(function (data1, data2) {
+    /* Reshuffle due to date */
+    var totalResults = concatResults(data1.results, data2.results); 
+    totalResults.forEach(function (tweet) {
+        var el = document.createElement('li');
+        el.innerText = tweet.text;
+        container.appendChild(el);
+    });
+
+}, handleError);
+</pre>
+
+<p>小结：异步编程变得越来越重要，在这种情况下，我们需要找到办法来降低复杂度，promise模式就是一个很好的例子，它的风格比较人性化，而且主流的JS框架提供了自己的实现。所以在编程实践中，开发人员应该尝试这种便捷的编程技巧。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;原文链接：&lt;a href=&quot;http://blogs.msdn.com/b/ie/archive/2011/09/11/asynchronous-programming-in-javascript-with-promises.aspx&quot;&gt;http://blogs.msdn.com/b/ie/archive/2011/09/11/asynchronous-programming-in-javascript-with-promises.aspx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;异步模式在web编程中变得越来越重要，对于web主流语言Javscript来说，这种模式实现起来不是很方便，为此，许多Javascript库（比如 jQuery和Dojo）添加了一种称为promise的抽象（有时也称之为deferred）。通过这些库，开发人员能够在实际编程中使用 promise模式。IE官方博客最近发表了一篇文章，详细讲述了如何使用XMLHttpRequest2来实践promise模式。我们来了解一下相关的概念和应用。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="promise" scheme="http://yoursite.com/tags/promise/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何使用mailto</title>
+    <link href="http://yoursite.com/2012/06/08/e5-a6-82-e4-bd-95-e4-bd-bf-e7-94-a8mailto-2/"/>
+    <id>http://yoursite.com/2012/06/08/e5-a6-82-e4-bd-95-e4-bd-bf-e7-94-a8mailto-2/</id>
+    <published>2012-06-07T19:23:04.000Z</published>
+    <updated>2016-07-22T03:30:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.基本用法<br>mailto:收信人地址。</p>
+<p><pre lang="html"><a href="mailto:sample@163.com" target="_blank" rel="external">send email</a></pre><br>或者</p>
+<p><pre lang="html"></pre></p>
+<p><form action="mailto:sample@163.com"></form><br><br>2.可使用参数列表<br>to 收信人<br>suject 主题<br>cc 抄送<br>bcc 暗抄送<br>body 内容<br>参数传递方式同页面之间传递值一样，可以使用查询字符串，也可以用form<br><a id="more"></a><br>querystring方式：</p>
+<p><pre lang="html"><a href="mailto:sample@163.com?subject=test&amp;cc=sample@hotmail.com&amp;body=use mailto sample" target="_blank" rel="external">send mail</a></pre><br>form方式：</p>
+<p><pre lang="html"></pre></p>
+<p><form action="mailto:sample@163.com"></form></p>
+<p><input name="cc" type="text" value="sample@hotmail.com"></p>
+<p><input name="subject" type="text" value="test"></p>
+<p><input name="body" type="text" value="use mailto sample"><br><br><br>3.能否在body中加入html（如link,img等）<br>RFC 2368 第二部分规定了body中的内容仅限于text/plain（即纯文本格式），所以不能插入图片。</p>
+<p>参考：<a href="http://tools.ietf.org/html/rfc2368" target="_blank" rel="external">http://tools.ietf.org/html/rfc2368</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1.基本用法&lt;br&gt;mailto:收信人地址。&lt;/p&gt;
+&lt;p&gt;&lt;pre lang=&quot;html&quot;&gt;&lt;a href=&quot;mailto:sample@163.com&quot;&gt;send email&lt;/a&gt;&lt;/pre&gt;&lt;br&gt;或者&lt;/p&gt;
+&lt;p&gt;&lt;pre lang=&quot;html&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;form action=&quot;mailto:sample@163.com&quot;&gt;&lt;/form&gt;&lt;br&gt;&lt;/pre&gt;&lt;br&gt;2.可使用参数列表&lt;br&gt;to 收信人&lt;br&gt;suject 主题&lt;br&gt;cc 抄送&lt;br&gt;bcc 暗抄送&lt;br&gt;body 内容&lt;br&gt;参数传递方式同页面之间传递值一样，可以使用查询字符串，也可以用form&lt;br&gt;
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="html" scheme="http://yoursite.com/tags/html/"/>
+    
+  </entry>
+  
+</feed>
