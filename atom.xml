@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-07-22T03:30:02.000Z</updated>
+  <updated>2016-08-24T09:48:29.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,78 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CSS Flex属性</title>
+    <link href="http://yoursite.com/2016/08/24/css-flex-attribute/"/>
+    <id>http://yoursite.com/2016/08/24/css-flex-attribute/</id>
+    <published>2016-08-24T09:10:12.000Z</published>
+    <updated>2016-08-24T09:48:29.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>CSS flex 属性是一个简写属性，它定义元素在容器中的伸缩行为。flex元素可以根据他们的flex-grow 因子拉伸以填充可用空间，或根据他们的 flex-shrink 因子收缩以防止溢出。</p>
+<h5 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h5><p>flex：none | &lt;’flex-grow‘&gt; &lt;’flex-shrink‘&gt; &lt;’flex-basis‘&gt;</p>
+<h5 id="取值："><a href="#取值：" class="headerlink" title="取值："></a>取值：</h5><p>none：</p>
+<p>none关键字的计算值为: 0 0 auto</p>
+<p>&lt;’ flex-grow ‘&gt;：</p>
+<p>用来指定扩展比率，即剩余空间是正值时此「flex子项」相对于「flex容器」里其他「flex子项」能分配到空间比例。</p>
+<p>在「flex」属性中该值如果被省略则默认为「1」</p>
+<p>&lt;’ flex-shrink ‘&gt;：</p>
+<p>用来指定收缩比率，即剩余空间是负值时此「flex子项」相对于「flex容器」里其他「flex子项」能收缩的空间比例。</p>
+<p>在收缩的时候收缩比率会以伸缩基准值加权</p>
+<p>在「flex」属性中该值如果被省略则默认为「1」</p>
+<p>&lt;’ flex-basis ‘&gt;：</p>
+<p>用来指定伸缩基准值，即在根据伸缩比率计算出剩余空间的分布之前，「flex子项」长度的起始数值。</p>
+<p>在「flex」属性中该值如果被省略则默认为「0%」</p>
+<p>在「flex」属性中该值如果被指定为「auto」，则伸缩基准值的计算值是自身的 &lt;’ width ‘&gt; 设置，如果自身的宽度没有定义，则长度取决于内容。</p>
+<a id="more"></a>
+<h5 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h5><p>如果缩写「flex: 1」, 则其计算值为「1 1 0%」</p>
+<p>如果缩写「flex: auto」, 则其计算值为「1 1 auto」</p>
+<p>如果「flex: none」, 则其计算值为「0 0 auto」</p>
+<p>如果「flex: 0 auto」或者「flex: initial」, 则其计算值为「0 1 auto」，即「flex」初始值</p>
+<h5 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">.flex&#123;display:flex;width:800px;margin:0;padding:0;list-style:none;&#125;</div><div class="line">.flex :nth-child(1)&#123;flex:1 1 300px;&#125;</div><div class="line">.flex :nth-child(2)&#123;flex:2 2 200px;&#125;</div><div class="line">.flex :nth-child(3)&#123;flex:3 3 400px;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"flex"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>b<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>c<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>本例定义了父容器宽（即主轴宽）为800px，由于子元素设置了伸缩基准值flex-basis，相加300+200+400=900，那么子元素将会溢出900-800=100px；</p>
+<p>由于同时设置了收缩因子，所以加权综合可得300*1+200*2+400*3=1900px；</p>
+<p>于是我们可以计算a,b,c将被移除的溢出量是多少：</p>
+<p>a被移除溢出量：(300*1/1900)*100，即约等于16px</p>
+<p>b被移除溢出量：(200*2/1900)*100，即约等于21px</p>
+<p>c被移除溢出量：(400*3/1900)*100，即约等于63px</p>
+<p>最后a,b,c的实际宽度分别为：300-16=284px, 200-21=179px, 400-63=337px</p>
+<p>仍然是上面这个例子，不过将容器的宽度改成了1500px。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">.flex&#123;display:flex;width:1500px;margin:0;padding:0;list-style:none;&#125;</div><div class="line">.flex :nth-child(1)&#123;flex:1 1 300px;&#125;</div><div class="line">.flex :nth-child(2)&#123;flex:2 2 200px;&#125;</div><div class="line">.flex :nth-child(3)&#123;flex:3 3 400px;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"flex"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>b<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>c<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>本例定义了父容器宽（即主轴宽）为1500px，由于子元素设置了伸缩基准值flex-basis，相加300+200+400=900，那么容器将有1500-900=600px的剩余宽度；我们可以计算a,b,c将被扩展量是多少：</p>
+<p>a的扩展量：(1/(1+2+3))*600，即约等于100px</p>
+<p>b的扩展量：(2/(1+2+3))*600，即约等于200px</p>
+<p>c的扩展量：(3/(1+2+3))*600，即约等于300px</p>
+<p>最后a,b,c的实际宽度分别为：300+100=400px, 200+200=400px, 400+300=700px</p>
+<p>从本例能看出：</p>
+<p>当「flex-basis」在「flex」属性中不为0时（包括值为auto，此时伸缩基准值等于自身内容宽度），「flex子项」将分配容器的剩余空间（剩余空间即等于容器宽度减去各项的伸缩基准值）</p>
+<p>当「flex-basis」在「flex」属性中等于0时，「flex子项」将分配容器的所有空间（因为各项的伸缩基准值相加等于0，剩余空间等于容器宽度减去各项的伸缩基准值，即减0，最后剩余空间值等于容器宽度），所以可以借助此特性，给各子项定义「flex: n」来进行按比例均分容器总宽度</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;CSS flex 属性是一个简写属性，它定义元素在容器中的伸缩行为。flex元素可以根据他们的flex-grow 因子拉伸以填充可用空间，或根据他们的 flex-shrink 因子收缩以防止溢出。&lt;/p&gt;
+&lt;h5 id=&quot;语法：&quot;&gt;&lt;a href=&quot;#语法：&quot; class=&quot;headerlink&quot; title=&quot;语法：&quot;&gt;&lt;/a&gt;语法：&lt;/h5&gt;&lt;p&gt;flex：none | &amp;lt;’flex-grow‘&amp;gt; &amp;lt;’flex-shrink‘&amp;gt; &amp;lt;’flex-basis‘&amp;gt;&lt;/p&gt;
+&lt;h5 id=&quot;取值：&quot;&gt;&lt;a href=&quot;#取值：&quot; class=&quot;headerlink&quot; title=&quot;取值：&quot;&gt;&lt;/a&gt;取值：&lt;/h5&gt;&lt;p&gt;none：&lt;/p&gt;
+&lt;p&gt;none关键字的计算值为: 0 0 auto&lt;/p&gt;
+&lt;p&gt;&amp;lt;’ flex-grow ‘&amp;gt;：&lt;/p&gt;
+&lt;p&gt;用来指定扩展比率，即剩余空间是正值时此「flex子项」相对于「flex容器」里其他「flex子项」能分配到空间比例。&lt;/p&gt;
+&lt;p&gt;在「flex」属性中该值如果被省略则默认为「1」&lt;/p&gt;
+&lt;p&gt;&amp;lt;’ flex-shrink ‘&amp;gt;：&lt;/p&gt;
+&lt;p&gt;用来指定收缩比率，即剩余空间是负值时此「flex子项」相对于「flex容器」里其他「flex子项」能收缩的空间比例。&lt;/p&gt;
+&lt;p&gt;在收缩的时候收缩比率会以伸缩基准值加权&lt;/p&gt;
+&lt;p&gt;在「flex」属性中该值如果被省略则默认为「1」&lt;/p&gt;
+&lt;p&gt;&amp;lt;’ flex-basis ‘&amp;gt;：&lt;/p&gt;
+&lt;p&gt;用来指定伸缩基准值，即在根据伸缩比率计算出剩余空间的分布之前，「flex子项」长度的起始数值。&lt;/p&gt;
+&lt;p&gt;在「flex」属性中该值如果被省略则默认为「0%」&lt;/p&gt;
+&lt;p&gt;在「flex」属性中该值如果被指定为「auto」，则伸缩基准值的计算值是自身的 &amp;lt;’ width ‘&amp;gt; 设置，如果自身的宽度没有定义，则长度取决于内容。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="css" scheme="http://yoursite.com/tags/css/"/>
+    
+  </entry>
   
   <entry>
     <title>CSS规则中浏览器前缀的处理</title>
@@ -1061,9 +1133,9 @@ function duff2(iterations){
       <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="css" scheme="http://yoursite.com/tags/css/"/>
-    
       <category term="canvas" scheme="http://yoursite.com/tags/canvas/"/>
+    
+      <category term="css" scheme="http://yoursite.com/tags/css/"/>
     
       <category term="html5" scheme="http://yoursite.com/tags/html5/"/>
     
@@ -1323,9 +1395,9 @@ body{
       <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="chrome" scheme="http://yoursite.com/tags/chrome/"/>
-    
       <category term="css" scheme="http://yoursite.com/tags/css/"/>
+    
+      <category term="chrome" scheme="http://yoursite.com/tags/chrome/"/>
     
   </entry>
   
@@ -1554,42 +1626,6 @@ Promise.when(promise1, promise2).then(function (data1, data2) {
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
     
       <category term="promise" scheme="http://yoursite.com/tags/promise/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何使用mailto</title>
-    <link href="http://yoursite.com/2012/06/08/e5-a6-82-e4-bd-95-e4-bd-bf-e7-94-a8mailto-2/"/>
-    <id>http://yoursite.com/2012/06/08/e5-a6-82-e4-bd-95-e4-bd-bf-e7-94-a8mailto-2/</id>
-    <published>2012-06-07T19:23:04.000Z</published>
-    <updated>2016-07-22T03:30:02.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>1.基本用法<br>mailto:收信人地址。</p>
-<p><pre lang="html"><a href="mailto:sample@163.com" target="_blank" rel="external">send email</a></pre><br>或者</p>
-<p><pre lang="html"></pre></p>
-<p><form action="mailto:sample@163.com"></form><br><br>2.可使用参数列表<br>to 收信人<br>suject 主题<br>cc 抄送<br>bcc 暗抄送<br>body 内容<br>参数传递方式同页面之间传递值一样，可以使用查询字符串，也可以用form<br><a id="more"></a><br>querystring方式：</p>
-<p><pre lang="html"><a href="mailto:sample@163.com?subject=test&amp;cc=sample@hotmail.com&amp;body=use mailto sample" target="_blank" rel="external">send mail</a></pre><br>form方式：</p>
-<p><pre lang="html"></pre></p>
-<p><form action="mailto:sample@163.com"></form></p>
-<p><input name="cc" type="text" value="sample@hotmail.com"></p>
-<p><input name="subject" type="text" value="test"></p>
-<p><input name="body" type="text" value="use mailto sample"><br><br><br>3.能否在body中加入html（如link,img等）<br>RFC 2368 第二部分规定了body中的内容仅限于text/plain（即纯文本格式），所以不能插入图片。</p>
-<p>参考：<a href="http://tools.ietf.org/html/rfc2368" target="_blank" rel="external">http://tools.ietf.org/html/rfc2368</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;1.基本用法&lt;br&gt;mailto:收信人地址。&lt;/p&gt;
-&lt;p&gt;&lt;pre lang=&quot;html&quot;&gt;&lt;a href=&quot;mailto:sample@163.com&quot;&gt;send email&lt;/a&gt;&lt;/pre&gt;&lt;br&gt;或者&lt;/p&gt;
-&lt;p&gt;&lt;pre lang=&quot;html&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;form action=&quot;mailto:sample@163.com&quot;&gt;&lt;/form&gt;&lt;br&gt;&lt;/pre&gt;&lt;br&gt;2.可使用参数列表&lt;br&gt;to 收信人&lt;br&gt;suject 主题&lt;br&gt;cc 抄送&lt;br&gt;bcc 暗抄送&lt;br&gt;body 内容&lt;br&gt;参数传递方式同页面之间传递值一样，可以使用查询字符串，也可以用form&lt;br&gt;
-    
-    </summary>
-    
-      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
-    
-    
-      <category term="html" scheme="http://yoursite.com/tags/html/"/>
     
   </entry>
   
