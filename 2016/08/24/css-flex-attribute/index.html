@@ -63,30 +63,30 @@
 
 
 <meta name="description" content="CSS flex 属性是一个简写属性，它定义元素在容器中的伸缩行为。flex元素可以根据他们的flex-grow 因子拉伸以填充可用空间，或根据他们的 flex-shrink 因子收缩以防止溢出。
-语法：flex：none | \\\
+语法：flex：none | [flex-grow flex-shrink flex-basis]
 取值：none：
 none关键字的计算值为: 0 0 auto
 flex-grow：
-用来指定扩展比率。剩余空间是正值时此flex子项相对于flex容器里其他fle">
+用来指定扩展比率">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS Flex属性">
 <meta property="og:url" content="http://yoursite.com/2016/08/24/css-flex-attribute/index.html">
 <meta property="og:site_name" content="Web Dev Life">
 <meta property="og:description" content="CSS flex 属性是一个简写属性，它定义元素在容器中的伸缩行为。flex元素可以根据他们的flex-grow 因子拉伸以填充可用空间，或根据他们的 flex-shrink 因子收缩以防止溢出。
-语法：flex：none | \\\
+语法：flex：none | [flex-grow flex-shrink flex-basis]
 取值：none：
 none关键字的计算值为: 0 0 auto
 flex-grow：
-用来指定扩展比率。剩余空间是正值时此flex子项相对于flex容器里其他fle">
-<meta property="og:updated_time" content="2016-08-26T02:43:02.000Z">
+用来指定扩展比率">
+<meta property="og:updated_time" content="2016-08-26T02:47:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS Flex属性">
 <meta name="twitter:description" content="CSS flex 属性是一个简写属性，它定义元素在容器中的伸缩行为。flex元素可以根据他们的flex-grow 因子拉伸以填充可用空间，或根据他们的 flex-shrink 因子收缩以防止溢出。
-语法：flex：none | \\\
+语法：flex：none | [flex-grow flex-shrink flex-basis]
 取值：none：
 none关键字的计算值为: 0 0 auto
 flex-grow：
-用来指定扩展比率。剩余空间是正值时此flex子项相对于flex容器里其他fle">
+用来指定扩展比率">
 
 
 
@@ -270,7 +270,7 @@ flex-grow：
 
       
         <p>CSS flex 属性是一个简写属性，它定义元素在容器中的伸缩行为。flex元素可以根据他们的flex-grow 因子拉伸以填充可用空间，或根据他们的 flex-shrink 因子收缩以防止溢出。</p>
-<h5 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h5><p>flex：none | \<flex-grow\>\<flex-shrink\>\<flex-basis\></flex-basis\></flex-shrink\></flex-grow\></p>
+<h5 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h5><p>flex：none | [flex-grow flex-shrink flex-basis]</p>
 <h5 id="取值："><a href="#取值：" class="headerlink" title="取值："></a>取值：</h5><p><strong>none</strong>：</p>
 <p>none关键字的计算值为: 0 0 auto</p>
 <p><strong>flex-grow</strong>：</p>
@@ -280,28 +280,13 @@ flex-grow：
 <p><strong>flex-basis</strong>：</p>
 <p>用来指定伸缩基准值。在根据伸缩比率计算出剩余空间的分布之前，flex子项长度的起始数值。<br>flex属性中该值如果被省略则默认为0%。<br>flex属性中该值如果被指定为auto，则伸缩基准值的计算值是自身的width设置；如果自身的宽度没有定义，则长度取决于内容。</p>
 <a id="more"></a>
-<h5 id="缩写说明："><a href="#缩写说明：" class="headerlink" title="缩写说明："></a>缩写说明：</h5><p>flex: 1, 其计算值为1 1 0%</p>
-<p>flex: auto, 其计算值为1 1 auto</p>
-<p>flex: none, 则其计算值为0 0 auto</p>
-<p>flex: 0 auto或者flex: initial, 其计算值为0 1 auto，即flex初始值</p>
+<h5 id="缩写说明："><a href="#缩写说明：" class="headerlink" title="缩写说明："></a>缩写说明：</h5><p>flex: 1, 其计算值为1 1 0%<br>flex: auto, 其计算值为1 1 auto<br>flex: none, 则其计算值为0 0 auto<br>flex: 0 auto或者flex: initial, 其计算值为0 1 auto，即flex初始值</p>
 <h5 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">.flex&#123;display:flex;width:800px;margin:0;padding:0;list-style:none;&#125;</div><div class="line">.flex :nth-child(1)&#123;flex:1 1 300px;&#125;</div><div class="line">.flex :nth-child(2)&#123;flex:2 2 200px;&#125;</div><div class="line">.flex :nth-child(3)&#123;flex:3 3 400px;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"flex"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>b<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>c<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>本例定义了父容器宽（即主轴宽）为800px，由于子元素设置了伸缩基准值flex-basis，相加300+200+400=900，那么子元素将会溢出900-800=100px；</p>
-<p>由于同时设置了收缩因子，所以加权综合可得300*1+200*2+400*3=1900px；</p>
-<p>于是我们可以计算a,b,c将被移除的溢出量是多少：</p>
-<p>a被移除溢出量：(300*1/1900)*100，即约等于16px</p>
-<p>b被移除溢出量：(200*2/1900)*100，即约等于21px</p>
-<p>c被移除溢出量：(400*3/1900)*100，即约等于63px</p>
-<p>最后a,b,c的实际宽度分别为：300-16=284px, 200-21=179px, 400-63=337px</p>
+<p>本例定义了父容器宽（即主轴宽）为800px，由于子元素设置了伸缩基准值flex-basis，相加300+200+400=900，那么子元素将会溢出900-800=100px；<br>由于同时设置了收缩因子，所以加权综合可得300*1+200*2+400*3=1900px；<br>于是我们可以计算a,b,c将被移除的溢出量是多少：<br>a被移除溢出量：(300*1/1900)*100，即约等于16px<br>b被移除溢出量：(200*2/1900)*100，即约等于21px<br>c被移除溢出量：(400*3/1900)*100，即约等于63px<br>最后a,b,c的实际宽度分别为：300-16=284px, 200-21=179px, 400-63=337px</p>
 <p>仍然是上面这个例子，不过将容器的宽度改成了1500px。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">.flex&#123;display:flex;width:1500px;margin:0;padding:0;list-style:none;&#125;</div><div class="line">.flex :nth-child(1)&#123;flex:1 1 300px;&#125;</div><div class="line">.flex :nth-child(2)&#123;flex:2 2 200px;&#125;</div><div class="line">.flex :nth-child(3)&#123;flex:3 3 400px;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"flex"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>b<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>c<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>本例定义了父容器宽（即主轴宽）为1500px，由于子元素设置了伸缩基准值flex-basis，相加300+200+400=900，那么容器将有1500-900=600px的剩余宽度；我们可以计算a,b,c将被扩展量是多少：</p>
-<p>a的扩展量：(1/(1+2+3))*600，即约等于100px</p>
-<p>b的扩展量：(2/(1+2+3))*600，即约等于200px</p>
-<p>c的扩展量：(3/(1+2+3))*600，即约等于300px</p>
-<p>最后a,b,c的实际宽度分别为：300+100=400px, 200+200=400px, 400+300=700px</p>
-<p>从本例能看出：</p>
-<p>当flex-basis在flex属性中不为0时（包括值为auto，此时伸缩基准值等于自身内容宽度），flex子项将分配容器的剩余空间（剩余空间即等于容器宽度减去各项的伸缩基准值）。</p>
-<p>当flex-basis在flex属性中等于0时，flex子项将分配容器的所有空间（因为各项的伸缩基准值相加等于0，剩余空间等于容器宽度减去各项的伸缩基准值，即减0，最后剩余空间值等于容器宽度），所以可以借助此特性给各子项定义flex: n 来进行按比例均分容器总宽度。</p>
+<p>本例定义了父容器宽（即主轴宽）为1500px，由于子元素设置了伸缩基准值flex-basis，相加300+200+400=900，那么容器将有1500-900=600px的剩余宽度；我们可以计算a,b,c将被扩展量是多少：<br>a的扩展量：(1/(1+2+3))*600，即约等于100px<br>b的扩展量：(2/(1+2+3))*600，即约等于200px<br>c的扩展量：(3/(1+2+3))*600，即约等于300px<br>最后a,b,c的实际宽度分别为：300+100=400px, 200+200=400px, 400+300=700px</p>
+<p>从本例能看出：<br>当flex-basis在flex属性中不为0时（包括值为auto，此时伸缩基准值等于自身内容宽度），flex子项将分配容器的剩余空间（剩余空间即等于容器宽度减去各项的伸缩基准值）。<br>当flex-basis在flex属性中等于0时，flex子项将分配容器的所有空间（因为各项的伸缩基准值相加等于0，剩余空间等于容器宽度减去各项的伸缩基准值，即减0，最后剩余空间值等于容器宽度），所以可以借助此特性给各子项定义flex: n 来进行按比例均分容器总宽度。</p>
 
       
     </div>
