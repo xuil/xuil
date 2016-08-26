@@ -255,20 +255,15 @@
       
         
           <p>CSS flex 属性是一个简写属性，它定义元素在容器中的伸缩行为。flex元素可以根据他们的flex-grow 因子拉伸以填充可用空间，或根据他们的 flex-shrink 因子收缩以防止溢出。</p>
-<h5 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h5><p>flex：none | &lt;’flex-grow‘&gt; &lt;’flex-shrink‘&gt; &lt;’flex-basis‘&gt;</p>
-<h5 id="取值："><a href="#取值：" class="headerlink" title="取值："></a>取值：</h5><p>none：</p>
+<h5 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h5><p>flex：none | [flex-grow flex-shrink flex-basis]</p>
+<h5 id="取值："><a href="#取值：" class="headerlink" title="取值："></a>取值：</h5><p><strong>none</strong>：</p>
 <p>none关键字的计算值为: 0 0 auto</p>
-<p>&lt;’ flex-grow ‘&gt;：</p>
-<p>用来指定扩展比率，即剩余空间是正值时此「flex子项」相对于「flex容器」里其他「flex子项」能分配到空间比例。</p>
-<p>在「flex」属性中该值如果被省略则默认为「1」</p>
-<p>&lt;’ flex-shrink ‘&gt;：</p>
-<p>用来指定收缩比率，即剩余空间是负值时此「flex子项」相对于「flex容器」里其他「flex子项」能收缩的空间比例。</p>
-<p>在收缩的时候收缩比率会以伸缩基准值加权</p>
-<p>在「flex」属性中该值如果被省略则默认为「1」</p>
-<p>&lt;’ flex-basis ‘&gt;：</p>
-<p>用来指定伸缩基准值，即在根据伸缩比率计算出剩余空间的分布之前，「flex子项」长度的起始数值。</p>
-<p>在「flex」属性中该值如果被省略则默认为「0%」</p>
-<p>在「flex」属性中该值如果被指定为「auto」，则伸缩基准值的计算值是自身的 &lt;’ width ‘&gt; 设置，如果自身的宽度没有定义，则长度取决于内容。</p>
+<p><strong>flex-grow</strong>：</p>
+<p>用来指定扩展比率。剩余空间是正值时此flex子项相对于flex容器里其他flex子项能分配到空间比例。<br>在flex属性中该值如果被省略则默认为1。</p>
+<p><strong>flex-shrink</strong>：</p>
+<p>用来指定收缩比率。剩余空间是负值时此flex子项相对于flex容器里其他flex子项能收缩的空间比例。<br>在收缩的时候收缩比率会以伸缩基准值加权。<br>在flex属性中该值如果被省略则默认为1。</p>
+<p><strong>flex-basis</strong>：</p>
+<p>用来指定伸缩基准值。在根据伸缩比率计算出剩余空间的分布之前，flex子项长度的起始数值。<br>flex属性中该值如果被省略则默认为0%。<br>flex属性中该值如果被指定为auto，则伸缩基准值的计算值是自身的width设置；如果自身的宽度没有定义，则长度取决于内容。</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/08/24/css-flex-attribute/#more" rel="contents">
               阅读全文 &raquo;
