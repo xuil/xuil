@@ -9,6 +9,20 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/tags/javascript/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/chrome/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://yoursite.com/tags/canvas/</loc>
         <lastmod>2016-07-22T03:30:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -17,13 +31,6 @@
 
     <url>
         <loc>http://yoursite.com/tags/html5/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/javascript/</loc>
         <lastmod>2016-07-22T03:30:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -45,13 +52,6 @@
 
     <url>
         <loc>http://yoursite.com/tags/algorithm/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/chrome/</loc>
         <lastmod>2016-07-22T03:30:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -93,6 +93,13 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/tags/GIS/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://yoursite.com/tags/closure/</loc>
         <lastmod>2016-07-22T03:30:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -101,34 +108,6 @@
 
     <url>
         <loc>http://yoursite.com/tags/this/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/GIS/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/promise/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/framework/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/jQuery/</loc>
         <lastmod>2016-07-22T03:30:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -149,6 +128,27 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/tags/framework/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/jQuery/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/promise/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://yoursite.com/tags/mysql/</loc>
         <lastmod>2016-07-22T03:30:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -156,14 +156,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/php/</loc>
+        <loc>http://yoursite.com/tags/linux/</loc>
         <lastmod>2016-07-22T03:30:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/linux/</loc>
+        <loc>http://yoursite.com/tags/php/</loc>
         <lastmod>2016-07-22T03:30:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -185,7 +185,7 @@
 
     <url>
         <loc>http://yoursite.com/tags/css/</loc>
-        <lastmod>2016-08-24T09:48:29.000Z</lastmod>
+        <lastmod>2016-08-26T02:49:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

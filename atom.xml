@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-08-24T09:48:29.000Z</updated>
+  <updated>2016-08-29T03:47:10.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,69 +16,163 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>什么是RESTful</title>
+    <link href="http://yoursite.com/2016/08/29/what-does-restful-really-mean/"/>
+    <id>http://yoursite.com/2016/08/29/what-does-restful-really-mean/</id>
+    <published>2016-08-29T03:43:33.000Z</published>
+    <updated>2016-08-29T03:47:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>本文转载自：<a href="http://www.zcfy.cc" target="_blank" rel="external">众成翻译</a><br>译者：<a href="http://www.zcfy.cc/@poppinlp" target="_blank" rel="external">poppinlp</a><br>链接：<a href="http://www.zcfy.cc/article/1063" target="_blank" rel="external">http://www.zcfy.cc/article/1063</a><br>原文：<a href="https://www.sitepoint.com/what-does-restful-really-mean/" target="_blank" rel="external">https://www.sitepoint.com/what-does-restful-really-mean/</a></p>
+</blockquote>
+<p>上个月我参加了 <a href="https://skillsmatter.com" target="_blank" rel="external">Skillsmatter</a> 的 <a href="https://skillsmatter.com/courses/541-fast-track-to-restful-to-microservices" target="_blank" rel="external">RESTful 微服务培训</a>。在课程中，我们讨论了 REST API 通常可以给网络应用提供什么，并特别讨论了和微服务通讯相关的内容。个人从这次课程中得到的最大收获是，对于 REST 是什么以及它的利弊有了更好的理解。</p>
+<p>在我职业生涯的大部分时候，我专注于移动技术，也就是，作为服务 API 的消费者。我之前认为我使用过的大多数 API 都是 RESTful 的，但现在我觉得它们 99% 都和 RESTful 相距甚远（因为服务端添加了一些东西，导致客户端崩溃，这听起来很耳熟吧？）。</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>REST 这个术语表示 “REpresentational State Transfer”。它的一个可能的正式定义如下：</p>
+<blockquote>
+<p>基于在客户端和服务端之间转移状态（文档），从而使得应用程序状态产生进展的结构化 API 风格。<br>Architectural API style based on transferring a representation of state (documents) between client and server in order to progress the state of an application.</p>
+</blockquote>
+<h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><p>如果希望应用是 RESTful 的，那么需要遵守下面 REST 的约束。遵守这些约束可以使得分布式超媒体系统拥有下列令人激动的非功能性特性：性能优良、可伸缩性、简易性、可扩展性、可视性、可移植性和可靠性。</p>
+<ul>
+<li>客户端-服务端</li>
+</ul>
+<p>CS 模型利于分离关注点。客户端可以不用关注数据储存，因此，客户端的代码可以有很好的<em>移植性</em>。另一方面，服务端不用关注用户界面和用户状态，使得服务端更加<em>简洁</em>和<em>可伸缩</em>。服务端和客户端只要符合已经定义的协议，便可独立开发。</p>
+<ul>
+<li>无状态</li>
+</ul>
+<p>在不同请求间，客户端的上下文不会保存在服务端。每个请求都需要带上所需的全部数据。无状态的服务端使得服务器可以及时回收资源，使得实现更加简洁并且<em>可伸缩</em>。<em>可靠性</em>使得从部分错误中恢复变得容易。<em>可视性</em>指的是监控系统不必超出某个单独的请求就能确定该请求的性质。</p>
+<p>无状态服务端的一个缺点是，因为每次请求都发送了所有需要的数据，那么会降低一点网络性能。</p>
+<ul>
+<li>可缓存的</li>
+</ul>
+<p>REST 应用是个网络系统，因此客户端和中间层可以缓存响应。响应本身需要被定义为可缓存的，如果不是的话，那么需要禁止客户端重用以前的数据，这会降低<em>可靠性</em>。如果缓存中的旧数据和本应产生的数据显著不同，那么请求应该给服务端。缓存可以减少一些服务端和客户端的交互，因此能提高<em>可伸缩性</em>和<em>效率</em>，并且因为降低了平均延迟，所以产生用户可感知的<em>性能</em>提升。</p>
+<ul>
+<li>统一接口</li>
+</ul>
+<p>使用统一接口可以让结构简化并且解耦，有利于不同部分独立的升级。后文中会介绍的URI、资源和超媒体可以构造一个标准的接口，提升交互的<em>可视性</em>，<em>简化</em>整个系统结构以及有利于独立开发。但作为代价的是，因为信息是按照一个标准格式传输，而不是应用需要的特定数据，这使得<em>效率</em>方面有点降低。</p>
+<ul>
+<li>分层系统</li>
+</ul>
+<p>使用分层系统可以通过限制组件的行为来降低复杂性，例如每个元素的权限不能超越其直接层。通过限制系统其他部分的消息，有利于底层的独立性。层可以封装以前的组件，并使新服务和以前的客户端分离。中间层可以通过网络负载均衡来提高<em>可伸缩性</em>。分层系统的主要代价是对于数据处理增加了一些开销和延迟，因此降低了用户可感知的<em>性能</em>。</p>
+<ul>
+<li>按需代码（可选）</li>
+</ul>
+<p>REST 允许客户端通过下载并执行脚本代码来扩展它们的功能。这<em>简化</em>了客户端并提高了<em>可扩展性</em>。另一方面，它降低了<em>可视性</em>，这也是为什么这是非必须的约束。</p>
+<h2 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h2><p>REST 有一些常用的用于构建无状态、可伸缩并且简单的网络 API 的元素。</p>
+<ul>
+<li><p>HTTP</p>
+</li>
+<li><p>Resources</p>
+</li>
+<li><p>URIs</p>
+</li>
+<li><p>Hypermedia</p>
+</li>
+</ul>
+<h3 id="HTTP-文档传输应用协议"><a href="#HTTP-文档传输应用协议" class="headerlink" title="HTTP - 文档传输应用协议"></a>HTTP - 文档传输应用协议</h3><p>因为 HTTP 的一些优势，REST 通常使用 HTTP 作为传输协议。它包括 HTTP 动词、状态码和头部信息。</p>
+<h4 id="动词"><a href="#动词" class="headerlink" title="动词"></a>动词</h4><p>不同于在我们的网络服务中对每个可能的操作定义一堆新的动词，HTTP 定义了一系列标准的动词用于以相同的方式处理相似的场景，从而移除不必要的变量并创建一个更加可懂的 API。每个动词包含两个属性的不同的组合，从而使得它们适用于不同的场景。</p>
+<ul>
+<li>幂等</li>
+</ul>
+<blockquote>
+<p>在失败的时候，操作可以被重复</p>
+</blockquote>
+<ul>
+<li>安全</li>
+</ul>
+<blockquote>
+<p>操作由客户端负责，无副作用</p>
+</blockquote>
+<h5 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h5><p>通常用于从服务端读取状态。是个<strong>安全</strong>操作，执行多次并没有修改和污染数据的风险，因为执行一次和执行十次的影响是一样的。同时作为一个<strong>幂等</strong>操作，对于相同的多次请求的结果和一次请求是一样的。</p>
+<h5 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h5><p>通常用于在服务端创建状态。它<strong>既不安全也不幂等</strong>。因此多个请求将会在服务器上创建多个资源。作为一个不幂等的操作，POST 不应该用于处理和金钱相关的操作，例如如果付款请求失败了多次，那么我们可能潜在的消费了多次。</p>
+<h5 id="PUT"><a href="#PUT" class="headerlink" title="PUT"></a>PUT</h5><p>通常用于在服务端更新状态，也可以用来创建状态。它是<strong>幂等</strong>的，但<strong>不安全</strong>，因为它修改了服务端的状态。由于 PUT 是幂等的，使得它成为与金钱相关操作的一个不错的选择。</p>
+<h5 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h5><p>通常用于在服务端删除状态。它是<strong>幂等</strong>的，但<strong>不安全</strong>，因为它在服务端删除了状态。它的幂等在于删除之前已经删除的状态不会产生进一步的影响。</p>
+<h4 id="响应状态码"><a href="#响应状态码" class="headerlink" title="响应状态码"></a>响应状态码</h4><p><a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" target="_blank" rel="external">HTTP 状态码</a>提供了对于请求资源的响应状态的元数据。它们是使得网络成为分布式系统的平台的一部分。它们分为以下几个类别：</p>
+<ul>
+<li><p><code>1xx</code> – 元数据</p>
+</li>
+<li><p><code>2xx</code> – 成功</p>
+</li>
+<li><p><code>3xx</code> – 重定向</p>
+</li>
+<li><p><code>4xx</code> – 客户端错误</p>
+</li>
+<li><p><code>5xx</code> – 服务端错误</p>
+</li>
+</ul>
+<h4 id="头信息"><a href="#头信息" class="headerlink" title="头信息"></a>头信息</h4><p><a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html" target="_blank" rel="external">HTTP 头</a> 是请求和响应中用于传输额外信息的地方。头信息由一堆大小写不敏感的名字后面跟着冒号和它的值组成。头信息可以分组为：</p>
+<ul>
+<li><p>普通头信息：可用于请求和响应，但和主体中传输的数据没有关联。</p>
+</li>
+<li><p>请求头信息：包含关于发送请求的客户端或者抓取的资源相关的更多信息。</p>
+</li>
+<li><p>响应头信息：包含响应相关的额外信息。</p>
+</li>
+<li><p>实体头信息：关于主体中实体的信息，例如 content-length 或者 MIME-type。</p>
+</li>
+</ul>
+<h3 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h3><p>资源是系统暴露出来的任何含有身份的东西。资源提供了客户端和应用域的关联方式。一张图片、一个电子表格、一个服务或者一个其他资源的集合这些都是资源。资源的获取和发送通过一定的表现形式（例如 XML、JSON 等）。</p>
+<p>根据 “Pass-by-value” 的观点，我们处理资源的表现形式，而不是资源本身。遵循之前 REST 的定义，资源表示为那些网络间传递的文档，以完成工作。服务端关注资源状态，因为它表现了域状态，客户端只是抓取或者发送资源的表现形式以更新应用状态。另一方面，客户端关注应用状态，因为它表现了达到应用程序特定目标的过程。</p>
+<p>资源应该被命名为名词，因为它们代表了系统域特定的概念并且可以通过 URI 来定位。</p>
+<h3 id="URI（统一资源标识符）"><a href="#URI（统一资源标识符）" class="headerlink" title="URI（统一资源标识符）"></a>URI（统一资源标识符）</h3><p>URI 可以区分各个资源。为了获取并且修改某个资源，那么它至少需要一个访问方式。这个方式由 <code>protocol</code> + <code>host</code> + <code>path</code> 组成。</p>
+<p>客户端不应该与特定的资源 URI 关联，因为它们可以在服务端被修改。这也就是超媒体最大的优势，因为它提供了解除客户端和特定 URI 关联的方式，并且为应用协议添加了语义。</p>
+<h3 id="超媒体"><a href="#超媒体" class="headerlink" title="超媒体"></a>超媒体</h3><p>超媒体通过在响应中使用超媒体控制信息（链接和表格），来通知客户端下一步可以做什么，以及在哪个 URI 去做。特定应用中具体的超媒体信息格式在应用的媒体类型中定义。</p>
+<p>超媒体链接由用于指定 URI 来获取链接资源的 <code>href</code> 属性和用于定义关系的意义，从而为应用中状态的转移添加语义的 <code>rel</code> 属性组成。链接的使用允许服务端在不破坏现有客户端的基础上，通过在响应中包含新的链接来推广新的特性。当服务端继续维持之前的响应中的链接，客户端便会像新的状态被添加进来之前一样。直到客户端需要使用新的状态，才需要升级。另一个超媒体的好处是它通过提供一种创建可发现并且自记录的协议引入了可发现性（discoverability）。</p>
+<p>客户端通过固定的 URL 开始与应用交互，从此开始，之后客户端的所有行为遵循服务端在响应中提供的通过媒体类型格式化的链接。</p>
+<p>媒体类型和链接定义了应用服务端与客户端之间的协议。客户端通过使用链接，操纵应用的状态，从而与系统交互。这就是<strong>HATEOAS</strong>（超媒体作为应用状态的引擎）真正的意思。</p>
+<p>超媒体（除了已经定义的元素）是 RESTful 真正的意义。</p>
+<h3 id="Richardson-成熟度模型"><a href="#Richardson-成熟度模型" class="headerlink" title="Richardson 成熟度模型"></a>Richardson 成熟度模型</h3><p>这个模型对于我理解什么是 REST 以及如何解释一个网络应用的属性提供了很大的帮助。它将 REST 系统的组件分成了 3 个等级，并且提供一种理解 RESTful 思想的观点、概念和优势的方法。我觉得相对于一个评估机制，它更像是一个教育模式。</p>
+<p>关于 Richardson 成熟度模型比较详细的解释可以在 <a href="http://martinfowler.com/articles/richardsonMaturityModel.html" target="_blank" rel="external">Martin Fowler 的博客</a>中找到。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本文转载自：&lt;a href=&quot;http://www.zcfy.cc&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;众成翻译&lt;/a&gt;&lt;br&gt;译者：&lt;a href=&quot;http://www.zcfy.cc/@poppinlp&quot; targ
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>CSS Flex属性</title>
     <link href="http://yoursite.com/2016/08/24/css-flex-attribute/"/>
     <id>http://yoursite.com/2016/08/24/css-flex-attribute/</id>
     <published>2016-08-24T09:10:12.000Z</published>
-    <updated>2016-08-24T09:48:29.000Z</updated>
+    <updated>2016-08-26T02:49:42.000Z</updated>
     
     <content type="html"><![CDATA[<p>CSS flex 属性是一个简写属性，它定义元素在容器中的伸缩行为。flex元素可以根据他们的flex-grow 因子拉伸以填充可用空间，或根据他们的 flex-shrink 因子收缩以防止溢出。</p>
-<h5 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h5><p>flex：none | &lt;’flex-grow‘&gt; &lt;’flex-shrink‘&gt; &lt;’flex-basis‘&gt;</p>
-<h5 id="取值："><a href="#取值：" class="headerlink" title="取值："></a>取值：</h5><p>none：</p>
+<h5 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h5><p>flex：none | [flex-grow flex-shrink flex-basis]</p>
+<h5 id="取值："><a href="#取值：" class="headerlink" title="取值："></a>取值：</h5><p><strong>none</strong>：</p>
 <p>none关键字的计算值为: 0 0 auto</p>
-<p>&lt;’ flex-grow ‘&gt;：</p>
-<p>用来指定扩展比率，即剩余空间是正值时此「flex子项」相对于「flex容器」里其他「flex子项」能分配到空间比例。</p>
-<p>在「flex」属性中该值如果被省略则默认为「1」</p>
-<p>&lt;’ flex-shrink ‘&gt;：</p>
-<p>用来指定收缩比率，即剩余空间是负值时此「flex子项」相对于「flex容器」里其他「flex子项」能收缩的空间比例。</p>
-<p>在收缩的时候收缩比率会以伸缩基准值加权</p>
-<p>在「flex」属性中该值如果被省略则默认为「1」</p>
-<p>&lt;’ flex-basis ‘&gt;：</p>
-<p>用来指定伸缩基准值，即在根据伸缩比率计算出剩余空间的分布之前，「flex子项」长度的起始数值。</p>
-<p>在「flex」属性中该值如果被省略则默认为「0%」</p>
-<p>在「flex」属性中该值如果被指定为「auto」，则伸缩基准值的计算值是自身的 &lt;’ width ‘&gt; 设置，如果自身的宽度没有定义，则长度取决于内容。</p>
+<p><strong>flex-grow</strong>：</p>
+<p>用来指定扩展比率。剩余空间是正值时此flex子项相对于flex容器里其他flex子项能分配到空间比例。<br>在flex属性中该值如果被省略则默认为1。</p>
+<p><strong>flex-shrink</strong>：</p>
+<p>用来指定收缩比率。剩余空间是负值时此flex子项相对于flex容器里其他flex子项能收缩的空间比例。<br>在收缩的时候收缩比率会以伸缩基准值加权。<br>在flex属性中该值如果被省略则默认为1。</p>
+<p><strong>flex-basis</strong>：</p>
+<p>用来指定伸缩基准值。在根据伸缩比率计算出剩余空间的分布之前，flex子项长度的起始数值。<br>flex属性中该值如果被省略则默认为0%。<br>flex属性中该值如果被指定为auto，则伸缩基准值的计算值是自身的width设置；如果自身的宽度没有定义，则长度取决于内容。</p>
 <a id="more"></a>
-<h5 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h5><p>如果缩写「flex: 1」, 则其计算值为「1 1 0%」</p>
-<p>如果缩写「flex: auto」, 则其计算值为「1 1 auto」</p>
-<p>如果「flex: none」, 则其计算值为「0 0 auto」</p>
-<p>如果「flex: 0 auto」或者「flex: initial」, 则其计算值为「0 1 auto」，即「flex」初始值</p>
+<h5 id="缩写说明："><a href="#缩写说明：" class="headerlink" title="缩写说明："></a>缩写说明：</h5><p>flex: 1, 其计算值为1 1 0%<br>flex: auto, 其计算值为1 1 auto<br>flex: none, 则其计算值为0 0 auto<br>flex: 0 auto或者flex: initial, 其计算值为0 1 auto，即flex初始值</p>
 <h5 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">.flex&#123;display:flex;width:800px;margin:0;padding:0;list-style:none;&#125;</div><div class="line">.flex :nth-child(1)&#123;flex:1 1 300px;&#125;</div><div class="line">.flex :nth-child(2)&#123;flex:2 2 200px;&#125;</div><div class="line">.flex :nth-child(3)&#123;flex:3 3 400px;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"flex"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>b<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>c<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>本例定义了父容器宽（即主轴宽）为800px，由于子元素设置了伸缩基准值flex-basis，相加300+200+400=900，那么子元素将会溢出900-800=100px；</p>
-<p>由于同时设置了收缩因子，所以加权综合可得300*1+200*2+400*3=1900px；</p>
-<p>于是我们可以计算a,b,c将被移除的溢出量是多少：</p>
-<p>a被移除溢出量：(300*1/1900)*100，即约等于16px</p>
-<p>b被移除溢出量：(200*2/1900)*100，即约等于21px</p>
-<p>c被移除溢出量：(400*3/1900)*100，即约等于63px</p>
-<p>最后a,b,c的实际宽度分别为：300-16=284px, 200-21=179px, 400-63=337px</p>
+<p>本例定义了父容器宽（即主轴宽）为800px，由于子元素设置了伸缩基准值flex-basis，相加300+200+400=900，那么子元素将会溢出900-800=100px；<br>由于同时设置了收缩因子，所以加权综合可得300*1+200*2+400*3=1900px；<br>于是我们可以计算a,b,c将被移除的溢出量是多少：<br>a被移除溢出量：(300*1/1900)*100，即约等于16px<br>b被移除溢出量：(200*2/1900)*100，即约等于21px<br>c被移除溢出量：(400*3/1900)*100，即约等于63px<br>最后a,b,c的实际宽度分别为：300-16=284px, 200-21=179px, 400-63=337px</p>
 <p>仍然是上面这个例子，不过将容器的宽度改成了1500px。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">.flex&#123;display:flex;width:1500px;margin:0;padding:0;list-style:none;&#125;</div><div class="line">.flex :nth-child(1)&#123;flex:1 1 300px;&#125;</div><div class="line">.flex :nth-child(2)&#123;flex:2 2 200px;&#125;</div><div class="line">.flex :nth-child(3)&#123;flex:3 3 400px;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"flex"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>b<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>c<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>本例定义了父容器宽（即主轴宽）为1500px，由于子元素设置了伸缩基准值flex-basis，相加300+200+400=900，那么容器将有1500-900=600px的剩余宽度；我们可以计算a,b,c将被扩展量是多少：</p>
-<p>a的扩展量：(1/(1+2+3))*600，即约等于100px</p>
-<p>b的扩展量：(2/(1+2+3))*600，即约等于200px</p>
-<p>c的扩展量：(3/(1+2+3))*600，即约等于300px</p>
-<p>最后a,b,c的实际宽度分别为：300+100=400px, 200+200=400px, 400+300=700px</p>
-<p>从本例能看出：</p>
-<p>当「flex-basis」在「flex」属性中不为0时（包括值为auto，此时伸缩基准值等于自身内容宽度），「flex子项」将分配容器的剩余空间（剩余空间即等于容器宽度减去各项的伸缩基准值）</p>
-<p>当「flex-basis」在「flex」属性中等于0时，「flex子项」将分配容器的所有空间（因为各项的伸缩基准值相加等于0，剩余空间等于容器宽度减去各项的伸缩基准值，即减0，最后剩余空间值等于容器宽度），所以可以借助此特性，给各子项定义「flex: n」来进行按比例均分容器总宽度</p>
+<p>本例定义了父容器宽（即主轴宽）为1500px，由于子元素设置了伸缩基准值flex-basis，相加300+200+400=900，那么容器将有1500-900=600px的剩余宽度；我们可以计算a,b,c将被扩展量是多少：<br>a的扩展量：(1/(1+2+3))*600，即约等于100px<br>b的扩展量：(2/(1+2+3))*600，即约等于200px<br>c的扩展量：(3/(1+2+3))*600，即约等于300px<br>最后a,b,c的实际宽度分别为：300+100=400px, 200+200=400px, 400+300=700px</p>
+<p>从本例能看出：<br>当flex-basis在flex属性中不为0时（包括值为auto，此时伸缩基准值等于自身内容宽度），flex子项将分配容器的剩余空间（剩余空间即等于容器宽度减去各项的伸缩基准值）。<br>当flex-basis在flex属性中等于0时，flex子项将分配容器的所有空间（因为各项的伸缩基准值相加等于0，剩余空间等于容器宽度减去各项的伸缩基准值，即减0，最后剩余空间值等于容器宽度），所以可以借助此特性给各子项定义flex: n 来进行按比例均分容器总宽度。</p>
 ]]></content>
     
     <summary type="html">
     
       &lt;p&gt;CSS flex 属性是一个简写属性，它定义元素在容器中的伸缩行为。flex元素可以根据他们的flex-grow 因子拉伸以填充可用空间，或根据他们的 flex-shrink 因子收缩以防止溢出。&lt;/p&gt;
-&lt;h5 id=&quot;语法：&quot;&gt;&lt;a href=&quot;#语法：&quot; class=&quot;headerlink&quot; title=&quot;语法：&quot;&gt;&lt;/a&gt;语法：&lt;/h5&gt;&lt;p&gt;flex：none | &amp;lt;’flex-grow‘&amp;gt; &amp;lt;’flex-shrink‘&amp;gt; &amp;lt;’flex-basis‘&amp;gt;&lt;/p&gt;
-&lt;h5 id=&quot;取值：&quot;&gt;&lt;a href=&quot;#取值：&quot; class=&quot;headerlink&quot; title=&quot;取值：&quot;&gt;&lt;/a&gt;取值：&lt;/h5&gt;&lt;p&gt;none：&lt;/p&gt;
+&lt;h5 id=&quot;语法：&quot;&gt;&lt;a href=&quot;#语法：&quot; class=&quot;headerlink&quot; title=&quot;语法：&quot;&gt;&lt;/a&gt;语法：&lt;/h5&gt;&lt;p&gt;flex：none | [flex-grow flex-shrink flex-basis]&lt;/p&gt;
+&lt;h5 id=&quot;取值：&quot;&gt;&lt;a href=&quot;#取值：&quot; class=&quot;headerlink&quot; title=&quot;取值：&quot;&gt;&lt;/a&gt;取值：&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;none&lt;/strong&gt;：&lt;/p&gt;
 &lt;p&gt;none关键字的计算值为: 0 0 auto&lt;/p&gt;
-&lt;p&gt;&amp;lt;’ flex-grow ‘&amp;gt;：&lt;/p&gt;
-&lt;p&gt;用来指定扩展比率，即剩余空间是正值时此「flex子项」相对于「flex容器」里其他「flex子项」能分配到空间比例。&lt;/p&gt;
-&lt;p&gt;在「flex」属性中该值如果被省略则默认为「1」&lt;/p&gt;
-&lt;p&gt;&amp;lt;’ flex-shrink ‘&amp;gt;：&lt;/p&gt;
-&lt;p&gt;用来指定收缩比率，即剩余空间是负值时此「flex子项」相对于「flex容器」里其他「flex子项」能收缩的空间比例。&lt;/p&gt;
-&lt;p&gt;在收缩的时候收缩比率会以伸缩基准值加权&lt;/p&gt;
-&lt;p&gt;在「flex」属性中该值如果被省略则默认为「1」&lt;/p&gt;
-&lt;p&gt;&amp;lt;’ flex-basis ‘&amp;gt;：&lt;/p&gt;
-&lt;p&gt;用来指定伸缩基准值，即在根据伸缩比率计算出剩余空间的分布之前，「flex子项」长度的起始数值。&lt;/p&gt;
-&lt;p&gt;在「flex」属性中该值如果被省略则默认为「0%」&lt;/p&gt;
-&lt;p&gt;在「flex」属性中该值如果被指定为「auto」，则伸缩基准值的计算值是自身的 &amp;lt;’ width ‘&amp;gt; 设置，如果自身的宽度没有定义，则长度取决于内容。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;flex-grow&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;用来指定扩展比率。剩余空间是正值时此flex子项相对于flex容器里其他flex子项能分配到空间比例。&lt;br&gt;在flex属性中该值如果被省略则默认为1。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;flex-shrink&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;用来指定收缩比率。剩余空间是负值时此flex子项相对于flex容器里其他flex子项能收缩的空间比例。&lt;br&gt;在收缩的时候收缩比率会以伸缩基准值加权。&lt;br&gt;在flex属性中该值如果被省略则默认为1。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;flex-basis&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;用来指定伸缩基准值。在根据伸缩比率计算出剩余空间的分布之前，flex子项长度的起始数值。&lt;br&gt;flex属性中该值如果被省略则默认为0%。&lt;br&gt;flex属性中该值如果被指定为auto，则伸缩基准值的计算值是自身的width设置；如果自身的宽度没有定义，则长度取决于内容。&lt;/p&gt;
     
     </summary>
     
@@ -1133,9 +1227,9 @@ function duff2(iterations){
       <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="canvas" scheme="http://yoursite.com/tags/canvas/"/>
-    
       <category term="css" scheme="http://yoursite.com/tags/css/"/>
+    
+      <category term="canvas" scheme="http://yoursite.com/tags/canvas/"/>
     
       <category term="html5" scheme="http://yoursite.com/tags/html5/"/>
     
@@ -1458,174 +1552,6 @@ alert(e);
     
     
       <category term="wordpress" scheme="http://yoursite.com/tags/wordpress/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Promise:一种Javascript异步编程方式</title>
-    <link href="http://yoursite.com/2012/07/18/javascript-e5-bc-82-e6-ad-a5-e7-bc-96-e7-a8-8b-e7-9a-84promise-e6-a8-a1-e5-bc-8f/"/>
-    <id>http://yoursite.com/2012/07/18/javascript-e5-bc-82-e6-ad-a5-e7-bc-96-e7-a8-8b-e7-9a-84promise-e6-a8-a1-e5-bc-8f/</id>
-    <published>2012-07-18T01:24:13.000Z</published>
-    <updated>2016-07-22T03:30:02.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>原文链接：<a href="http://blogs.msdn.com/b/ie/archive/2011/09/11/asynchronous-programming-in-javascript-with-promises.aspx" target="_blank" rel="external">http://blogs.msdn.com/b/ie/archive/2011/09/11/asynchronous-programming-in-javascript-with-promises.aspx</a></p>
-<p>异步模式在web编程中变得越来越重要，对于web主流语言Javscript来说，这种模式实现起来不是很方便，为此，许多Javascript库（比如 jQuery和Dojo）添加了一种称为promise的抽象（有时也称之为deferred）。通过这些库，开发人员能够在实际编程中使用 promise模式。IE官方博客最近发表了一篇文章，详细讲述了如何使用XMLHttpRequest2来实践promise模式。我们来了解一下相关的概念和应用。<br><a id="more"></a><br>在处理异步请求的过程中，我们免不了会引入“回调嵌套”：</p>
-<pre lang="javascript">
-function searchTwitter(term, onload, onerror) {
-
-     var xhr, results, url;
-     url = 'http://search.twitter.com/search.json?rpp=100&q=' + term;
-     xhr = new XMLHttpRequest();
-     xhr.open('GET', url, true);
-
-     xhr.onload = function (e) {
-         if (this.status === 200) {
-             results = JSON.parse(this.responseText);
-             onload(results);
-         }
-     };
-
-     xhr.onerror = function (e) {
-         onerror(e);
-     };
-
-     xhr.send();
- }
-
- function handleError(error) {
-     /* handle the error */
- }
-
- function concatResults() {
-     /* order tweets by date */
- }
-
- function loadTweets() {
-     var container = document.getElementById('container');
-
-     searchTwitter('#IE10', function (data1) {
-         searchTwitter('#IE9', function (data2) {
-             /* Reshuffle due to date */
-             var totalResults = concatResults(data1.results, data2.results);
-             totalResults.forEach(function (tweet) {
-                 var el = document.createElement('li');
-                 el.innerText = tweet.text;
-                 container.appendChild(el);
-             });
-         }, handleError);
-     }, handleError);
- }
-
-</pre>
-上面的代码其功能是获取Twitter中hashtag为IE10和IE9的内容并在页面中显示出来。这种嵌套的回调函数难以理解，开发人员需要仔细分析哪些代码用于应用的业务逻辑，而哪些代码处理异步函数调用的，代码结构支离破碎。
-
-为了降低异步编程的复杂性，开发人员一直寻找简便的方法来处理异步操作。其中一种处理模式称为promise，它适用于可能会长时间运行却不一定返回完整执行结果的情况。这种模式返回一个表示承诺（promised）结果的对象，而不会阻塞并长时间等待操作完成。
-
-考虑这样一个例子，页面代码需要访问第三方的API，网络延迟可能会造成响应时间较长。在这种情况下，采用异步编程不会影响整个页面与用户的交互。promise模式通常会实现一种称为then的方法，用来注册状态变化时对应的回调函数。比如下面的代码示例：
-searchTwitter(term).then(filterResults).then(displayResults);
-
-promise模式包含以下三种状态：未完成（unfulfilled）、已完成（resolved）和拒绝（rejected）。
-参照CommonJS Promise/A标准，promise对象提供一个then方法来添加已完成和拒绝状态下的处理函数。
-then方法会返回另一个promise对象，这种返回promise对象的方式能够支持开发人员把异步操作串联起来。
-then(resolvedHandler, rejectedHandler); 。
-resolvedHandler 回调函数在promise对象进入完成状态时会触发，并传递结果；rejectedHandler函数会在拒绝状态下调用。
-
-有了promise模式，我们可以重新实现上面的Twitter示例。
-
-首先定义promise对象。
-<pre lang="javascript">
-var Promise = function () {
-        /* initialize promise */
-};
-</pre>
-接下来，定义then方法，接受两个参数用于处理完成和拒绝状态。
-<pre>
-Promise.prototype.then = function (onResolved, onRejected) {
-     /* invoke handlers based upon state transition */
-};
-</pre>
-同时还需要两个方法来执行理从未完成到已完成和从未完成到拒绝的状态转变。
-<pre lang="javascript">
-Promise.prototype.resolve = function (value) {
-     /* move from unfulfilled to resolved */
-};
-
-Promise.prototype.reject = function (error) {
-    /* move from unfulfilled to rejected */
-};
-</pre>
-
-<p>现在搭建了一个promise的架子，我们可以继续上面的示例，假设只获取IE10的内容。创建一个方法来发送Ajax请求并将其封装在promise中。这个promise对象分别在xhr.onload和xhr.onerror中指定了完成和拒绝状态的转变过程，请注意searchTwitter函数返回的是promise对象。然后，在loadTweets中，使用then方法设置完成和拒绝状态对应的回调函数。</p>
-<pre lang="javascript">
-function searchTwitter(term) {
-
-    var url, xhr, results, promise;
-    url = 'http://search.twitter.com/search.json?rpp=100&q=' + term;
-    promise = new Promise();
-    xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
-
-    xhr.onload = function (e) {
-        if (this.status === 200) {
-            results = JSON.parse(this.responseText);
-            promise.resolve(results);
-        }
-    };
-
-    xhr.onerror = function (e) {
-        promise.reject(e);
-    };
-
-    xhr.send();
-    return promise;
-}
-
-function loadTweets() {
-    var container = document.getElementById('container');
-    searchTwitter('#IE10').then(function (data) {
-        data.results.forEach(function (tweet) {
-            var el = document.createElement('li');
-            el.innerText = tweet.text;
-            container.appendChild(el);
-        });
-    }, handleError);
-}
-</pre>
-上面我们讨论了promise模式应用于单个Ajax请求的情况，接下来我们应用promise模式处理多个Ajax请求结果。首先在promise对象中增加一个when方法，该方法用来处理promise队列的并行操作，当所有promise状态由未完成转为完成后，调用then方法中注册的处理函数。
-<pre lang="javascript">
-var container, promise1, promise2;
-container = document.getElementById('container');
-promise1 = searchTwitter('#IE10');
-promise2 = searchTwitter('#IE9'); 
-
-Promise.when(promise1, promise2).then(function (data1, data2) {
-    /* Reshuffle due to date */
-    var totalResults = concatResults(data1.results, data2.results); 
-    totalResults.forEach(function (tweet) {
-        var el = document.createElement('li');
-        el.innerText = tweet.text;
-        container.appendChild(el);
-    });
-
-}, handleError);
-</pre>
-
-<p>小结：异步编程变得越来越重要，在这种情况下，我们需要找到办法来降低复杂度，promise模式就是一个很好的例子，它的风格比较人性化，而且主流的JS框架提供了自己的实现。所以在编程实践中，开发人员应该尝试这种便捷的编程技巧。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;原文链接：&lt;a href=&quot;http://blogs.msdn.com/b/ie/archive/2011/09/11/asynchronous-programming-in-javascript-with-promises.aspx&quot;&gt;http://blogs.msdn.com/b/ie/archive/2011/09/11/asynchronous-programming-in-javascript-with-promises.aspx&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;异步模式在web编程中变得越来越重要，对于web主流语言Javscript来说，这种模式实现起来不是很方便，为此，许多Javascript库（比如 jQuery和Dojo）添加了一种称为promise的抽象（有时也称之为deferred）。通过这些库，开发人员能够在实际编程中使用 promise模式。IE官方博客最近发表了一篇文章，详细讲述了如何使用XMLHttpRequest2来实践promise模式。我们来了解一下相关的概念和应用。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
-    
-    
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
-    
-      <category term="promise" scheme="http://yoursite.com/tags/promise/"/>
     
   </entry>
   
