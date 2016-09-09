@@ -42,7 +42,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="css,旧文摘记," />
 
 
 
@@ -60,12 +60,25 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Web Dev Life">
-<meta property="og:url" content="http://yoursite.com/tags/canvas/index.html">
+<meta name="description" content="盒模型
+文档中的每个元素被描绘为矩形盒子。渲染引擎的目的就是判定大小，属性及这些盒子的位置。在CSS中，这些矩形盒子用盒模型来描述。这个模型描述了一个元素所占用的空间。每一个盒子有四条边界：外边距边界margin edge, 边框边界border edge, 内边距边界padding edge 与 内容边界content edge。 
+
+In the W3C box model, the widt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS盒模型">
+<meta property="og:url" content="http://yoursite.com/2016/09/09/css-box-model/index.html">
 <meta property="og:site_name" content="Web Dev Life">
+<meta property="og:description" content="盒模型
+文档中的每个元素被描绘为矩形盒子。渲染引擎的目的就是判定大小，属性及这些盒子的位置。在CSS中，这些矩形盒子用盒模型来描述。这个模型描述了一个元素所占用的空间。每一个盒子有四条边界：外边距边界margin edge, 边框边界border edge, 内边距边界padding edge 与 内容边界content edge。 
+
+In the W3C box model, the widt">
+<meta property="og:updated_time" content="2016-09-09T05:55:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Web Dev Life">
+<meta name="twitter:title" content="CSS盒模型">
+<meta name="twitter:description" content="盒模型
+文档中的每个元素被描绘为矩形盒子。渲染引擎的目的就是判定大小，属性及这些盒子的位置。在CSS中，这些矩形盒子用盒模型来描述。这个模型描述了一个元素所占用的空间。每一个盒子有四条边界：外边距边界margin edge, 边框边界border edge, 内边距边界padding edge 与 内容边界content edge。 
+
+In the W3C box model, the widt">
 
 
 
@@ -86,9 +99,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/canvas/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/09/css-box-model/"/>
 
-  <title> 标签: canvas | Web Dev Life </title>
+  <title> CSS盒模型 | Web Dev Life </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -109,7 +122,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -187,46 +200,136 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        canvas
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CSS盒模型
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-09T11:37:49+08:00" content="2016-09-09">
+              2016-09-09
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h3 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h3><blockquote>
+<p>文档中的每个元素被描绘为矩形盒子。渲染引擎的目的就是判定大小，属性及这些盒子的位置。<br>在CSS中，这些矩形盒子用盒模型来描述。这个模型描述了一个元素所占用的空间。每一个盒子有四条边界：外边距边界margin edge, 边框边界border edge, 内边距边界padding edge 与 内容边界content edge。 </p>
+</blockquote>
+<p>In the W3C box model, the width of an element gives the width of the content of the box, excluding padding and border.</p>
+<p>In the traditional box model, the width of an element gives the width between the borders of the box, including padding and border.</p>
+<p>By default, all browsers use the W3C box model, with the exception of IE in “Quirks Mode” (IE5.5 Mode), which uses the traditional one.</p>
+<h3 id="box-sizing"><a href="#box-sizing" class="headerlink" title="box-sizing"></a>box-sizing</h3><blockquote>
+<p>box-sizing 属性用来改变默认的CSS盒模型对元素宽高的计算方式。这个属性可以用于模拟那些非正确支持标准盒模型的浏览器的表现。</p>
+</blockquote>
+<p>box-sizing: border-box</p>
+<p>box-sizing: content-box</p>
+<p>The first declaration will cause the box sizes to be applied to the border and everything inside it (traditional model)</p>
+<p>the second one will cause the box sizes to be applied to the content only (W3C model).</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2012/09/07/canvas-width-e5-92-8cheight/" itemprop="url">
-              
-                <span itemprop="name">Canvas width和height</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2012-09-07T15:00:02+08:00"
-              content="2012-09-07" >
-          09-07
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css/" rel="tag">#css</a>
+          
+            <a href="/tags/旧文摘记/" rel="tag">#旧文摘记</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/29/what-does-restful-really-mean/" rel="next" title="什么是RESTful">
+                <i class="fa fa-chevron-left"></i> 什么是RESTful
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -234,6 +337,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -253,8 +360,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -311,6 +427,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#盒模型"><span class="nav-number">1.</span> <span class="nav-text">盒模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#box-sizing"><span class="nav-number">2.</span> <span class="nav-text">box-sizing</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -414,6 +541,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-08-29T03:47:10.000Z</updated>
+  <updated>2016-09-09T05:55:05.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CSS盒模型</title>
+    <link href="http://yoursite.com/2016/09/09/css-box-model/"/>
+    <id>http://yoursite.com/2016/09/09/css-box-model/</id>
+    <published>2016-09-09T03:37:49.000Z</published>
+    <updated>2016-09-09T05:55:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h3><blockquote>
+<p>文档中的每个元素被描绘为矩形盒子。渲染引擎的目的就是判定大小，属性及这些盒子的位置。<br>在CSS中，这些矩形盒子用盒模型来描述。这个模型描述了一个元素所占用的空间。每一个盒子有四条边界：外边距边界margin edge, 边框边界border edge, 内边距边界padding edge 与 内容边界content edge。 </p>
+</blockquote>
+<p>In the W3C box model, the width of an element gives the width of the content of the box, excluding padding and border.</p>
+<p>In the traditional box model, the width of an element gives the width between the borders of the box, including padding and border.</p>
+<p>By default, all browsers use the W3C box model, with the exception of IE in “Quirks Mode” (IE5.5 Mode), which uses the traditional one.</p>
+<h3 id="box-sizing"><a href="#box-sizing" class="headerlink" title="box-sizing"></a>box-sizing</h3><blockquote>
+<p>box-sizing 属性用来改变默认的CSS盒模型对元素宽高的计算方式。这个属性可以用于模拟那些非正确支持标准盒模型的浏览器的表现。</p>
+</blockquote>
+<p>box-sizing: border-box</p>
+<p>box-sizing: content-box</p>
+<p>The first declaration will cause the box sizes to be applied to the border and everything inside it (traditional model)</p>
+<p>the second one will cause the box sizes to be applied to the content only (W3C model).</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;盒模型&quot;&gt;&lt;a href=&quot;#盒模型&quot; class=&quot;headerlink&quot; title=&quot;盒模型&quot;&gt;&lt;/a&gt;盒模型&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;文档中的每个元素被描绘为矩形盒子。渲染引擎的目的就是判定大小，属性及这些盒子的位置。&lt;br&gt;在CSS中，这
+    
+    </summary>
+    
+    
+      <category term="css" scheme="http://yoursite.com/tags/css/"/>
+    
+      <category term="旧文摘记" scheme="http://yoursite.com/tags/%E6%97%A7%E6%96%87%E6%91%98%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>什么是RESTful</title>
@@ -1227,9 +1263,9 @@ function duff2(iterations){
       <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="css" scheme="http://yoursite.com/tags/css/"/>
-    
       <category term="canvas" scheme="http://yoursite.com/tags/canvas/"/>
+    
+      <category term="css" scheme="http://yoursite.com/tags/css/"/>
     
       <category term="html5" scheme="http://yoursite.com/tags/html5/"/>
     
@@ -1526,32 +1562,6 @@ alert(e);
     
     
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>WordPress文章摘要的显示方法</title>
-    <link href="http://yoursite.com/2012/07/20/wordpress-e6-96-87-e7-ab-a0-e6-91-98-e8-a6-81-e7-9a-84-e6-98-be-e7-a4-ba-e6-96-b9-e6-b3-95/"/>
-    <id>http://yoursite.com/2012/07/20/wordpress-e6-96-87-e7-ab-a0-e6-91-98-e8-a6-81-e7-9a-84-e6-98-be-e7-a4-ba-e6-96-b9-e6-b3-95/</id>
-    <published>2012-07-20T08:17:25.000Z</published>
-    <updated>2016-07-22T03:30:02.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>很多WordPress模板在显示首页文章的时候，总是会把文章的全部内容都显示出来，而不是我们想要的那种文章摘要，这不仅不利于阅读，而且会把页面撑的太长，用户翻看起来比较麻烦。</p>
-<p>本博客使用WordPress自带的more标签。编辑文章的时候，在HTML状态下是直接显示“more”，在你想要截断的地方插入一个“more”标签，或者直接在HTML编辑状态下输入： &lt;!–more–&gt; 即可。这意味着将文章开始到你插入点的那一部分作为该文章的摘要部分。</p>
-<p>对于文章摘要更详细的设置说明，可以参考<a href="http://www.52maomao.info/wordpress-more.html" target="_blank" rel="external">这篇文章</a>。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;很多WordPress模板在显示首页文章的时候，总是会把文章的全部内容都显示出来，而不是我们想要的那种文章摘要，这不仅不利于阅读，而且会把页面撑的太长，用户翻看起来比较麻烦。&lt;/p&gt;
-&lt;p&gt;本博客使用WordPress自带的more标签。编辑文章的时候，在HTML状态下是直
-    
-    </summary>
-    
-      <category term="未分类" scheme="http://yoursite.com/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
-    
-    
-      <category term="wordpress" scheme="http://yoursite.com/tags/wordpress/"/>
     
   </entry>
   

@@ -211,6 +211,112 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/09/css-box-model/" itemprop="url">
+                  CSS盒模型
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-09T11:37:49+08:00" content="2016-09-09">
+              2016-09-09
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h3><blockquote>
+<p>文档中的每个元素被描绘为矩形盒子。渲染引擎的目的就是判定大小，属性及这些盒子的位置。<br>在CSS中，这些矩形盒子用盒模型来描述。这个模型描述了一个元素所占用的空间。每一个盒子有四条边界：外边距边界margin edge, 边框边界border edge, 内边距边界padding edge 与 内容边界content edge。 </p>
+</blockquote>
+<p>In the W3C box model, the width of an element gives the width of the content of the box, excluding padding and border.</p>
+<p>In the traditional box model, the width of an element gives the width between the borders of the box, including padding and border.</p>
+<p>By default, all browsers use the W3C box model, with the exception of IE in “Quirks Mode” (IE5.5 Mode), which uses the traditional one.</p>
+<h3 id="box-sizing"><a href="#box-sizing" class="headerlink" title="box-sizing"></a>box-sizing</h3><blockquote>
+<p>box-sizing 属性用来改变默认的CSS盒模型对元素宽高的计算方式。这个属性可以用于模拟那些非正确支持标准盒模型的浏览器的表现。</p>
+</blockquote>
+<p>box-sizing: border-box</p>
+<p>box-sizing: content-box</p>
+<p>The first declaration will cause the box sizes to be applied to the border and everything inside it (traditional model)</p>
+<p>the second one will cause the box sizes to be applied to the content only (W3C model).</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/29/what-does-restful-really-mean/" itemprop="url">
                   什么是RESTful
                 </a>
@@ -1487,122 +1593,6 @@ $scope.$watchCollection(&apos;items&apos;,function(){
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2012/10/19/ecma-262-3-e8-af-a6-e8-a7-a3-e4-b9-8b-e6-89-a7-e8-a1-8c-e4-b8-8a-e4-b8-8b-e6-96-87-e5-92-8c-e4-bd-9c-e7-94-a8-e5-9f-9f-e9-93-be/" itemprop="url">
-                  ECMA-262-3详解之执行上下文和作用域链
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-10-19T16:05:22+08:00" content="2012-10-19">
-              2012-10-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/未分类/" itemprop="url" rel="index">
-                    <span itemprop="name">未分类</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>ECMA-262-3详解(<a href="http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contexts/">ECMA-262-3 in detail</a>)系列是学习ECMAScript不可多得的好文章。本文根据其相关章节整理得出。</p>
-<h3 id="执行上下文-Execution-Context"><a href="#执行上下文-Execution-Context" class="headerlink" title="执行上下文(Execution Context)"></a>执行上下文(Execution Context)</h3><p>执行上下文可以理解为代码块的执行环境，代码在执行的过程中需要的变量都在这个执行环境中读取。<br>一系列活动的执行上下文从逻辑上形成一个栈ECStack。 栈底总是全局上下文，栈顶是当前（活动的）执行上下文。<br>函数代码开始执行，当前执行上下文会被压入ECStack；函数返回，退出当前活动的执行上下文时，ECStack就令相应的执行上下文出栈。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2012/10/19/ecma-262-3-e8-af-a6-e8-a7-a3-e4-b9-8b-e6-89-a7-e8-a1-8c-e4-b8-8a-e4-b8-8b-e6-96-87-e5-92-8c-e4-bd-9c-e7-94-a8-e5-9f-9f-e9-93-be/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1648,7 +1638,7 @@ $scope.$watchCollection(&apos;items&apos;,function(){
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1665,7 +1655,7 @@ $scope.$watchCollection(&apos;items&apos;,function(){
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
