@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -37,42 +37,41 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="ECMAScript,closure," />
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
 
 
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Web Dev Life" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+  <meta name="keywords" content="ECMAScript,closure,">
 
 
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Web Dev Life" type="application/atom+xml">
 
-<meta name="description" content="ECMA-262-3详解(ECMA-262-3 in detail)系列是学习ECMAScript不可多得的好文章。本文根据其相关章节整理得出。
-在ECMAScript中，函数不仅可以作为参数，还可以作为返回值。这种特性在传统的面向堆栈的编程结构模型中，会受到很大限制。在面向堆栈的编程语言中，函数的本地变量都是保存在堆栈上的，每当函数激活的时候，这些变量和函数参数都会压栈到该堆栈上。当函数返回的时">
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
+
+
+
+
+
+
+<meta name="description" content="ECMA-262-3详解(ECMA-262-3 in detail)系列是学习ECMAScript不可多得的好文章。本文根据其相关章节整理得出。 在ECMAScript中，函数不仅可以作为参数，还可以作为返回值。这种特性在传统的面向堆栈的编程结构模型中，会受到很大限制。在面向堆栈的编程语言中，函数的本地变量都是保存在堆栈上的，每当函数激活的时候，这些变量和函数参数都会压栈到该堆栈上。当函数返回的时">
+<meta name="keywords" content="ECMAScript,closure">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ECMA-262-3详解之闭包">
 <meta property="og:url" content="http://yoursite.com/2012/10/20/ecma-262-3-e8-af-a6-e8-a7-a3-e4-b9-8b-e9-97-ad-e5-8c-85/index.html">
 <meta property="og:site_name" content="Web Dev Life">
-<meta property="og:description" content="ECMA-262-3详解(ECMA-262-3 in detail)系列是学习ECMAScript不可多得的好文章。本文根据其相关章节整理得出。
-在ECMAScript中，函数不仅可以作为参数，还可以作为返回值。这种特性在传统的面向堆栈的编程结构模型中，会受到很大限制。在面向堆栈的编程语言中，函数的本地变量都是保存在堆栈上的，每当函数激活的时候，这些变量和函数参数都会压栈到该堆栈上。当函数返回的时">
+<meta property="og:description" content="ECMA-262-3详解(ECMA-262-3 in detail)系列是学习ECMAScript不可多得的好文章。本文根据其相关章节整理得出。 在ECMAScript中，函数不仅可以作为参数，还可以作为返回值。这种特性在传统的面向堆栈的编程结构模型中，会受到很大限制。在面向堆栈的编程语言中，函数的本地变量都是保存在堆栈上的，每当函数激活的时候，这些变量和函数参数都会压栈到该堆栈上。当函数返回的时">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-07-22T03:30:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ECMA-262-3详解之闭包">
-<meta name="twitter:description" content="ECMA-262-3详解(ECMA-262-3 in detail)系列是学习ECMAScript不可多得的好文章。本文根据其相关章节整理得出。
-在ECMAScript中，函数不仅可以作为参数，还可以作为返回值。这种特性在传统的面向堆栈的编程结构模型中，会受到很大限制。在面向堆栈的编程语言中，函数的本地变量都是保存在堆栈上的，每当函数激活的时候，这些变量和函数参数都会压栈到该堆栈上。当函数返回的时">
+<meta name="twitter:description" content="ECMA-262-3详解(ECMA-262-3 in detail)系列是学习ECMAScript不可多得的好文章。本文根据其相关章节整理得出。 在ECMAScript中，函数不仅可以作为参数，还可以作为返回值。这种特性在传统的面向堆栈的编程结构模型中，会受到很大限制。在面向堆栈的编程语言中，函数的本地变量都是保存在堆栈上的，每当函数激活的时候，这些变量和函数参数都会压栈到该堆栈上。当函数返回的时">
 
 
 
@@ -93,7 +92,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2012/10/20/ecma-262-3-e8-af-a6-e8-a7-a3-e4-b9-8b-e9-97-ad-e5-8c-85/"/>
+  <link rel="canonical" href="http://yoursite.com/2012/10/20/ecma-262-3-e8-af-a6-e8-a7-a3-e4-b9-8b-e9-97-ad-e5-8c-85/">
 
   <title> ECMA-262-3详解之闭包 | Web Dev Life </title>
 </head>
@@ -124,7 +123,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">Web Dev Life</span>
       <span class="logo-line-after"><i></i></span>
@@ -151,7 +150,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -161,7 +160,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -171,7 +170,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -233,7 +232,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -431,7 +430,7 @@ _代码块一般指函数，这样闭包可理解为封闭了外部函数作用�
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -442,16 +441,14 @@ _代码块一般指函数，这样闭包可理解为封闭了外部函数作用�
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="Xin" />
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Xin">
           <p class="site-author-name" itemprop="name">Xin</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -522,10 +519,10 @@ _代码块一般指函数，这样闭包可理解为封闭了外部函数作用�
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

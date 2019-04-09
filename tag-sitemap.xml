@@ -1,169 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+
     <url>
         <loc>http://yoursite.com/tags/Angularjs/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <lastmod>2019-04-09T12:59:39.642Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/javascript/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <loc>http://yoursite.com/tags/%E6%97%A7%E6%96%87%E6%91%98%E8%AE%B0/</loc>
+        <lastmod>2016-09-09T05:55:05.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/canvas/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <loc>http://yoursite.com/tags/css/</loc>
+        <lastmod>2016-09-09T05:55:05.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/html5/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/chrome/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/autoprefixer/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/sass/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/algorithm/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/html/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/ECMAScript/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/Execution-Context/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/Scope-Chain/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/Variable-Object/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/closure/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/this/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/GIS/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/promise/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/framework/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/jQuery/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/mysql/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/curry/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/partial-application/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/php/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/books/</loc>
+        <loc>http://yoursite.com/tags/wordpress/</loc>
         <lastmod>2016-07-22T03:30:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -177,22 +38,162 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/wordpress/</loc>
+        <loc>http://yoursite.com/tags/books/</loc>
         <lastmod>2016-07-22T03:30:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/css/</loc>
-        <lastmod>2016-09-09T05:55:05.000Z</lastmod>
+        <loc>http://yoursite.com/tags/php/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/%E6%97%A7%E6%96%87%E6%91%98%E8%AE%B0/</loc>
-        <lastmod>2016-09-09T05:55:05.000Z</lastmod>
+        <loc>http://yoursite.com/tags/mysql/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/jQuery/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/framework/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/partial-application/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/curry/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/promise/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/GIS/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/this/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/closure/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/Variable-Object/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/Scope-Chain/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/Execution-Context/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/ECMAScript/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/html/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/algorithm/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/sass/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/autoprefixer/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/html5/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/canvas/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/chrome/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/javascript/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

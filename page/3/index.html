@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -37,23 +37,23 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
 
 
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Web Dev Life" type="application/atom+xml" />
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+  <link rel="alternate" href="/atom.xml" title="Web Dev Life" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
 
 
 
@@ -64,6 +64,7 @@
 <meta property="og:title" content="Web Dev Life">
 <meta property="og:url" content="http://yoursite.com/page/3/index.html">
 <meta property="og:site_name" content="Web Dev Life">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web Dev Life">
 
@@ -86,7 +87,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/page/3/"/>
+  <link rel="canonical" href="http://yoursite.com/page/3/">
 
   <title> Web Dev Life </title>
 </head>
@@ -119,7 +120,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">Web Dev Life</span>
       <span class="logo-line-after"><i></i></span>
@@ -146,7 +147,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -156,7 +157,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -166,7 +167,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -211,6 +212,246 @@
             
               
                 
+                <a class="post-title-link" href="/2012/08/02/chrome-hack-e4-b8-a4-e5-88-99/" itemprop="url">
+                  Chrome hack两则
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2012-08-02T17:48:55+08:00" content="2012-08-02">
+              2012-08-02
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/未分类/" itemprop="url" rel="index">
+                    <span itemprop="name">未分类</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Chrome在javascript执行速度，系统资源占用方面有良好的表现。但有时候其默认的设置也会对页面的呈现造成影响。<br>下面描述一下我遇到的问题和解决办法：<br>1.默认输入框高亮<br>Chrome为input输入框添加了土黄色高亮样式，修改方法为添加样式</p>
+<pre lang="html">
+input:focus {  
+    outline: 0;  
+}
+</pre>
+2.默认最小字体
+Chrome为保证阅读体验，限定了最小字体(12px)，修改方法为添加样式
+<pre lang="html">
+body{
+    -webkit-text-size-adjust:none
+}
+</pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2012/07/24/try-catch-in-javascript/" itemprop="url">
+                  try...catch in Javascript
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2012-07-24T13:24:09+08:00" content="2012-07-24">
+              2012-07-24
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/未分类/" itemprop="url" rel="index">
+                    <span itemprop="name">未分类</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在javascript中可以使用try/catch/finally进行异常处理。<br>try语句中包含可能出现异常的代码块，catch和finally语句可选，但至少要有一项同try语句搭配。即使用try/catch的三种方式为：<br>1.try…catch<br>2.try…finally<br>3.try…catch…finally</p>
+<p>注意：try/catch/finally中的括号是不能省略的。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2012/07/24/try-catch-in-javascript/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </p></div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2012/07/20/wordpress-e6-96-87-e7-ab-a0-e6-91-98-e8-a6-81-e7-9a-84-e6-98-be-e7-a4-ba-e6-96-b9-e6-b3-95/" itemprop="url">
                   WordPress文章摘要的显示方法
                 </a>
@@ -231,7 +472,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -346,7 +587,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -397,7 +638,7 @@
           </div>
         
       
-    </div>
+    </p></div>
 
     <div>
       
@@ -462,7 +703,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -506,8 +747,8 @@
         
           <p>1.基本用法<br>mailto:收信人地址。</p>
 <p><pre lang="html"><a href="mailto:sample@163.com">send email</a></pre><br>或者</p>
-<p><pre lang="html"></p>
-<p><form action="mailto:sample@163.com"></form><br></pre><br>2.可使用参数列表<br>to 收信人<br>suject 主题<br>cc 抄送<br>bcc 暗抄送<br>body 内容<br>参数传递方式同页面之间传递值一样，可以使用查询字符串，也可以用form<br>
+<p><pre lang="html"></pre></p>
+<p><form action="mailto:sample@163.com"></form><br><br>2.可使用参数列表<br>to 收信人<br>suject 主题<br>cc 抄送<br>bcc 暗抄送<br>body 内容<br>参数传递方式同页面之间传递值一样，可以使用查询字符串，也可以用form<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2012/06/08/e5-a6-82-e4-bd-95-e4-bd-bf-e7-94-a8mailto-2/#more" rel="contents">
               阅读全文 &raquo;
@@ -515,7 +756,7 @@
           </div>
         
       
-    </div>
+    </p></div>
 
     <div>
       
@@ -580,7 +821,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -633,7 +874,7 @@
           </div>
         
       
-    </div>
+    </p></div>
 
     <div>
       
@@ -698,7 +939,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -742,7 +983,7 @@
         
           
             <p>实现类似的效果</p>
-<p><a href="http://phped-wordpress.stor.sinaapp.com/uploads/2012/05/svg.jpg" target="_blank" rel="external"><img src="http://phped-wordpress.stor.sinaapp.com/uploads/2012/05/svg-300x182.jpg" alt="" title="svg"></a></p>
+<p><a href="http://phped-wordpress.stor.sinaapp.com/uploads/2012/05/svg.jpg" target="_blank" rel="external"><img src="http://phped-wordpress.stor.sinaapp.com/uploads/2012/05/svg-300x182.jpg" alt title="svg"></a></p>
 <p>参考这两篇文章<br><a href="http://www.svgbasics.com/markers.html" target="_blank" rel="external">http://www.svgbasics.com/markers.html</a><br><a href="http://hi.baidu.com/huqing7002/item/06bac3ea00395a2e5b7cfb10" target="_blank" rel="external">http://hi.baidu.com/huqing7002/item/06bac3ea00395a2e5b7cfb10</a></p>
 <p>简单的讲，就是添加一项与线相关的marker属性。</p>
 
@@ -814,7 +1055,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -940,7 +1181,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -995,7 +1236,7 @@
           </div>
         
       
-    </div>
+    </li></ol></div>
 
     <div>
       
@@ -1060,7 +1301,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -1132,238 +1373,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2012/02/28/phpmysql-unknown-column-in-field-list/" itemprop="url">
-                  php/mysql unknown column in field list
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-02-28T06:11:01+08:00" content="2012-02-28">
-              2012-02-28
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/未分类/" itemprop="url" rel="index">
-                    <span itemprop="name">未分类</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>$insert = “INSERT INTO survey (first_name, last_name)<br>VALUES ($first_name, $last_name)”<br>一直返回错误”unknown column ‘$first_name’ in ‘field list’</p>
-<p>需要改为这样才能通过<br>$insert = “INSERT INTO survey (first_name, last_name)<br>VALUES (‘$first_name’, ‘$last_name’)”</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2012/02/07/professional-javascript-e7-ac-94-e8-ae-b0-e4-b8-80/" itemprop="url">
-                  Professional Javascript 拾遗(1)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-02-07T09:53:29+08:00" content="2012-02-07">
-              2012-02-07
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/未分类/" itemprop="url" rel="index">
-                    <span itemprop="name">未分类</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>2.2文档模式<br>最初的两种文档模式：混杂模式和标准模式。这两种模式主要影响css内容的呈现，在某些情况下会影响到Javascript的解释执行。<br>3.4.2 Undefined类型<br>Undefined的主要目的是用于比较，引入这个值是为了正式区分空对象指针与未经初始化的变量。<br>3.4.5 数值类型<br>永远不要测试某个特定的浮点数值<br>在基于对象调用isNaN()函数时，会首先调用对象的valueOf方法，然后确定该方法返回的值是否可以转换为数值。如果不能，则再调用toString方法，再测试返回值。<br>3.5.10 逗号操作符<br>在用于赋值时，逗号操作符总会返回表达式中的最后一项<br>var num=(1,2,3) //num为3<br>3.6.9 switch<br>Switch语句在比较值时使用的是全等操作符，因此不会发生类型转换<br>3.7.1 参数<br>ECMAScript中的所有参数传递的都是值，不会通过引用传递参数。<br>（也就是说，把函数外部的值复制给函数内部的参数，同把值从一个变量复制到另一个变量一样）<br>4.2.1 延长作用域链<br>在ie的javascript实现中，存在一个与标准不一致的地方，即在catch语句中捕获的错误对象会被添加到执行环境的变量对象中。也就是在catch块外部也可以访问到错误对象。<br>4.3 垃圾收集<br>两种策略：标记清除和引用计数</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1395,16 +1409,14 @@
 
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="Xin" />
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Xin">
           <p class="site-author-name" itemprop="name">Xin</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1462,10 +1474,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

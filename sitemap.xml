@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+
     <sitemap>
         <loc>http://yoursite.com/post-sitemap.xml</loc>
-        <lastmod>2016-09-09T05:55:05.000Z</lastmod>
+        <lastmod>2019-04-09T12:59:39.642Z</lastmod>
     </sitemap>
 
     <sitemap>
         <loc>http://yoursite.com/category-sitemap.xml</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <lastmod>2019-04-09T12:59:39.642Z</lastmod>
     </sitemap>
 
     <sitemap>
         <loc>http://yoursite.com/tag-sitemap.xml</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <lastmod>2019-04-09T12:59:39.642Z</lastmod>
     </sitemap>
 
 </sitemapindex>

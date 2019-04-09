@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -37,23 +37,23 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
 
 
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Web Dev Life" type="application/atom+xml" />
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+  <link rel="alternate" href="/atom.xml" title="Web Dev Life" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
 
 
 
@@ -64,6 +64,7 @@
 <meta property="og:title" content="Web Dev Life">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="Web Dev Life">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web Dev Life">
 
@@ -86,7 +87,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/">
 
   <title> Web Dev Life </title>
 </head>
@@ -119,7 +120,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">Web Dev Life</span>
       <span class="logo-line-after"><i></i></span>
@@ -146,7 +147,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -156,7 +157,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -166,7 +167,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -615,6 +616,257 @@
             
               
                 
+                <a class="post-title-link" href="/2015/11/09/angularjs-exactly-one-root-element/" itemprop="url">
+                  AngularJS "exactly one root element" 错误排查
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-11-09T11:54:33+08:00" content="2015-11-09">
+              2015-11-09
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/未分类/" itemprop="url" rel="index">
+                    <span itemprop="name">未分类</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>错误提示还是很清楚的，比较诧异的地方是我的模板中并没有多个root element</p>
+<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>angularjs为比较老的版本（1.2.2）</p>
+<p>directive设置replace为true</p>
+<p>模板第一行为注释</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">app.directive(&quot;helloWorld&quot;, function() &#123;</div><div class="line">  return &#123;</div><div class="line">    restrict: &quot;A&quot;,</div><div class="line">    template: &quot;&lt;!-- Hello world directive --&gt;&lt;div&gt;Hello world&lt;/div&gt;&quot;,</div><div class="line">    replace: true</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>看下错误提示处的代码，发现并不会对注释做处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//angular代码</div><div class="line">if (directive.replace) &#123;</div><div class="line">    replaceDirective = directive;</div><div class="line">    $template = jqLite(&apos;&lt;div&gt;&apos; +</div><div class="line">                        trim(directiveValue) +</div><div class="line">                    &apos;&lt;/div&gt;&apos;).contents();</div><div class="line">    compileNode = $template[0];</div><div class="line"></div><div class="line">    if ($template.length != 1 || compileNode.nodeType !== 1) &#123;</div><div class="line">        throw $compileMinErr(&apos;tplrt&apos;,</div><div class="line">            &quot;Template for directive &apos;&#123;0&#125;&apos; must have exactly one root element. &#123;1&#125;&quot;,</div><div class="line">            directiveName, &apos;&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><ul>
+<li>去掉注释</li>
+<li>replace设置为false</li>
+<li>模板再包一层</li>
+<li>升级angularjs（1.3+）</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/06/30/angularjs-cookie/" itemprop="url">
+                  AngularJS Cookies 操作
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-06-30T11:54:33+08:00" content="2015-06-30">
+              2015-06-30
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/未分类/" itemprop="url" rel="index">
+                    <span itemprop="name">未分类</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="cookies"><a href="#cookies" class="headerlink" title="$cookies"></a>$cookies</h4><p>提供浏览器cookies的读/写访问操作。</p>
+<p>需要引入angular-cookies.js文件,ngCookies模块。</p>
+<ul>
+<li>基本方法put/get</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">   var app = angular.module(&quot;myApp&quot;, [&apos;ngCookies&apos;]);</div><div class="line"></div><div class="line">   app.controller(&quot;myCtrl&quot;, [&apos;$cookies&apos;, function($cookies) &#123;</div><div class="line">   	//set cookie</div><div class="line">$cookies.put(&quot;key&quot;,&quot;value&quot;);</div><div class="line">//get cookie</div><div class="line">$cookies.get(&quot;key&quot;); //value</div><div class="line"></div><div class="line"></div><div class="line">   &#125;]);</div></pre></td></tr></table></figure>
+<ul>
+<li>存取对象，putObject/getObject<br>将Object序列化/反序列化操作后，进行put/get操作，参看源码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">putObject: function(key, value, options) &#123;</div><div class="line">  this.put(key, angular.toJson(value), options);</div><div class="line">&#125;</div><div class="line"></div><div class="line">getObject: function(key) &#123;</div><div class="line">  var value = this.get(key);</div><div class="line">  return value ? angular.fromJson(value) : value;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="cookieStore"><a href="#cookieStore" class="headerlink" title="$cookieStore"></a>$cookieStore</h4><p>$cookieStore服务已经不建议使用，其底层使用的就是$cookie的方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">get: function(key) &#123;</div><div class="line">  return $cookies.getObject(key);</div><div class="line">&#125;</div><div class="line"></div><div class="line">put: function(key, value) &#123;</div><div class="line">  $cookies.putObject(key, value);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在控制台中使用$cookieStore服务读取cookie时遇到过错误提示，通过上面的分析我们知道是cookie值反序列化时出现了异常，改用$cookie.get解决了问题。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2014/11/24/css-e8-a7-84-e5-88-99-e4-b8-ad-e6-b5-8f-e8-a7-88-e5-99-a8-e5-89-8d-e7-bc-80-e7-9a-84-e5-a4-84-e7-90-86/" itemprop="url">
                   CSS规则中浏览器前缀的处理
                 </a>
@@ -635,7 +887,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -817,7 +1069,7 @@ autoprefixer通过解析CSS文件中相关属性，添加浏览器前缀到相�
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -951,7 +1203,7 @@ $compile(imgHtml)($scope) // -> img节点
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -1128,7 +1380,7 @@ function MyCtrl($scope, helloWorld, helloWorldFromFactory, helloWorldFromService
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -1194,7 +1446,7 @@ $scope.$watchCollection(&apos;items&apos;,function(){
 })；
 </code></pre><p>}</p>
 <p><br>总结，一图胜千言，下面这张图很好的概括了本文介绍的内容。希望本文对使用AngularJS的朋友有所帮助。</p>
-<p><a href="http://phped-wordpress.stor.sinaapp.com/uploads/2014/09/angular_watch_depths1.png" target="_blank" rel="external"><img src="http://phped-wordpress.stor.sinaapp.com/uploads/2014/09/angular_watch_depths1.png" alt="" title="angular_watch_depths"></a></p>
+<p><a href="http://phped-wordpress.stor.sinaapp.com/uploads/2014/09/angular_watch_depths1.png" target="_blank" rel="external"><img src="http://phped-wordpress.stor.sinaapp.com/uploads/2014/09/angular_watch_depths1.png" alt title="angular_watch_depths"></a></p>
 <div></div>
           
         
@@ -1264,7 +1516,7 @@ $scope.$watchCollection(&apos;items&apos;,function(){
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -1346,258 +1598,11 @@ $scope.$watchCollection(&apos;items&apos;,function(){
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/03/20/e8-bd-ac-ef-bc-9a-e6-88-91-e7-9c-bc-e4-b8-ad-e7-9a-84-e6-8a-80-e6-9c-af-e9-ab-98-e6-89-8b-ef-bc-88-e6-9c-89-e5-88-a0-e8-8a-82-ef-bc-89/" itemprop="url">
-                  转：我眼中的技术高手（有删节）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-03-20T14:45:07+08:00" content="2013-03-20">
-              2013-03-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/未分类/" itemprop="url" rel="index">
-                    <span itemprop="name">未分类</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>最近一段时间陆续看了几个框架的源码，没有运用到实际项目中，确实体会不出其中的精髓。看了玉伯的一篇文章，一些看法自己比较认同，之后需要稍稍调整一下方向。</p>
-<p>原文地址：<a href="https://github.com/lifesinger/lifesinger.github.com/issues/126">https://github.com/lifesinger/lifesinger.github.com/issues/126</a><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2013/03/20/e8-bd-ac-ef-bc-9a-e6-88-91-e7-9c-bc-e4-b8-ad-e7-9a-84-e6-8a-80-e6-9c-af-e9-ab-98-e6-89-8b-ef-bc-88-e6-9c-89-e5-88-a0-e8-8a-82-ef-bc-89/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2012/10/20/ecma-262-3-e8-af-a6-e8-a7-a3-e4-b9-8b-e9-97-ad-e5-8c-85/" itemprop="url">
-                  ECMA-262-3详解之闭包
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-10-20T11:07:39+08:00" content="2012-10-20">
-              2012-10-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/未分类/" itemprop="url" rel="index">
-                    <span itemprop="name">未分类</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>ECMA-262-3详解(<a href="http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contexts/">ECMA-262-3 in detail</a>)系列是学习ECMAScript不可多得的好文章。本文根据其相关章节整理得出。</p>
-<p>在ECMAScript中，函数不仅可以作为参数，还可以作为返回值。这种特性在传统的面向堆栈的编程结构模型中，会受到很大限制。在面向堆栈的编程语言中，函数的本地变量都是保存在堆栈上的，每当函数激活的时候，这些变量和函数参数都会压栈到该堆栈上。当函数返回的时候，这些参数又会从堆栈中移除。</p>
-<pre class="javascript">
-    function testFn() {
-        var localVar = 10;
-        function innerFn(innerParam) {
-            alert(innerParam + localVar);
-        }
-        return innerFn;
-    }
-    var someFn = testFn();
-    someFn(20); // 30
-</pre>
-上面的例子中，对于innerFn函数来说， localVar属于自由变量(既不是函数参数也不是函数的局部变量的变量)。
-在采用面向堆栈模型来存储局部变量的系统里，当testFn函数调用结束后，其局部变量会从堆栈中移除。
-这样当从外部对innerFn进行函数调用时，会发生错误(因为localVar变量已经不存在了)。
-为了解决上述问题，引入了闭包的概念。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2012/10/20/ecma-262-3-e8-af-a6-e8-a7-a3-e4-b9-8b-e9-97-ad-e5-8c-85/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1629,16 +1634,14 @@ $scope.$watchCollection(&apos;items&apos;,function(){
 
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="Xin" />
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Xin">
           <p class="site-author-name" itemprop="name">Xin</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1696,10 +1699,10 @@ $scope.$watchCollection(&apos;items&apos;,function(){
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
