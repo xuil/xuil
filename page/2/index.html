@@ -212,6 +212,129 @@
             
               
                 
+                <a class="post-title-link" href="/2013/05/15/mysql-root-e5-af-86-e7-a0-81-e5-bf-98-e8-ae-b0/" itemprop="url">
+                  MySQL Root 密码忘记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-05-15T10:11:43+08:00" content="2013-05-15">
+              2013-05-15
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/未分类/" itemprop="url" rel="index">
+                    <span itemprop="name">未分类</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>依照下面步骤，重新设定root密码：</p>
+<p>环境：Ubuntu</p>
+<ol>
+<li>sudo su -</li>
+<li>/etc/init.d/mysql stop</li>
+<li><strong>/usr/sbin/mysqld –skip-grant-tables –user=root &amp;</strong></li>
+<li>mysql -u root</li>
+<li>mysql&gt; <strong>UPDATE mysql.user SET Password=PASSWORD(‘’) WHERE User=’root’;</strong> # 將 root 密码清掉，也可以重新设置</li>
+<li>mysql&gt; quit</li>
+<li>/etc/init.d/mysql restart # 完成.<br>&nbsp;</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2013/03/20/e8-bd-ac-ef-bc-9a-e6-88-91-e7-9c-bc-e4-b8-ad-e7-9a-84-e6-8a-80-e6-9c-af-e9-ab-98-e6-89-8b-ef-bc-88-e6-9c-89-e5-88-a0-e8-8a-82-ef-bc-89/" itemprop="url">
                   转：我眼中的技术高手（有删节）
                 </a>
@@ -275,7 +398,7 @@
       
         
           <p>最近一段时间陆续看了几个框架的源码，没有运用到实际项目中，确实体会不出其中的精髓。看了玉伯的一篇文章，一些看法自己比较认同，之后需要稍稍调整一下方向。</p>
-<p>原文地址：<a href="https://github.com/lifesinger/lifesinger.github.com/issues/126">https://github.com/lifesinger/lifesinger.github.com/issues/126</a><br>
+<p>原文地址：<a href="https://github.com/lifesinger/lifesinger.github.com/issues/126" target="_blank" rel="noopener">https://github.com/lifesinger/lifesinger.github.com/issues/126</a><br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2013/03/20/e8-bd-ac-ef-bc-9a-e6-88-91-e7-9c-bc-e4-b8-ad-e7-9a-84-e6-8a-80-e6-9c-af-e9-ab-98-e6-89-8b-ef-bc-88-e6-9c-89-e5-88-a0-e8-8a-82-ef-bc-89/#more" rel="contents">
               阅读全文 &raquo;
@@ -390,7 +513,7 @@
 
       
         
-          <p>ECMA-262-3详解(<a href="http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contexts/">ECMA-262-3 in detail</a>)系列是学习ECMAScript不可多得的好文章。本文根据其相关章节整理得出。</p>
+          <p>ECMA-262-3详解(<a href="http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contexts/" target="_blank" rel="noopener">ECMA-262-3 in detail</a>)系列是学习ECMAScript不可多得的好文章。本文根据其相关章节整理得出。</p>
 <p>在ECMAScript中，函数不仅可以作为参数，还可以作为返回值。这种特性在传统的面向堆栈的编程结构模型中，会受到很大限制。在面向堆栈的编程语言中，函数的本地变量都是保存在堆栈上的，每当函数激活的时候，这些变量和函数参数都会压栈到该堆栈上。当函数返回的时候，这些参数又会从堆栈中移除。</p>
 <pre class="javascript">
     function testFn() {
@@ -521,7 +644,7 @@
 
       
         
-          <p>ECMA-262-3详解(<a href="http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contexts/">ECMA-262-3 in detail</a>)系列是学习ECMAScript不可多得的好文章。本文根据其相关章节整理得出。</p>
+          <p>ECMA-262-3详解(<a href="http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contexts/" target="_blank" rel="noopener">ECMA-262-3 in detail</a>)系列是学习ECMAScript不可多得的好文章。本文根据其相关章节整理得出。</p>
 <h3 id="执行上下文-Execution-Context"><a href="#执行上下文-Execution-Context" class="headerlink" title="执行上下文(Execution Context)"></a>执行上下文(Execution Context)</h3><p>执行上下文可以理解为代码块的执行环境，代码在执行的过程中需要的变量都在这个执行环境中读取。<br>一系列活动的执行上下文从逻辑上形成一个栈ECStack。 栈底总是全局上下文，栈顶是当前（活动的）执行上下文。<br>函数代码开始执行，当前执行上下文会被压入ECStack；函数返回，退出当前活动的执行上下文时，ECStack就令相应的执行上下文出栈。<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2012/10/19/ecma-262-3-e8-af-a6-e8-a7-a3-e4-b9-8b-e6-89-a7-e8-a1-8c-e4-b8-8a-e4-b8-8b-e6-96-87-e5-92-8c-e4-bd-9c-e7-94-a8-e5-9f-9f-e9-93-be/#more" rel="contents">
@@ -637,7 +760,7 @@
 
       
         
-          <p>ECMA-262-3详解(<a href="http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contexts/">ECMA-262-3 in detail</a>)系列是学习ECMAScript不可多得的好文章。本文根据其相关章节整理得出。</p>
+          <p>ECMA-262-3详解(<a href="http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contexts/" target="_blank" rel="noopener">ECMA-262-3 in detail</a>)系列是学习ECMAScript不可多得的好文章。本文根据其相关章节整理得出。</p>
 <p>很多程序员一看到this关键字，就会把它和面向对象的编程方式联系在一起，即this指向利用构造器新创建出来的对象。<br>在ECMAScript中，this不仅仅只用来表示创建出来的对象。<br>事实上， this这块的内容非常的复杂，它在不同执行上下文的情况下其值都会不同。<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2012/10/18/ecma-262-3-e8-af-a6-e8-a7-a3-e4-b9-8bthis-e5-85-b3-e9-94-ae-e5-ad-97/#more" rel="contents">
@@ -753,7 +876,7 @@
 
       
         
-          <p><a href="http://book.douban.com/subject/5063431/">《犀利开发—jQuery内核详解与实践》</a>是一本jQuery源码分析的书籍，作者的文风以及对知识阐述的准确性一直备受质疑（如果你记得那本<a href="http://book.douban.com/subject/4007372/">《JavaScript征途》</a>在51js论坛上引发的激烈讨论，没错，两本书作者是同一个人）。<br>这本书中”jQuery原型技术分解”部分却是我看过的jQuery源码分析文章中比较好的，作者的分析角度和分析过程是很值得学习的。摘录部分内容（对作者观点不同之处有删改）：<br>
+          <p><a href="http://book.douban.com/subject/5063431/" target="_blank" rel="noopener">《犀利开发—jQuery内核详解与实践》</a>是一本jQuery源码分析的书籍，作者的文风以及对知识阐述的准确性一直备受质疑（如果你记得那本<a href="http://book.douban.com/subject/4007372/" target="_blank" rel="noopener">《JavaScript征途》</a>在51js论坛上引发的激烈讨论，没错，两本书作者是同一个人）。<br>这本书中”jQuery原型技术分解”部分却是我看过的jQuery源码分析文章中比较好的，作者的分析角度和分析过程是很值得学习的。摘录部分内容（对作者观点不同之处有删改）：<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2012/09/10/jquery-e6-ba-90-e7-a0-81-e5-88-9d-e6-8e-a2/#more" rel="contents">
               阅读全文 &raquo;
@@ -868,7 +991,7 @@
 
       
         
-          <p><a href="http://book.douban.com/subject/5362856/">高性能JavaScript</a>一书中提到了对循环进行优化，策略之一就是减少循环迭代次数。<br>“达夫设备”（Duff’s Device）通过增加每次循环中的处理工作，可以达到减少循环次数的目的。<br>
+          <p><a href="http://book.douban.com/subject/5362856/" target="_blank" rel="noopener">高性能JavaScript</a>一书中提到了对循环进行优化，策略之一就是减少循环迭代次数。<br>“达夫设备”（Duff’s Device）通过增加每次循环中的处理工作，可以达到减少循环次数的目的。<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2012/09/07/duffs-device-in-javascript/#more" rel="contents">
               阅读全文 &raquo;
@@ -983,7 +1106,7 @@
 
       
         
-          <p><a href="http://book.douban.com/subject/7069390/">Core HTML5 Canvas</a>一书中建议读者使用canvas时要留意宽高的设定：</p>
+          <p><a href="http://book.douban.com/subject/7069390/" target="_blank" rel="noopener">Core HTML5 Canvas</a>一书中建议读者使用canvas时要留意宽高的设定：</p>
 <blockquote>
 <p>It’s a good idea to use the canvas element’s width and height attributes to size the element, instead of using CSS. If you use CSS to size the element without also specifying the width and height attributes of the canvas element, the element size will not match the canvas’s drawing surface size, and the browser will scale the latter to fit the former, most likely resulting in surprising and unwanted effects.<br>作者提出在属性中设置canvas宽高同在css样式中设置宽高是有区别的，并相应定义了两个概念（element size和drawing surface size）。<br>
           <div class="post-more-link text-center">
@@ -1248,124 +1371,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2012/08/14/e5-a4-9a-e8-be-b9-e5-bd-a2-e7-9a-84-e4-b8-ad-e5-bf-83/" itemprop="url">
-                  多边形的中心
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-08-14T17:51:48+08:00" content="2012-08-14">
-              2012-08-14
-            </time>
-          </span>
-
-          
-            <span class="post-category">
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/未分类/" itemprop="url" rel="index">
-                    <span itemprop="name">未分类</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>一个由 N 个顶点<em>( x<sub>i</sub> , y<sub>i</sub> )</em> 确定的不自交闭多边形的中心能如下计算:</p>
-<p>记号 <em>( x<sub>N</sub> , y<sub>N</sub> )</em>与顶点 <em>( x<sub>0</sub> , y<sub>0</sub> )</em>相同。多边形的面积为：</p>
-<p><dl> <dd><img src="http://upload.wikimedia.org/wikipedia/zh/math/6/7/0/6707070e31defe1f3e5e4a7a6b044c88.png" alt="A = \frac{1}{2}\sum_{i=0}^{N-1} (x_i\ y_{i+1} - x_{i+1}\ y_i)"></dd> </dl>多边形的中心由下式给出：</p>
-<p><dl> <dd><img src="http://upload.wikimedia.org/wikipedia/zh/math/0/2/c/02c362b6868aa409ba4c006cf4677a3a.png" alt="C_x = \frac{1}{6A}\sum_{i=0}^{N-1}(x_i+x_{i+1})(x_i\ y_{i+1} - x_{i+1}\ y_i)"></dd> </dl> <dl> <dd><img src="http://upload.wikimedia.org/wikipedia/zh/math/8/5/b/85b6bac3e9d11333a9375eec98eece01.png" alt="C_y = \frac{1}{6A}\sum_{i=0}^{N-1}(y_i+y_{i+1})(x_i\ y_{i+1} - x_{i+1}\ y_i)"></dd> </dl><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2012/08/14/e5-a4-9a-e8-be-b9-e5-bd-a2-e7-9a-84-e4-b8-ad-e5-bf-83/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </p></div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1409,7 +1414,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

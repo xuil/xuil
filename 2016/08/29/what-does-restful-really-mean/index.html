@@ -67,7 +67,7 @@
 <meta property="og:site_name" content="Web Dev Life">
 <meta property="og:description" content="本文转载自：众成翻译译者：poppinlp链接：http://www.zcfy.cc/article/1063原文：https://www.sitepoint.com/what-does-restful-really-mean/  上个月我参加了 Skillsmatter 的 RESTful 微服务培训。在课程中，我们讨论了 REST API 通常可以给网络应用提供什么，并特别讨论了和微服务通讯">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-08-29T03:47:10.000Z">
+<meta property="og:updated_time" content="2019-04-10T03:08:39.459Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="什么是RESTful">
 <meta name="twitter:description" content="本文转载自：众成翻译译者：poppinlp链接：http://www.zcfy.cc/article/1063原文：https://www.sitepoint.com/what-does-restful-really-mean/  上个月我参加了 Skillsmatter 的 RESTful 微服务培训。在课程中，我们讨论了 REST API 通常可以给网络应用提供什么，并特别讨论了和微服务通讯">
@@ -254,19 +254,20 @@
 
       
         <blockquote>
-<p>本文转载自：<a href="http://www.zcfy.cc" target="_blank" rel="external">众成翻译</a><br>译者：<a href="http://www.zcfy.cc/@poppinlp" target="_blank" rel="external">poppinlp</a><br>链接：<a href="http://www.zcfy.cc/article/1063" target="_blank" rel="external">http://www.zcfy.cc/article/1063</a><br>原文：<a href="https://www.sitepoint.com/what-does-restful-really-mean/" target="_blank" rel="external">https://www.sitepoint.com/what-does-restful-really-mean/</a></p>
+<p>本文转载自：<a href="http://www.zcfy.cc" target="_blank" rel="noopener">众成翻译</a><br>译者：<a href="http://www.zcfy.cc/@poppinlp" target="_blank" rel="noopener">poppinlp</a><br>链接：<a href="http://www.zcfy.cc/article/1063" target="_blank" rel="noopener">http://www.zcfy.cc/article/1063</a><br>原文：<a href="https://www.sitepoint.com/what-does-restful-really-mean/" target="_blank" rel="noopener">https://www.sitepoint.com/what-does-restful-really-mean/</a></p>
 </blockquote>
-<p>上个月我参加了 <a href="https://skillsmatter.com" target="_blank" rel="external">Skillsmatter</a> 的 <a href="https://skillsmatter.com/courses/541-fast-track-to-restful-to-microservices" target="_blank" rel="external">RESTful 微服务培训</a>。在课程中，我们讨论了 REST API 通常可以给网络应用提供什么，并特别讨论了和微服务通讯相关的内容。个人从这次课程中得到的最大收获是，对于 REST 是什么以及它的利弊有了更好的理解。</p>
+<p>上个月我参加了 <a href="https://skillsmatter.com" target="_blank" rel="noopener">Skillsmatter</a> 的 <a href="https://skillsmatter.com/courses/541-fast-track-to-restful-to-microservices" target="_blank" rel="noopener">RESTful 微服务培训</a>。在课程中，我们讨论了 REST API 通常可以给网络应用提供什么，并特别讨论了和微服务通讯相关的内容。个人从这次课程中得到的最大收获是，对于 REST 是什么以及它的利弊有了更好的理解。</p>
 <p>在我职业生涯的大部分时候，我专注于移动技术，也就是，作为服务 API 的消费者。我之前认为我使用过的大多数 API 都是 RESTful 的，但现在我觉得它们 99% 都和 RESTful 相距甚远（因为服务端添加了一些东西，导致客户端崩溃，这听起来很耳熟吧？）。</p>
 <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>REST 这个术语表示 “REpresentational State Transfer”。它的一个可能的正式定义如下：</p>
 <blockquote>
 <p>基于在客户端和服务端之间转移状态（文档），从而使得应用程序状态产生进展的结构化 API 风格。<br>Architectural API style based on transferring a representation of state (documents) between client and server in order to progress the state of an application.</p>
 </blockquote>
+<a id="more"></a>
 <h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><p>如果希望应用是 RESTful 的，那么需要遵守下面 REST 的约束。遵守这些约束可以使得分布式超媒体系统拥有下列令人激动的非功能性特性：性能优良、可伸缩性、简易性、可扩展性、可视性、可移植性和可靠性。</p>
 <ul>
 <li>客户端-服务端</li>
 </ul>
-<p>CS 模型利于分离关注点。客户端可以不用关注数据储存，因此，客户端的代码可以有很好的<em>移植性</em>。另一方面，服务端不用关注用户界面和用户状态，使得服务端更加<em>简洁</em>和<em>可伸缩</em>。服务端和客户端只要符合已经定义的协议，便可独立开发。</p>
+<p>CS 模型利于分离关注点。客户端可以不用关注数据储存，因此，客户端的代码可以有很好的<em>移植性</em>。另一方面，服务端不用关注用户界面和用户状态，使得服务端更加_简洁_和<em>可伸缩</em>。服务端和客户端只要符合已经定义的协议，便可独立开发。</p>
 <ul>
 <li>无状态</li>
 </ul>
@@ -275,19 +276,19 @@
 <ul>
 <li>可缓存的</li>
 </ul>
-<p>REST 应用是个网络系统，因此客户端和中间层可以缓存响应。响应本身需要被定义为可缓存的，如果不是的话，那么需要禁止客户端重用以前的数据，这会降低<em>可靠性</em>。如果缓存中的旧数据和本应产生的数据显著不同，那么请求应该给服务端。缓存可以减少一些服务端和客户端的交互，因此能提高<em>可伸缩性</em>和<em>效率</em>，并且因为降低了平均延迟，所以产生用户可感知的<em>性能</em>提升。</p>
+<p>REST 应用是个网络系统，因此客户端和中间层可以缓存响应。响应本身需要被定义为可缓存的，如果不是的话，那么需要禁止客户端重用以前的数据，这会降低<em>可靠性</em>。如果缓存中的旧数据和本应产生的数据显著不同，那么请求应该给服务端。缓存可以减少一些服务端和客户端的交互，因此能提高<em>可伸缩性</em>和_效率<em>，并且因为降低了平均延迟，所以产生用户可感知的</em>性能_提升。</p>
 <ul>
 <li>统一接口</li>
 </ul>
-<p>使用统一接口可以让结构简化并且解耦，有利于不同部分独立的升级。后文中会介绍的URI、资源和超媒体可以构造一个标准的接口，提升交互的<em>可视性</em>，<em>简化</em>整个系统结构以及有利于独立开发。但作为代价的是，因为信息是按照一个标准格式传输，而不是应用需要的特定数据，这使得<em>效率</em>方面有点降低。</p>
+<p>使用统一接口可以让结构简化并且解耦，有利于不同部分独立的升级。后文中会介绍的URI、资源和超媒体可以构造一个标准的接口，提升交互的<em>可视性</em>，_简化<em>整个系统结构以及有利于独立开发。但作为代价的是，因为信息是按照一个标准格式传输，而不是应用需要的特定数据，这使得</em>效率_方面有点降低。</p>
 <ul>
 <li>分层系统</li>
 </ul>
-<p>使用分层系统可以通过限制组件的行为来降低复杂性，例如每个元素的权限不能超越其直接层。通过限制系统其他部分的消息，有利于底层的独立性。层可以封装以前的组件，并使新服务和以前的客户端分离。中间层可以通过网络负载均衡来提高<em>可伸缩性</em>。分层系统的主要代价是对于数据处理增加了一些开销和延迟，因此降低了用户可感知的<em>性能</em>。</p>
+<p>使用分层系统可以通过限制组件的行为来降低复杂性，例如每个元素的权限不能超越其直接层。通过限制系统其他部分的消息，有利于底层的独立性。层可以封装以前的组件，并使新服务和以前的客户端分离。中间层可以通过网络负载均衡来提高<em>可伸缩性</em>。分层系统的主要代价是对于数据处理增加了一些开销和延迟，因此降低了用户可感知的_性能_。</p>
 <ul>
 <li>按需代码（可选）</li>
 </ul>
-<p>REST 允许客户端通过下载并执行脚本代码来扩展它们的功能。这<em>简化</em>了客户端并提高了<em>可扩展性</em>。另一方面，它降低了<em>可视性</em>，这也是为什么这是非必须的约束。</p>
+<p>REST 允许客户端通过下载并执行脚本代码来扩展它们的功能。这_简化<em>了客户端并提高了</em>可扩展性<em>。另一方面，它降低了</em>可视性_，这也是为什么这是非必须的约束。</p>
 <h2 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h2><p>REST 有一些常用的用于构建无状态、可伸缩并且简单的网络 API 的元素。</p>
 <ul>
 <li><p>HTTP</p>
@@ -317,7 +318,7 @@
 <h5 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h5><p>通常用于在服务端创建状态。它<strong>既不安全也不幂等</strong>。因此多个请求将会在服务器上创建多个资源。作为一个不幂等的操作，POST 不应该用于处理和金钱相关的操作，例如如果付款请求失败了多次，那么我们可能潜在的消费了多次。</p>
 <h5 id="PUT"><a href="#PUT" class="headerlink" title="PUT"></a>PUT</h5><p>通常用于在服务端更新状态，也可以用来创建状态。它是<strong>幂等</strong>的，但<strong>不安全</strong>，因为它修改了服务端的状态。由于 PUT 是幂等的，使得它成为与金钱相关操作的一个不错的选择。</p>
 <h5 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h5><p>通常用于在服务端删除状态。它是<strong>幂等</strong>的，但<strong>不安全</strong>，因为它在服务端删除了状态。它的幂等在于删除之前已经删除的状态不会产生进一步的影响。</p>
-<h4 id="响应状态码"><a href="#响应状态码" class="headerlink" title="响应状态码"></a>响应状态码</h4><p><a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" target="_blank" rel="external">HTTP 状态码</a>提供了对于请求资源的响应状态的元数据。它们是使得网络成为分布式系统的平台的一部分。它们分为以下几个类别：</p>
+<h4 id="响应状态码"><a href="#响应状态码" class="headerlink" title="响应状态码"></a>响应状态码</h4><p><a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" target="_blank" rel="noopener">HTTP 状态码</a>提供了对于请求资源的响应状态的元数据。它们是使得网络成为分布式系统的平台的一部分。它们分为以下几个类别：</p>
 <ul>
 <li><p><code>1xx</code> – 元数据</p>
 </li>
@@ -330,7 +331,7 @@
 <li><p><code>5xx</code> – 服务端错误</p>
 </li>
 </ul>
-<h4 id="头信息"><a href="#头信息" class="headerlink" title="头信息"></a>头信息</h4><p><a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html" target="_blank" rel="external">HTTP 头</a> 是请求和响应中用于传输额外信息的地方。头信息由一堆大小写不敏感的名字后面跟着冒号和它的值组成。头信息可以分组为：</p>
+<h4 id="头信息"><a href="#头信息" class="headerlink" title="头信息"></a>头信息</h4><p><a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html" target="_blank" rel="noopener">HTTP 头</a> 是请求和响应中用于传输额外信息的地方。头信息由一堆大小写不敏感的名字后面跟着冒号和它的值组成。头信息可以分组为：</p>
 <ul>
 <li><p>普通头信息：可用于请求和响应，但和主体中传输的数据没有关联。</p>
 </li>
@@ -352,7 +353,7 @@
 <p>媒体类型和链接定义了应用服务端与客户端之间的协议。客户端通过使用链接，操纵应用的状态，从而与系统交互。这就是<strong>HATEOAS</strong>（超媒体作为应用状态的引擎）真正的意思。</p>
 <p>超媒体（除了已经定义的元素）是 RESTful 真正的意义。</p>
 <h3 id="Richardson-成熟度模型"><a href="#Richardson-成熟度模型" class="headerlink" title="Richardson 成熟度模型"></a>Richardson 成熟度模型</h3><p>这个模型对于我理解什么是 REST 以及如何解释一个网络应用的属性提供了很大的帮助。它将 REST 系统的组件分成了 3 个等级，并且提供一种理解 RESTful 思想的观点、概念和优势的方法。我觉得相对于一个评估机制，它更像是一个教育模式。</p>
-<p>关于 Richardson 成熟度模型比较详细的解释可以在 <a href="http://martinfowler.com/articles/richardsonMaturityModel.html" target="_blank" rel="external">Martin Fowler 的博客</a>中找到。</p>
+<p>关于 Richardson 成熟度模型比较详细的解释可以在 <a href="http://martinfowler.com/articles/richardsonMaturityModel.html" target="_blank" rel="noopener">Martin Fowler 的博客</a>中找到。</p>
 
       
     </div>
@@ -454,7 +455,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -277,8 +277,8 @@
 <p>注意：try/catch/finally中的括号是不能省略的。<br><a id="more"></a><br>对于异常标示符(the exception identifier，例如catch(e)中的e)，他的作用域仅限于catch语句块内(引自MDN)</p>
 <blockquote>
 <p>This identifier is local to the catch clause. That is, it is created when the catch clause is entered, and after the catch clause finishes executing, the identifier is no longer available.<br>MSDN中没有详细说明e，只给出了catch语句执行和不执行的情况。<br>If an error occurs in the tryStatements, program control is passed to catchStatements for processing. The initial value of exception is the value of the error that occurred in tryStatements. If no error occurs, catchStatements are never executed.<br>补充Ecma中对异常标示符的描述<br>When a catch clause catches an exception, its Identifier is bound to that exception.<br>注意下面的代码，IE你又调皮了…</p>
-<p><pre lang="javascript"><br>var e = 1;<br>function test() {<br>    try {</pre></p>
 </blockquote>
+<p><pre lang="javascript"><br>var e = 1;<br>function test() {<br>    try {</pre></p>
 <pre><code>}catch(e){
 
 }
@@ -391,7 +391,7 @@ alert(e);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

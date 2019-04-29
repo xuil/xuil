@@ -212,6 +212,107 @@
             
               
                 
+                <a class="post-title-link" href="/2019/04/29/css-em/" itemprop="url">
+                  CSS em 概述
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-04-29T11:28:22+08:00" content="2019-04-29">
+              2019-04-29
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>em是相对长度单位，是排版中使用的一种度量方式，基准值是当前元素的字号大小。<br>在CSS中，1em表示当前元素的字号大小，实际值取决于在哪个元素上应用。</p>
+<h4 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;padding-em&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">.padding-em&#123;</span><br><span class="line">    font-size: 12px;</span><br><span class="line">    padding: 1em</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>把padding赋值为1em，乘以字号，得到一个值为16px的padding计算值</p>
+<h4 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h4><p>例如我们将font-size也使用相对单位，然后再设置其他属性会有怎样的表现？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;font-size:12px&quot;&gt;</span><br><span class="line">  &lt;div style=&quot;font-size:2em; line-height:2em&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>我们将内部元素样式计算分为两步：</p>
+<p>1、计算font-size: 基于继承的字号大小 2em = 2×12px = 24px<br>2、计算其他属性值： 基于当前的字号大小 2em = 2×24px = 48px</p>
+<p>这里要注意的是，尽管font-size和line-height声明时em值是一样的，但它们的计算值是不一样的。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/09/css-box-model/" itemprop="url">
                   CSS盒模型
                 </a>
@@ -361,109 +462,20 @@
 
       
         
-          
-            <blockquote>
-<p>本文转载自：<a href="http://www.zcfy.cc" target="_blank" rel="external">众成翻译</a><br>译者：<a href="http://www.zcfy.cc/@poppinlp" target="_blank" rel="external">poppinlp</a><br>链接：<a href="http://www.zcfy.cc/article/1063" target="_blank" rel="external">http://www.zcfy.cc/article/1063</a><br>原文：<a href="https://www.sitepoint.com/what-does-restful-really-mean/" target="_blank" rel="external">https://www.sitepoint.com/what-does-restful-really-mean/</a></p>
+          <blockquote>
+<p>本文转载自：<a href="http://www.zcfy.cc" target="_blank" rel="noopener">众成翻译</a><br>译者：<a href="http://www.zcfy.cc/@poppinlp" target="_blank" rel="noopener">poppinlp</a><br>链接：<a href="http://www.zcfy.cc/article/1063" target="_blank" rel="noopener">http://www.zcfy.cc/article/1063</a><br>原文：<a href="https://www.sitepoint.com/what-does-restful-really-mean/" target="_blank" rel="noopener">https://www.sitepoint.com/what-does-restful-really-mean/</a></p>
 </blockquote>
-<p>上个月我参加了 <a href="https://skillsmatter.com" target="_blank" rel="external">Skillsmatter</a> 的 <a href="https://skillsmatter.com/courses/541-fast-track-to-restful-to-microservices" target="_blank" rel="external">RESTful 微服务培训</a>。在课程中，我们讨论了 REST API 通常可以给网络应用提供什么，并特别讨论了和微服务通讯相关的内容。个人从这次课程中得到的最大收获是，对于 REST 是什么以及它的利弊有了更好的理解。</p>
+<p>上个月我参加了 <a href="https://skillsmatter.com" target="_blank" rel="noopener">Skillsmatter</a> 的 <a href="https://skillsmatter.com/courses/541-fast-track-to-restful-to-microservices" target="_blank" rel="noopener">RESTful 微服务培训</a>。在课程中，我们讨论了 REST API 通常可以给网络应用提供什么，并特别讨论了和微服务通讯相关的内容。个人从这次课程中得到的最大收获是，对于 REST 是什么以及它的利弊有了更好的理解。</p>
 <p>在我职业生涯的大部分时候，我专注于移动技术，也就是，作为服务 API 的消费者。我之前认为我使用过的大多数 API 都是 RESTful 的，但现在我觉得它们 99% 都和 RESTful 相距甚远（因为服务端添加了一些东西，导致客户端崩溃，这听起来很耳熟吧？）。</p>
 <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>REST 这个术语表示 “REpresentational State Transfer”。它的一个可能的正式定义如下：</p>
 <blockquote>
 <p>基于在客户端和服务端之间转移状态（文档），从而使得应用程序状态产生进展的结构化 API 风格。<br>Architectural API style based on transferring a representation of state (documents) between client and server in order to progress the state of an application.</p>
 </blockquote>
-<h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><p>如果希望应用是 RESTful 的，那么需要遵守下面 REST 的约束。遵守这些约束可以使得分布式超媒体系统拥有下列令人激动的非功能性特性：性能优良、可伸缩性、简易性、可扩展性、可视性、可移植性和可靠性。</p>
-<ul>
-<li>客户端-服务端</li>
-</ul>
-<p>CS 模型利于分离关注点。客户端可以不用关注数据储存，因此，客户端的代码可以有很好的<em>移植性</em>。另一方面，服务端不用关注用户界面和用户状态，使得服务端更加<em>简洁</em>和<em>可伸缩</em>。服务端和客户端只要符合已经定义的协议，便可独立开发。</p>
-<ul>
-<li>无状态</li>
-</ul>
-<p>在不同请求间，客户端的上下文不会保存在服务端。每个请求都需要带上所需的全部数据。无状态的服务端使得服务器可以及时回收资源，使得实现更加简洁并且<em>可伸缩</em>。<em>可靠性</em>使得从部分错误中恢复变得容易。<em>可视性</em>指的是监控系统不必超出某个单独的请求就能确定该请求的性质。</p>
-<p>无状态服务端的一个缺点是，因为每次请求都发送了所有需要的数据，那么会降低一点网络性能。</p>
-<ul>
-<li>可缓存的</li>
-</ul>
-<p>REST 应用是个网络系统，因此客户端和中间层可以缓存响应。响应本身需要被定义为可缓存的，如果不是的话，那么需要禁止客户端重用以前的数据，这会降低<em>可靠性</em>。如果缓存中的旧数据和本应产生的数据显著不同，那么请求应该给服务端。缓存可以减少一些服务端和客户端的交互，因此能提高<em>可伸缩性</em>和<em>效率</em>，并且因为降低了平均延迟，所以产生用户可感知的<em>性能</em>提升。</p>
-<ul>
-<li>统一接口</li>
-</ul>
-<p>使用统一接口可以让结构简化并且解耦，有利于不同部分独立的升级。后文中会介绍的URI、资源和超媒体可以构造一个标准的接口，提升交互的<em>可视性</em>，<em>简化</em>整个系统结构以及有利于独立开发。但作为代价的是，因为信息是按照一个标准格式传输，而不是应用需要的特定数据，这使得<em>效率</em>方面有点降低。</p>
-<ul>
-<li>分层系统</li>
-</ul>
-<p>使用分层系统可以通过限制组件的行为来降低复杂性，例如每个元素的权限不能超越其直接层。通过限制系统其他部分的消息，有利于底层的独立性。层可以封装以前的组件，并使新服务和以前的客户端分离。中间层可以通过网络负载均衡来提高<em>可伸缩性</em>。分层系统的主要代价是对于数据处理增加了一些开销和延迟，因此降低了用户可感知的<em>性能</em>。</p>
-<ul>
-<li>按需代码（可选）</li>
-</ul>
-<p>REST 允许客户端通过下载并执行脚本代码来扩展它们的功能。这<em>简化</em>了客户端并提高了<em>可扩展性</em>。另一方面，它降低了<em>可视性</em>，这也是为什么这是非必须的约束。</p>
-<h2 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h2><p>REST 有一些常用的用于构建无状态、可伸缩并且简单的网络 API 的元素。</p>
-<ul>
-<li><p>HTTP</p>
-</li>
-<li><p>Resources</p>
-</li>
-<li><p>URIs</p>
-</li>
-<li><p>Hypermedia</p>
-</li>
-</ul>
-<h3 id="HTTP-文档传输应用协议"><a href="#HTTP-文档传输应用协议" class="headerlink" title="HTTP - 文档传输应用协议"></a>HTTP - 文档传输应用协议</h3><p>因为 HTTP 的一些优势，REST 通常使用 HTTP 作为传输协议。它包括 HTTP 动词、状态码和头部信息。</p>
-<h4 id="动词"><a href="#动词" class="headerlink" title="动词"></a>动词</h4><p>不同于在我们的网络服务中对每个可能的操作定义一堆新的动词，HTTP 定义了一系列标准的动词用于以相同的方式处理相似的场景，从而移除不必要的变量并创建一个更加可懂的 API。每个动词包含两个属性的不同的组合，从而使得它们适用于不同的场景。</p>
-<ul>
-<li>幂等</li>
-</ul>
-<blockquote>
-<p>在失败的时候，操作可以被重复</p>
-</blockquote>
-<ul>
-<li>安全</li>
-</ul>
-<blockquote>
-<p>操作由客户端负责，无副作用</p>
-</blockquote>
-<h5 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h5><p>通常用于从服务端读取状态。是个<strong>安全</strong>操作，执行多次并没有修改和污染数据的风险，因为执行一次和执行十次的影响是一样的。同时作为一个<strong>幂等</strong>操作，对于相同的多次请求的结果和一次请求是一样的。</p>
-<h5 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h5><p>通常用于在服务端创建状态。它<strong>既不安全也不幂等</strong>。因此多个请求将会在服务器上创建多个资源。作为一个不幂等的操作，POST 不应该用于处理和金钱相关的操作，例如如果付款请求失败了多次，那么我们可能潜在的消费了多次。</p>
-<h5 id="PUT"><a href="#PUT" class="headerlink" title="PUT"></a>PUT</h5><p>通常用于在服务端更新状态，也可以用来创建状态。它是<strong>幂等</strong>的，但<strong>不安全</strong>，因为它修改了服务端的状态。由于 PUT 是幂等的，使得它成为与金钱相关操作的一个不错的选择。</p>
-<h5 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h5><p>通常用于在服务端删除状态。它是<strong>幂等</strong>的，但<strong>不安全</strong>，因为它在服务端删除了状态。它的幂等在于删除之前已经删除的状态不会产生进一步的影响。</p>
-<h4 id="响应状态码"><a href="#响应状态码" class="headerlink" title="响应状态码"></a>响应状态码</h4><p><a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" target="_blank" rel="external">HTTP 状态码</a>提供了对于请求资源的响应状态的元数据。它们是使得网络成为分布式系统的平台的一部分。它们分为以下几个类别：</p>
-<ul>
-<li><p><code>1xx</code> – 元数据</p>
-</li>
-<li><p><code>2xx</code> – 成功</p>
-</li>
-<li><p><code>3xx</code> – 重定向</p>
-</li>
-<li><p><code>4xx</code> – 客户端错误</p>
-</li>
-<li><p><code>5xx</code> – 服务端错误</p>
-</li>
-</ul>
-<h4 id="头信息"><a href="#头信息" class="headerlink" title="头信息"></a>头信息</h4><p><a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html" target="_blank" rel="external">HTTP 头</a> 是请求和响应中用于传输额外信息的地方。头信息由一堆大小写不敏感的名字后面跟着冒号和它的值组成。头信息可以分组为：</p>
-<ul>
-<li><p>普通头信息：可用于请求和响应，但和主体中传输的数据没有关联。</p>
-</li>
-<li><p>请求头信息：包含关于发送请求的客户端或者抓取的资源相关的更多信息。</p>
-</li>
-<li><p>响应头信息：包含响应相关的额外信息。</p>
-</li>
-<li><p>实体头信息：关于主体中实体的信息，例如 content-length 或者 MIME-type。</p>
-</li>
-</ul>
-<h3 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h3><p>资源是系统暴露出来的任何含有身份的东西。资源提供了客户端和应用域的关联方式。一张图片、一个电子表格、一个服务或者一个其他资源的集合这些都是资源。资源的获取和发送通过一定的表现形式（例如 XML、JSON 等）。</p>
-<p>根据 “Pass-by-value” 的观点，我们处理资源的表现形式，而不是资源本身。遵循之前 REST 的定义，资源表示为那些网络间传递的文档，以完成工作。服务端关注资源状态，因为它表现了域状态，客户端只是抓取或者发送资源的表现形式以更新应用状态。另一方面，客户端关注应用状态，因为它表现了达到应用程序特定目标的过程。</p>
-<p>资源应该被命名为名词，因为它们代表了系统域特定的概念并且可以通过 URI 来定位。</p>
-<h3 id="URI（统一资源标识符）"><a href="#URI（统一资源标识符）" class="headerlink" title="URI（统一资源标识符）"></a>URI（统一资源标识符）</h3><p>URI 可以区分各个资源。为了获取并且修改某个资源，那么它至少需要一个访问方式。这个方式由 <code>protocol</code> + <code>host</code> + <code>path</code> 组成。</p>
-<p>客户端不应该与特定的资源 URI 关联，因为它们可以在服务端被修改。这也就是超媒体最大的优势，因为它提供了解除客户端和特定 URI 关联的方式，并且为应用协议添加了语义。</p>
-<h3 id="超媒体"><a href="#超媒体" class="headerlink" title="超媒体"></a>超媒体</h3><p>超媒体通过在响应中使用超媒体控制信息（链接和表格），来通知客户端下一步可以做什么，以及在哪个 URI 去做。特定应用中具体的超媒体信息格式在应用的媒体类型中定义。</p>
-<p>超媒体链接由用于指定 URI 来获取链接资源的 <code>href</code> 属性和用于定义关系的意义，从而为应用中状态的转移添加语义的 <code>rel</code> 属性组成。链接的使用允许服务端在不破坏现有客户端的基础上，通过在响应中包含新的链接来推广新的特性。当服务端继续维持之前的响应中的链接，客户端便会像新的状态被添加进来之前一样。直到客户端需要使用新的状态，才需要升级。另一个超媒体的好处是它通过提供一种创建可发现并且自记录的协议引入了可发现性（discoverability）。</p>
-<p>客户端通过固定的 URL 开始与应用交互，从此开始，之后客户端的所有行为遵循服务端在响应中提供的通过媒体类型格式化的链接。</p>
-<p>媒体类型和链接定义了应用服务端与客户端之间的协议。客户端通过使用链接，操纵应用的状态，从而与系统交互。这就是<strong>HATEOAS</strong>（超媒体作为应用状态的引擎）真正的意思。</p>
-<p>超媒体（除了已经定义的元素）是 RESTful 真正的意义。</p>
-<h3 id="Richardson-成熟度模型"><a href="#Richardson-成熟度模型" class="headerlink" title="Richardson 成熟度模型"></a>Richardson 成熟度模型</h3><p>这个模型对于我理解什么是 REST 以及如何解释一个网络应用的属性提供了很大的帮助。它将 REST 系统的组件分成了 3 个等级，并且提供一种理解 RESTful 思想的观点、概念和优势的方法。我觉得相对于一个评估机制，它更像是一个教育模式。</p>
-<p>关于 Richardson 成熟度模型比较详细的解释可以在 <a href="http://martinfowler.com/articles/richardsonMaturityModel.html" target="_blank" rel="external">Martin Fowler 的博客</a>中找到。</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/29/what-does-restful-really-mean/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -684,9 +696,9 @@
 <p>directive设置replace为true</p>
 <p>模板第一行为注释</p>
 <p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">app.directive(&quot;helloWorld&quot;, function() &#123;</div><div class="line">  return &#123;</div><div class="line">    restrict: &quot;A&quot;,</div><div class="line">    template: &quot;&lt;!-- Hello world directive --&gt;&lt;div&gt;Hello world&lt;/div&gt;&quot;,</div><div class="line">    replace: true</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">app.directive(&quot;helloWorld&quot;, function() &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    restrict: &quot;A&quot;,</span><br><span class="line">    template: &quot;&lt;!-- Hello world directive --&gt;&lt;div&gt;Hello world&lt;/div&gt;&quot;,</span><br><span class="line">    replace: true</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>看下错误提示处的代码，发现并不会对注释做处理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//angular代码</div><div class="line">if (directive.replace) &#123;</div><div class="line">    replaceDirective = directive;</div><div class="line">    $template = jqLite(&apos;&lt;div&gt;&apos; +</div><div class="line">                        trim(directiveValue) +</div><div class="line">                    &apos;&lt;/div&gt;&apos;).contents();</div><div class="line">    compileNode = $template[0];</div><div class="line"></div><div class="line">    if ($template.length != 1 || compileNode.nodeType !== 1) &#123;</div><div class="line">        throw $compileMinErr(&apos;tplrt&apos;,</div><div class="line">            &quot;Template for directive &apos;&#123;0&#125;&apos; must have exactly one root element. &#123;1&#125;&quot;,</div><div class="line">            directiveName, &apos;&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//angular代码</span><br><span class="line">if (directive.replace) &#123;</span><br><span class="line">    replaceDirective = directive;</span><br><span class="line">    $template = jqLite(&apos;&lt;div&gt;&apos; +</span><br><span class="line">                        trim(directiveValue) +</span><br><span class="line">                    &apos;&lt;/div&gt;&apos;).contents();</span><br><span class="line">    compileNode = $template[0];</span><br><span class="line"></span><br><span class="line">    if ($template.length != 1 || compileNode.nodeType !== 1) &#123;</span><br><span class="line">        throw $compileMinErr(&apos;tplrt&apos;,</span><br><span class="line">            &quot;Template for directive &apos;&#123;0&#125;&apos; must have exactly one root element. &#123;1&#125;&quot;,</span><br><span class="line">            directiveName, &apos;&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><ul>
 <li>去掉注释</li>
 <li>replace设置为false</li>
@@ -810,13 +822,13 @@
 <ul>
 <li>基本方法put/get</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">   var app = angular.module(&quot;myApp&quot;, [&apos;ngCookies&apos;]);</div><div class="line"></div><div class="line">   app.controller(&quot;myCtrl&quot;, [&apos;$cookies&apos;, function($cookies) &#123;</div><div class="line">   	//set cookie</div><div class="line">$cookies.put(&quot;key&quot;,&quot;value&quot;);</div><div class="line">//get cookie</div><div class="line">$cookies.get(&quot;key&quot;); //value</div><div class="line"></div><div class="line"></div><div class="line">   &#125;]);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   var app = angular.module(&quot;myApp&quot;, [&apos;ngCookies&apos;]);</span><br><span class="line"></span><br><span class="line">   app.controller(&quot;myCtrl&quot;, [&apos;$cookies&apos;, function($cookies) &#123;</span><br><span class="line">   	//set cookie</span><br><span class="line">$cookies.put(&quot;key&quot;,&quot;value&quot;);</span><br><span class="line">//get cookie</span><br><span class="line">$cookies.get(&quot;key&quot;); //value</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   &#125;]);</span><br></pre></td></tr></table></figure>
 <ul>
 <li>存取对象，putObject/getObject<br>将Object序列化/反序列化操作后，进行put/get操作，参看源码</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">putObject: function(key, value, options) &#123;</div><div class="line">  this.put(key, angular.toJson(value), options);</div><div class="line">&#125;</div><div class="line"></div><div class="line">getObject: function(key) &#123;</div><div class="line">  var value = this.get(key);</div><div class="line">  return value ? angular.fromJson(value) : value;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">putObject: function(key, value, options) &#123;</span><br><span class="line">  this.put(key, angular.toJson(value), options);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getObject: function(key) &#123;</span><br><span class="line">  var value = this.get(key);</span><br><span class="line">  return value ? angular.fromJson(value) : value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="cookieStore"><a href="#cookieStore" class="headerlink" title="$cookieStore"></a>$cookieStore</h4><p>$cookieStore服务已经不建议使用，其底层使用的就是$cookie的方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">get: function(key) &#123;</div><div class="line">  return $cookies.getObject(key);</div><div class="line">&#125;</div><div class="line"></div><div class="line">put: function(key, value) &#123;</div><div class="line">  $cookies.putObject(key, value);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">get: function(key) &#123;</span><br><span class="line">  return $cookies.getObject(key);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">put: function(key, value) &#123;</span><br><span class="line">  $cookies.putObject(key, value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在控制台中使用$cookieStore服务读取cookie时遇到过错误提示，通过上面的分析我们知道是cookie值反序列化时出现了异常，改用$cookie.get解决了问题。</p>
 
           
@@ -1446,131 +1458,8 @@ $scope.$watchCollection(&apos;items&apos;,function(){
 })；
 </code></pre><p>}</p>
 <p><br>总结，一图胜千言，下面这张图很好的概括了本文介绍的内容。希望本文对使用AngularJS的朋友有所帮助。</p>
-<p><a href="http://phped-wordpress.stor.sinaapp.com/uploads/2014/09/angular_watch_depths1.png" target="_blank" rel="external"><img src="http://phped-wordpress.stor.sinaapp.com/uploads/2014/09/angular_watch_depths1.png" alt title="angular_watch_depths"></a></p>
+<p><a href="http://phped-wordpress.stor.sinaapp.com/uploads/2014/09/angular_watch_depths1.png" target="_blank" rel="noopener"><img src="http://phped-wordpress.stor.sinaapp.com/uploads/2014/09/angular_watch_depths1.png" alt title="angular_watch_depths"></a></p>
 <div></div>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/05/15/mysql-root-e5-af-86-e7-a0-81-e5-bf-98-e8-ae-b0/" itemprop="url">
-                  MySQL Root 密码忘记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-05-15T10:11:43+08:00" content="2013-05-15">
-              2013-05-15
-            </time>
-          </span>
-
-          
-            <span class="post-category">
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/未分类/" itemprop="url" rel="index">
-                    <span itemprop="name">未分类</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>依照下面步骤，重新设定root密码：</p>
-<p>环境：Ubuntu</p>
-<ol>
-<li>sudo su -</li>
-<li>/etc/init.d/mysql stop</li>
-<li><strong>/usr/sbin/mysqld –skip-grant-tables –user=root &amp;</strong></li>
-<li>mysql -u root</li>
-<li>mysql&gt; <strong>UPDATE mysql.user SET Password=PASSWORD(‘’) WHERE User=’root’;</strong> # 將 root 密码清掉，也可以重新设置</li>
-<li>mysql&gt; quit</li>
-<li>/etc/init.d/mysql restart # 完成.<br>&nbsp;</li>
-</ol>
-
           
         
       
@@ -1641,7 +1530,7 @@ $scope.$watchCollection(&apos;items&apos;,function(){
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

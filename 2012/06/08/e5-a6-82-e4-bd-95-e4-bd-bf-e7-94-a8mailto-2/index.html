@@ -274,16 +274,16 @@
 
       
         <p>1.基本用法<br>mailto:收信人地址。</p>
-<p><pre lang="html"><a href="mailto:sample@163.com" target="_blank" rel="external">send email</a></pre><br>或者</p>
+<p><pre lang="html"><a href="mailto:sample@163.com" target="_blank" rel="noopener">send email</a></pre><br>或者</p>
 <p><pre lang="html"></pre></p>
 <p><form action="mailto:sample@163.com"></form><br><br>2.可使用参数列表<br>to 收信人<br>suject 主题<br>cc 抄送<br>bcc 暗抄送<br>body 内容<br>参数传递方式同页面之间传递值一样，可以使用查询字符串，也可以用form<br><a id="more"></a><br>querystring方式：</p>
-<p><pre lang="html"><a href="mailto:sample@163.com?subject=test&amp;cc=sample@hotmail.com&amp;body=use mailto sample" target="_blank" rel="external">send mail</a></pre><br>form方式：</p>
+<p><pre lang="html"><a href="mailto:sample@163.com?subject=test&amp;cc=sample@hotmail.com&amp;body=use mailto sample" target="_blank" rel="noopener">send mail</a></pre><br>form方式：</p>
 <p><pre lang="html"></pre></p>
 <p><form action="mailto:sample@163.com"></form></p>
 <p><input name="cc" type="text" value="sample@hotmail.com"></p>
 <p><input name="subject" type="text" value="test"></p>
 <p><input name="body" type="text" value="use mailto sample"><br><br><br>3.能否在body中加入html（如link,img等）<br>RFC 2368 第二部分规定了body中的内容仅限于text/plain（即纯文本格式），所以不能插入图片。</p>
-<p>参考：<a href="http://tools.ietf.org/html/rfc2368" target="_blank" rel="external">http://tools.ietf.org/html/rfc2368</a></p>
+<p>参考：<a href="http://tools.ietf.org/html/rfc2368" target="_blank" rel="noopener">http://tools.ietf.org/html/rfc2368</a></p>
 
       
     </div>
@@ -391,7 +391,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

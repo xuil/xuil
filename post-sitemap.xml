@@ -8,6 +8,22 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2019/04/29/css-em/</loc>
+        <lastmod>2019-04-29T04:38:40.302Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2016/08/29/what-does-restful-really-mean/</loc>
+        <lastmod>2019-04-10T03:08:39.459Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2015/11/09/angularjs-exactly-one-root-element/</loc>
         <lastmod>2019-04-09T12:59:39.642Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -26,14 +42,6 @@
     <url>
         <loc>http://yoursite.com/2016/09/09/css-box-model/</loc>
         <lastmod>2016-09-09T05:55:05.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2016/08/29/what-does-restful-really-mean/</loc>
-        <lastmod>2016-08-29T03:47:10.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -72,14 +80,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2012/08/02/chrome-hack-e4-b8-a4-e5-88-99/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://yoursite.com/2012/09/07/canvas-width-e5-92-8cheight/</loc>
         <lastmod>2016-07-22T03:30:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -88,7 +88,23 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2012/08/02/chrome-hack-e4-b8-a4-e5-88-99/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2014/11/24/css-e8-a7-84-e5-88-99-e4-b8-ad-e6-b5-8f-e8-a7-88-e5-99-a8-e5-89-8d-e7-bc-80-e7-9a-84-e5-a4-84-e7-90-86/</loc>
+        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2012/05/17/e4-bd-bf-e7-94-a8svg-e6-b7-bb-e5-8a-a0-e7-ba-bf-e4-b8-8a-e6-a0-87-e6-b3-a8/</loc>
         <lastmod>2016-07-22T03:30:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -105,14 +121,6 @@
 
     <url>
         <loc>http://yoursite.com/2012/08/14/e5-a4-9a-e8-be-b9-e5-bd-a2-e7-9a-84-e4-b8-ad-e5-bf-83/</loc>
-        <lastmod>2016-07-22T03:30:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2012/05/17/e4-bd-bf-e7-94-a8svg-e6-b7-bb-e5-8a-a0-e7-ba-bf-e4-b8-8a-e6-a0-87-e6-b3-a8/</loc>
         <lastmod>2016-07-22T03:30:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

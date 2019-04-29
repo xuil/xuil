@@ -273,7 +273,7 @@
       
 
       
-        <p>ECMA-262-3详解(<a href="http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contexts/" target="_blank" rel="external">ECMA-262-3 in detail</a>)系列是学习ECMAScript不可多得的好文章。本文根据其相关章节整理得出。</p>
+        <p>ECMA-262-3详解(<a href="http://dmitrysoshnikov.com/ecmascript/chapter-1-execution-contexts/" target="_blank" rel="noopener">ECMA-262-3 in detail</a>)系列是学习ECMAScript不可多得的好文章。本文根据其相关章节整理得出。</p>
 <p>在ECMAScript中，函数不仅可以作为参数，还可以作为返回值。这种特性在传统的面向堆栈的编程结构模型中，会受到很大限制。在面向堆栈的编程语言中，函数的本地变量都是保存在堆栈上的，每当函数激活的时候，这些变量和函数参数都会压栈到该堆栈上。当函数返回的时候，这些参数又会从堆栈中移除。</p>
 <pre class="javascript">
     function testFn() {
@@ -338,7 +338,7 @@ _代码块一般指函数，这样闭包可理解为封闭了外部函数作用�
 
 <p>对于闭包的分析就到这里。我们再次从理论和实践角度分别归纳一下ECMAScrip的闭包：<br>从理论角度，所有的函数都是闭包。 因为它们都在创建的时候就将上层上下文的数据保存起来了。哪怕是简单的全局变量也是如此，因为函数中访问全局变量就相当于是在访问自由变量（保存在最外层的作用域中）。<br>从实践角度，当函数满足一定的条件才算是闭包：即便创建它的上下文已经销毁，但它仍然存在（比如，内部函数从父函数中返回）；在代码中引用了自由变量。</p>
 <p></p><h3>结论<p></p>
-<p>闭包是ECMAScript最强大的特性之一，希望本文能够帮助您理解相关知识。<br>对于分析闭包工作机制中涉及到的执行环境上下文、作用域链等概念，可以参考本站的<a href="http://phped.sinaapp.com/?p=170" target="_blank" rel="external">“ECMA-262-3详解之执行上下文和作用域链”</a>。</p>
+<p>闭包是ECMAScript最强大的特性之一，希望本文能够帮助您理解相关知识。<br>对于分析闭包工作机制中涉及到的执行环境上下文、作用域链等概念，可以参考本站的<a href="http://phped.sinaapp.com/?p=170" target="_blank" rel="noopener">“ECMA-262-3详解之执行上下文和作用域链”</a>。</p>
 </h3>
       
     </div>
@@ -448,7 +448,7 @@ _代码块一般指函数，这样闭包可理解为封闭了外部函数作用�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
